@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Developer Interview Cheatsheet</title>
+    <title>Full-Stack Developer Review</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
       :root {
@@ -239,39 +239,7 @@
       <div id="toc" class="block toc">
         <strong>Table of Contents:</strong>
         <ul>
-          <li><strong><a href="#interview-basics">1. Interview Basics</a></strong></li>
-          <li><a href="#interviewer-questions">Basic questions to ask the interviewer</a></li>
-          <li><a href="#elevator-pitch">Elevator Pitch</a></li>
-          <li><a href="#have-you-used-x">Have you used X before?</a></li>
-          <li><a href="#closing-line">Closing line</a></li>
-          <li><strong><a href="#background-career">2. Background & Career</a></strong></li>
-          <li><a href="#career-path">Why did you choose software development?</a></li>
-          <li><a href="#last-role">Why did you leave your last role?</a></li>
-          <li><a href="#consulting-work">What consulting work have you done?</a></li>
-          <li><a href="#professional-dev">How do you approach professional development?</a></li>
-          <li><strong><a href="#behavioral-soft-skills">3. Behavioral & Soft Skills</a></strong></li>
-          <li><a href="#team-env">What team environment do you prefer?</a></li>
-          <li><a href="#handling-disagreements">How do you handle disagreements?</a></li>
-          <li><a href="#prioritize-work">How do you prioritize work when multiple tasks compete?</a></li>
-          <li><a href="#handle-incomplete-requirements">How do you handle unclear or incomplete requirements?</a></li>
-          <li><a href="#code-reviews">How do you handle code reviews—giving and receiving feedback?</a></li>
-          <li><a href="#production-bug-caused">Tell me about a production bug you caused. What did you learn?</a></li>
-          <li><a href="#balance-speed-quality">How do you balance speed vs code quality?</a></li>
-          <li><strong><a href="#project-experience">4. Project Experience & Problem Solving</a></strong></li>
-          <li><a href="#complex-project-lead-example">Can you describe a challenging programming project you led?</a></li>
-          <li><a href="#debugging-prod-issue">Can you describe a time you debugged a production issue?</a></li>
-          <li><a href="#verifying-fixes">How do you verify fixes and follow up with customers?</a></li>
-          <li><a href="#debug-unreproducible-bug">How do you debug a bug you can't reproduce locally?</a></li>
-          <li><strong><a href="#technical-overview">5. Technical Overview</a></strong></li>
-          <li><a href="#front-vs-back">Do you prefer frontend or backend?</a></li>
-          <li><a href="#css-component-framework">What CSS and component frameworks do you use?</a></li>
-          <li><a href="#react-next">What is your experience with React and Next.js?</a></li>
-          <li><a href="#node-express">What is your experience with Node, Express, and NestJS?</a></li>
-          <li><a href="#databases">What is your experience with SQL, NoSQL, and ORMs?</a></li>
-          <li><a href="#logic-frontend-backend">How do you decide whether logic belongs on the frontend or backend?</a></li>
-          <li><a href="#tech-stack-tradeoffs">What tradeoffs do you consider when choosing a tech stack?</a></li>
-          <li><a href="#learn-new-framework">How do you approach learning a new framework or language quickly?</a></li>
-          <li><strong><a href="#frontend-fundamentals">6. Frontend Fundamentals</a></strong></li>
+          <li><strong><a href="#frontend-fundamentals">1. Frontend Fundamentals</a></strong></li>
           <li><a href="#html-css">HTML & CSS</a></li>
           <li><a href="#semantic-html">What is semantic HTML?</a></li>
           <li><a href="#label-accessibility">How do you use &lt;label&gt; for accessibility?</a></li>
@@ -321,7 +289,7 @@
           <li><a href="#type-vs-interface">What is the difference between type and interface?</a></li>
           <li><a href="#generics">What are generics?</a></li>
           <li><a href="#type-inference">What is type inference?</a></li>
-          <li><strong><a href="#backend-infrastructure">7. Backend & Infrastructure</a></strong></li>
+          <li><strong><a href="#backend-infrastructure">2. Backend & Infrastructure</a></strong></li>
           <li><a href="#design-node-api">How do you design a Node.js API?</a></li>
           <li><a href="#rest-api-good">How do you design a REST API? What makes one "good"?</a></li>
           <li><a href="#handle-errors-node">How do you handle errors and ensure reliability in Node?</a></li>
@@ -351,7 +319,7 @@
           <li><a href="#handle-configuration-secrets">How do you handle configuration and secrets?</a></li>
           <li><a href="#monitor-production-issues">How do you monitor and respond to issues in production?</a></li>
           <li><a href="#think-about-scaling">How do you think about scaling?</a></li>
-          <li><strong><a href="#devops-tools">8. DevOps & Tools</a></strong></li>
+          <li><strong><a href="#devops-tools">3. DevOps & Tools</a></strong></li>
           <li><a href="#ci-cd">How do you approach CI/CD?</a></li>
           <li><a href="#cloud">What is your experience with cloud and Docker?</a></li>
           <li><a href="#git">How do you use Git?</a></li>
@@ -367,288 +335,11 @@
           <li><a href="#file-uploads-scale">How would you handle file uploads at scale?</a></li>
           <li><a href="#design-todo-api">How would you design an API for a to-do app used by thousands of users?</a></li>
           <li><a href="#prevent-duplicate-requests">How would you prevent duplicate requests or race conditions?</a></li>
-          <li><strong><a href="#ai-modern-workflow">9. AI & Modern Workflow</a></strong></li>
-          <li><a href="#ai-workflow">How do you use AI in your workflow?</a></li>
-          <li><a href="#clever-ai-usage">What are examples of clever AI usage in your projects?</a></li>
         </ul>
       </div>
 
       <!-- ============================================ -->
-      <!-- SECTION 1: INTERVIEW BASICS -->
-      <!-- ============================================ -->
-      <h1 id="interview-basics">Interview Basics</h1>
-
-      <section id="interviewer-questions">
-        <details>
-          <summary><h2>Basic questions to ask the interviewer</h2></summary>
-          <div class="block quote">
-            <ul>
-              <li>Can you describe what a typical day or week looks like in this role?</li>
-              <li>What would success in the first few months look like for someone in this position?</li>
-              <li>How is the team structured, and who would I work most closely with?</li>
-              <li>What are the next steps in the interview process?</li>
-            </ul>
-          </div>
-        </details>
-      </section>
-
-      <section id="elevator-pitch">
-        <details>
-          <summary><h2>Elevator Pitch</h2></summary>
-          <div class="block quote">
-            I'm a full stack developer with over six years of experience building and supporting SaaS products using React, TypeScript, Node, and SQL. I own features end to end, from shaping requirements and building user-facing interfaces to designing APIs, deploying services, and supporting them in production.
-          </div>
-        </details>
-      </section>
-
-      <section id="have-you-used-x">
-        <details>
-          <summary><h2>Have you used [technology] before?</h2></summary>
-          <div class="block quote">
-            I have not used it professionally yet, but I am comfortable picking up new technologies quickly in a production environment.
-          </div>
-        </details>
-      </section>
-
-      <section id="closing-line">
-        <details>
-          <summary><h2>Closing line</h2></summary>
-          <div class="block quote">
-            I appreciate the time today. Based on what we discussed, I would be happy to continue the process and talk further.
-          </div>
-        </details>
-      </section>
-
-      <!-- ============================================ -->
-      <!-- SECTION 2: BACKGROUND & CAREER -->
-      <!-- ============================================ -->
-      <h1 id="background-career">Background & Career</h1>
-
-      <section id="career-path">
-        <details>
-          <summary><h2>Why did you choose software development?</h2></summary>
-          <div class="block">
-            <p>I studied history and political science, but I discovered I really enjoy building things. I transitioned into web development through training and professional experience.</p>
-          </div>
-        </details>
-      </section>
-
-      <section id="last-role">
-        <details>
-          <summary><h2>Why did you leave your last role?</h2></summary>
-          <div class="block">
-            <p>I felt my professional growth had plateaued, and then my position was eliminated due to budget cuts. Since then, I’ve been doing freelance consulting while looking for new full-stack opportunities.</p>
-          </div>
-        </details>
-      </section>
-
-      <section id="consulting-work">
-        <details>
-          <summary><h2>What consulting work have you done?</h2></summary>
-          <div class="block">
-            <p>I’ve been helping a friend explore a business idea by providing architecture guidance and prototyping the product using React, TypeScript, Node, and SQL.</p>
-          </div>
-        </details>
-      </section>
-
-      <section id="professional-dev">
-        <details>
-          <summary><h2>How do you approach professional development?</h2></summary>
-          <div class="block">
-            <p>I approach professional development by seeking new challenges that push me technically, deepening my skills through hands-on work, and learning from others via mentorship, code reviews, and architecture discussions.</p>
-          </div>
-        </details>
-      </section>
-
-      <!-- ============================================ -->
-      <!-- SECTION 3: BEHAVIORAL & SOFT SKILLS -->
-      <!-- ============================================ -->
-      <h1 id="behavioral-soft-skills">Behavioral & Soft Skills</h1>
-
-      <section id="team-env">
-        <details>
-          <summary><h2>What team environment do you prefer?</h2></summary>
-          <div class="block">
-            <p>I thrive in collaborative teams that value open communication, mutual respect, mentorship, collaboration, and continuous learning</p>
-          </div>
-        </details>
-      </section>
-
-      <section id="handling-disagreements">
-        <details>
-          <summary><h2>How do you handle disagreements?</h2></summary>
-          <div class="block">
-            <p>I focus on understanding others’ perspectives, clearly explaining my reasoning, and keeping the discussion constructive to reach a productive solution.</p>
-          </div>
-        </details>
-      </section>
-
-      <section id="prioritize-work">
-        <details>
-          <summary><h2>How do you prioritize work when multiple tasks compete?</h2></summary>
-          <div class="block">
-            <p>I focus on urgency and impact, spot dependencies early, and communicate progress proactively to keep the team aligned.</p>
-          </div>
-        </details>
-      </section>
-
-      <section id="handle-incomplete-requirements">
-        <details>
-          <summary><h2>How do you handle unclear or incomplete requirements?</h2></summary>
-          <div class="block">
-            <p>I clarify expectations with stakeholders, create mockups or outlines, and confirm understanding before starting development.</p>
-          </div>
-        </details>
-      </section>
-
-      <section id="code-reviews">
-        <details>
-          <summary><h2>How do you handle code reviews—giving and receiving feedback?</h2></summary>
-          <div class="block">
-            <p>I give feedback thoughtfully with clear reasoning, and take feedback as a learning opportunity, focusing on improving the code, not being right.</p>
-          </div>
-        </details>
-      </section>
-
-      <section id="production-bug-caused">
-        <details>
-          <summary><h2>Tell me about a production bug you caused. What did you learn?</h2></summary>
-          <div class="block">
-            <p>I once shipped a SQL change that didn’t handle nulls correctly, which caused errors for some users; it taught me to test edge cases more rigorously and ensure staging data reflects real production scenarios.</p>
-          </div>
-        </details>
-      </section>
-
-      <section id="balance-speed-quality">
-        <details>
-          <summary><h2>How do you balance speed vs code quality?</h2></summary>
-          <div class="block">
-            <p>I move quickly by keeping solutions simple, but I protect code quality by focusing on readability, tests, and clear follow-ups when shortcuts are necessary.</p>
-          </div>
-        </details>
-      </section>
-
-      <!-- ============================================ -->
-      <!-- SECTION 4: PROJECT EXPERIENCE & PROBLEM SOLVING -->
-      <!-- ============================================ -->
-      <h1 id="project-experience">Project Experience & Problem Solving</h1>
-
-      <section id="complex-project-lead-example">
-        <details>
-          <summary><h2>Can you describe a challenging programming project you led?</h2></summary>
-          <div class="block">
-            <p>At Civix, I led development of a step-based document submission and approval system for New Jersey’s Office of Emergency Management to support FEMA compliance. The main challenge was handling many document formats and edge cases while keeping the workflow fast and intuitive. I designed a modular React frontend to guide users through each step and built backend SQL validations that enforced rules without slowing approvals. Working closely with QA and support, we addressed edge cases, incorporated client feedback, and the system was ultimately adopted by other state agencies.</p>
-          </div>
-        </details>
-      </section>
-
-      <section id="debugging-prod-issue">
-        <details>
-          <summary><h2>Can you describe a time you debugged a production issue?</h2></summary>
-          <div class="block">
-            <p>When a section of a form wasn’t conditionally rendering as expected in production, I first verified the frontend logic and then shifted focus to the data being returned. Using logs, I traced the issue to a SQL query with an incorrect WHERE clause. I fixed and tested the query against real data, deployed the change, and reviewed related queries to prevent similar issues.</p>
-          </div>
-        </details>
-      </section>
-
-      <section id="verifying-fixes">
-        <details>
-          <summary><h2>How do you verify fixes and follow up with customers?</h2></summary>
-          <div class="block">
-            <p>After implementing a fix, I test changes thoroughly in a staging environment to ensure the issue is resolved. Once verified, I communicate with Customer Success, providing instructions and context so they can update the affected users and confirm the resolution.</p>
-          </div>
-        </details>
-      </section>
-
-      <section id="debug-unreproducible-bug">
-        <details>
-          <summary><h2>How do you debug a bug you can't reproduce locally?</h2></summary>
-          <div class="block">
-            <p>When I cannot reproduce a bug locally, I start by gathering as much information as possible, including error logs, user reports, and environment details. I analyze production logs and monitoring tools to spot patterns, compare staging and production configurations, and add targeted logging around suspected areas. Sometimes I create a test environment that mirrors production to isolate the issue. The goal is to understand the conditions that trigger the bug, even if I cannot reproduce it exactly.</p>
-          </div>
-        </details>
-      </section>
-
-      <!-- ============================================ -->
-      <!-- SECTION 5: TECHNICAL OVERVIEW -->
-      <!-- ============================================ -->
-      <h1 id="technical-overview">Technical Overview</h1>
-
-      <section id="front-vs-back">
-        <details>
-          <summary><h2>Do you prefer frontend or backend?</h2></summary>
-          <div class="block">
-            <p>I enjoy full-stack development and don’t have a strong preference. I am comfortable working on both frontend and backend and taking ownership of features from end to end.</p>
-          </div>
-        </details>
-      </section>
-
-      <section id="css-component-framework">
-        <details>
-          <summary><h2>What CSS and component frameworks do you use?</h2></summary>
-          <div class="block">
-            <p>I started with Bootstrap, then moved to Materialize based on Google’s Material Design, and most recently I use Shadcn, which combines Tailwind CSS with Radix UI primitives. It provides highly customizable, accessible components and makes it easier to build responsive, mobile-friendly interfaces quickly and consistently.</p>
-          </div>
-        </details>
-      </section>
-
-      <section id="react-next">
-        <details>
-          <summary><h2>What is your experience with React and Next.js?</h2></summary>
-          <div class="block">
-            <p>I use React and TypeScript to build SaaS applications with reusable components, and Next.js for server-side rendering or static site generation when performance, SEO, or fast initial load matters. For purely client-side apps without SEO concerns, I stick with React alone.</p>
-          </div>
-        </details>
-      </section>
-
-      <section id="node-express">
-        <details>
-          <summary><h2>What is your experience with Node, Express, and NestJS?</h2></summary>
-          <div class="block">
-            <p>I build modular REST APIs with Node, Express, and NestJS, using middleware for authentication, validation, and error handling.</p>
-          </div>
-        </details>
-      </section>
-
-
-      <section id="databases">
-        <details>
-          <summary><h2>What is your experience with SQL, NoSQL, and ORMs?</h2></summary>
-          <div class="block">
-            <p>I use SQL for relational databases and MongoDB for NoSQL needs, and I leverage ORMs like Prisma to write maintainable, type-safe queries.</p>
-          </div>
-        </details>
-      </section>
-
-      <section id="logic-frontend-backend">
-        <details>
-          <summary><h2>How do you decide whether logic belongs on the frontend or backend?</h2></summary>
-          <div class="block">
-            <p>I put anything that affects security, data correctness, or rules that multiple clients use on the backend. Things that only affect the interface or make the user experience smoother, like formatting or simple checks, can stay on the frontend. If a user could cheat or bypass it, it belongs on the backend.</p>
-          </div>
-        </details>
-      </section>
-
-      <section id="tech-stack-tradeoffs">
-        <details>
-          <summary><h2>What tradeoffs do you consider when choosing a tech stack?</h2></summary>
-          <div class="block">
-            <p>I weigh team expertise, community support, performance, and maintainability. For startups I prioritize speed and flexibility, while for established products I focus on stability and long-term maintainability.</p>
-          </div>
-        </details>
-      </section>
-
-      <section id="learn-new-framework">
-        <details>
-          <summary><h2>How do you approach learning a new framework or language quickly?</h2></summary>
-          <div class="block">
-            <p>I start with official documentation and build a small project to learn core concepts. I focus on the framework’s unique patterns, study examples, and practice by building something similar to what I’ll work on.</p>
-          </div>
-        </details>
-      </section>
-
-      <!-- ============================================ -->
-      <!-- SECTION 6: FRONTEND FUNDAMENTALS -->
+      <!-- SECTION 1: FRONTEND FUNDAMENTALS -->
       <!-- ============================================ -->
       <h1 id="frontend-fundamentals">Frontend Fundamentals</h1>
 
@@ -658,7 +349,7 @@
         <details>
           <summary><h2>What is semantic HTML?</h2></summary>
           <div class="block">
-            <p>Semantic HTML uses elements like <article>, <section>, and <nav> to give meaning to content, improving accessibility, SEO, and code clarity.</p>
+            <p>Semantic HTML uses elements like <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, and <code>&lt;nav&gt;</code> to give meaning to content, improving accessibility, SEO, and code clarity.</p>
           </div>
         </details>
       </section>
@@ -667,7 +358,7 @@
         <details>
           <summary><h2>How do you use &lt;label&gt; for accessibility?</h2></summary>
           <div class="block">
-            <p>I link label elements to form controls to improve screen reader support and make click targets easier for users.</p>
+            <p>I link <code>&lt;label&gt;</code> elements to form controls to improve screen reader support and make click targets easier for users.</p>
           </div>
         </details>
       </section>
@@ -1008,7 +699,7 @@
       </section>
 
       <!-- ============================================ -->
-      <!-- SECTION 7: BACKEND & INFRASTRUCTURE -->
+      <!-- SECTION 2: BACKEND & INFRASTRUCTURE -->
       <!-- ============================================ -->
       <h1 id="backend-infrastructure">Backend & Infrastructure</h1>
 
@@ -1266,7 +957,7 @@
             </section>
 
       <!-- ============================================ -->
-      <!-- SECTION 8: DEVOPS & TOOLS -->
+      <!-- SECTION 3: DEVOPS & TOOLS -->
       <!-- ============================================ -->
       <h1 id="devops-tools">DevOps & Tools</h1>
 
@@ -1385,29 +1076,6 @@
           <summary><h2>How would you prevent duplicate requests or race conditions?</h2></summary>
           <div class="block">
             <p>I prevent duplicate requests and race conditions using both frontend and backend strategies. On the frontend, I disable buttons during submission and send a unique request key so the server knows if it’s already processed it. On the backend, I enforce database constraints, use transactions, and apply locking to prevent conflicts when multiple requests update the same data. This ensures each operation happens exactly once, keeping the app reliable and consistent.</p>
-          </div>
-        </details>
-      </section>
-
-      <!-- ============================================ -->
-      <!-- SECTION 9: AI & MODERN WORKFLOW -->
-      <!-- ============================================ -->
-      <h1 id="ai-modern-workflow">AI & Modern Workflow</h1>
-
-      <section id="ai-workflow">
-        <details>
-          <summary><h2>How do you use AI in your workflow?</h2></summary>
-          <div class="block">
-            <p>I use AI to speed up my workflow by clarifying concepts, generating examples, and getting context-aware insights. For instance, tools like Cursor MCP help me understand code patterns, debug efficiently, and explore different approaches without losing context. AI supplements my learning and development, but I always verify outputs and make the final decisions myself.</p>
-          </div>
-        </details>
-      </section>
-
-      <section id="clever-ai-usage">
-        <details>
-          <summary><h2>What are examples of clever AI usage in your projects?</h2></summary>
-          <div class="block quote">
-            In my Airbnb Tracker project, I use a structured AI workflow with Cursor to stay efficient while learning. First, I create a project brief to set context. Then I generate a technical plan for a feature and implement it step by step. After that, I run a code review in a fresh AI context to catch errors and edge cases, then apply fixes based on that review. This approach keeps my work consistent, high-quality, and focused, which was especially helpful for features like versioned snapshots and comparing Airbnb listings over time.
           </div>
         </details>
       </section>

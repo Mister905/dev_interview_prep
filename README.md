@@ -1,47 +1,59 @@
 # Developer Interview Prep
 
-A structured, interview-ready guide for developers, with questions, concise answers, and organized sections for quick review and practice.
+A structured, interview-ready guide for developers, with questions, concise answers, and organized sections for quick review and practice. All materials feature a dark mode theme for comfortable reading.
 
 ---
 
-## Table of Contents
+## Files
 
-1. [Interview Basics](#interview-basics)  
-2. [Background & Career](#background--career)  
-3. [Behavioral & Soft Skills](#behavioral--soft-skills)  
-4. [Project Experience & Problem Solving](#project-experience--problem-solving)  
-5. [Technical Overview](#technical-overview)  
-6. [Frontend Fundamentals](#frontend-fundamentals)  
-    - HTML & CSS  
-    - JavaScript  
-    - React  
-    - TypeScript  
-7. [Backend & Infrastructure](#backend--infrastructure)  
-8. [DevOps & Tools](#devops--tools)  
-9. [AI & Modern Workflow](#ai--modern-workflow)
+This repository contains two HTML documents:
+
+### 1. `darkmode_interview_cheatsheet.html`
+A concise interview cheat sheet covering:
+- Elevator pitch and background questions
+- Frontend and backend experience
+- Technical skills (databases, APIs, cloud, Git, testing)
+- Behavioral questions (prioritization, teamwork, conflict resolution)
+- AI workflow and usage
+- Questions to ask interviewers
+
+**Best for:** Quick review before interviews, practicing common questions
+
+### 2. `darkmode_review_master.html`
+A comprehensive technical review document with collapsible sections covering:
+- **Frontend Fundamentals**: HTML & CSS, JavaScript, React, TypeScript, UX/UI Engineering
+- **Backend & Infrastructure**: Node.js APIs, REST design, databases, authentication, deployment
+- **DevOps & Tools**: CI/CD, cloud services, Docker, Git, testing strategies, system design
+
+**Best for:** Deep technical preparation, comprehensive review of concepts
 
 ---
 
-## About This Repo
+## Features
 
-This repository is designed to help developers prepare for technical interviews. It includes:
-
-- **General and conceptual questions** about programming and development choices.  
-- **Frontend and backend deep-dives**, including React, TypeScript, Node.js, and API design.  
-- **Behavioral and collaboration questions** to rehearse communication and teamwork.  
-- **System design and problem-solving scenarios**.  
-- **DevOps, testing, and deployment questions**.  
-
-Each question includes a **concise, interview-ready answer** suitable for 30–90 second spoken responses.  
+- **Dark mode theme** for comfortable reading
+- **Interview-ready answers** suitable for 30–90 second spoken responses
+- **Collapsible sections** in the master document for easy navigation
+- **Table of contents** with anchor links for quick access
+- **"Back to TOC" button** for easy navigation
 
 ---
 
 ## How to Use
 
-1. **Browse by section** using the Table of Contents.  
-2. **Expand collapsible sections** to view questions and answers.  
-3. **Use for self-practice** or group mock interviews.  
-4. Optionally, fork or clone the repo to **add your own notes and answers**.
+1. **Open the HTML files** in your browser
+2. **Use the cheat sheet** for quick review before interviews
+3. **Use the master document** for comprehensive technical preparation
+4. **Expand/collapse sections** as needed to focus on specific topics
+5. **Practice answers** out loud to prepare for actual interviews
 
-```bash
-git clone https://github.com/Mister905/dev_interview_prep.git
+---
+
+## Topics Covered
+
+- **Frontend**: HTML, CSS, JavaScript, React, TypeScript, accessibility, performance
+- **Backend**: Node.js, REST APIs, databases (SQL/NoSQL), authentication, error handling
+- **DevOps**: CI/CD, cloud deployment, Docker, Git, environment variables
+- **Testing**: Unit, integration, and E2E testing strategies
+- **System Design**: Chat apps, file uploads, API design, scaling considerations
+- **Behavioral**: Teamwork, problem-solving, prioritization, conflict resolution

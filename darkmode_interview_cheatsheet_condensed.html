@@ -12,6 +12,7 @@
         --text: #e6f0ea;
         --muted: #a7b8af;
         --accent: #2ecc71;
+        --section-header: #4dd0e1;
         --border: #1f2a25;
       }
 
@@ -34,10 +35,15 @@
         margin: 0 auto;
       }
 
-      h1 {
-        font-size: 2rem;
-        margin-bottom: 8px;
-        color: var(--accent);
+      .section-title {
+        font-size: 1.8rem;
+        margin-top: 50px;
+        margin-bottom: 20px;
+        color: var(--section-header);
+        font-weight: 700;
+      }
+      .section-title:first-of-type {
+        margin-top: 30px;
       }
       h2 {
         font-size: 1.3rem;
@@ -89,6 +95,9 @@
         color: var(--accent);
         font-weight: 600;
       }
+      .toc li.section-header strong {
+        color: var(--section-header);
+      }
 
       .toc a {
         color: var(--accent);
@@ -96,6 +105,15 @@
       }
       .toc a:hover {
         text-decoration: underline;
+      }
+      .toc li.section-header {
+        list-style: none;
+        margin-left: -20px;
+        margin-top: 16px;
+        margin-bottom: 8px;
+      }
+      .toc li.section-header:first-child {
+        margin-top: 0;
       }
 
       #back-to-toc {
@@ -123,6 +141,7 @@
     <div class="container">
       <div id="toc" class="block toc">
         <ul>
+          <li class="section-header"><strong>Intro & Motivation</strong></li>
           <li><a href="#intro">Elevator pitch</a></li>
           <li>
             <a href="#why-this-role">Why are you interested in this role?</a>
@@ -130,16 +149,12 @@
           <li>
             <a href="#career-path">Why did you choose software development?</a>
           </li>
-          <li>
-            <a href="#previous-employers"
-              >Can you tell me about your previous employers and what kind of
-              work you did there?</a
-            >
-          </li>
           <li><a href="#last-role">Why did you leave your last role?</a></li>
           <li>
             <a href="#consulting-work">What consulting work have you done?</a>
           </li>
+          <li class="section-header"><strong>Technical Stack & Experience</strong></li>
+          <li><a href="#stack">Describe your preferred stack</a></li>
           <li><a href="#frontend-exp">Describe your frontend experience</a></li>
           <li><a href="#backend-exp">Describe your backend experience</a></li>
           <li>
@@ -152,35 +167,46 @@
               >Have you used [technology] before?</a
             >
           </li>
-          <li>
-            <a href="#databases-exp">SQL, ORMs, and database experience</a>
-          </li>
-          <li><a href="#ux-ui">UX/UI mindset and examples</a></li>
-          <li><a href="#api-design">How do you design APIs?</a></li>
+          <li class="section-header"><strong>Cloud & Deployment</strong></li>
           <li>
             <a href="#cloud-ci-cd">Cloud deployment & CI/CD experience</a>
           </li>
           <li><a href="#git">Git experience</a></li>
-          <li><a href="#testing">Testing strategies</a></li>
-
+          <li class="section-header"><strong>Databases & API Design</strong></li>
           <li>
-            <a href="#prioritize-work"
-              >How do you prioritize work when multiple tasks compete?</a
-            >
+            <a href="#databases-exp">SQL, ORMs, and database experience</a>
           </li>
+          <li><a href="#api-design">How do you design APIs?</a></li>
+          <li class="section-header"><strong>UX/UI & Frontend Practices</strong></li>
+          <li><a href="#ux-ui">UX/UI mindset and examples</a></li>
+          <li class="section-header"><strong>Testing & Reliability</strong></li>
+          <li><a href="#testing">Testing strategies</a></li>
+          <li><a href="#debugging-issues">Debugging production issues</a></li>
+          <li class="section-header"><strong>Project Leadership & Problem Solving</strong></li>
           <li>
             <a href="#problem-solving-example"
               >Complex Full Stack Project Leadership</a
             >
           </li>
-          <li><a href="#debugging-issues">Debugging production issues</a></li>
+          <li>
+            <a href="#prioritize-work"
+              >How do you prioritize work when multiple tasks compete?</a
+            >
+          </li>
+          <li class="section-header"><strong>Teamwork & Collaboration</strong></li>
           <li><a href="#teamwork">How do you work in a team?</a></li>
           <li><a href="#conflict">Handling disagreements</a></li>
-
+          <li>
+            <a href="#professional-development"
+              >What does professional development mean to you?</a
+            >
+          </li>
+          <li class="section-header"><strong>AI & Productivity Tools</strong></li>
           <li>
             <a href="#ai-workflow">How do you use AI in your workflow?</a>
           </li>
           <li><a href="#clever-ai-usage">Clever AI Usage / Projects</a></li>
+          <li class="section-header"><strong>Interview Process & Closing</strong></li>
           <li>
             <a href="#interviewer-questions"
               >Questions to ask the Interviewer</a
@@ -189,6 +215,8 @@
           <li><a href="#closing">Closing line</a></li>
         </ul>
       </div>
+
+      <div class="section-title">Intro & Motivation</div>
 
       <h2 id="intro">Elevator pitch</h2>
       <div class="block quote">
@@ -215,17 +243,6 @@
         </ul>
       </div>
 
-      <h2 id="previous-employers">
-        Can you tell me about your previous employers and what kind of work you
-        did there?
-      </h2>
-      <div class="block quote">
-        <ul>
-          <li>Civix: Built full-stack SaaS for U.S. state agencies managing FEMA grants after disasters</li>
-          <li>Clearcable: Full-stack systems for ISP operations: network monitoring, equipment inventory, service provisioning</li>
-        </ul>
-      </div>
-
       <h2 id="last-role">Why did you leave your last role?</h2>
       <div class="block quote">
         <ul>
@@ -235,23 +252,23 @@
         </ul>
       </div>
 
-      <h2 id="professional-development">
-        What does professional development mean to you?
-      </h2>
-      <div class="block quote">
-        <ul>
-          <li>Seek new challenges that push me technically</li>
-          <li>Deepen skills through hands-on work</li>
-          <li>Learn from others via mentorship, code reviews, and architecture discussions</li>
-        </ul>
-      </div>
-
       <h2 id="consulting-work">What consulting work have you done?</h2>
       <div class="block quote">
         <ul>
           <li>Helping a friend explore a business idea</li>
           <li>Providing architecture guidance and prototyping</li>
           <li>Using React, TypeScript, Node, and SQL</li>
+        </ul>
+      </div>
+
+      <div class="section-title">Technical Stack & Experience</div>
+
+      <h2 id="stack">Describe your preferred stack</h2>
+      <div class="block quote">
+        <ul>
+          <li>Frontend: React and Next.js</li>
+          <li>Backend: Node.js with Express.js and NestJS for APIs</li>
+          <li>Databases: SQL and NoSQL (MongoDB)</li>
         </ul>
       </div>
 
@@ -295,21 +312,36 @@
         </ul>
       </div>
 
+      <div class="section-title">Cloud & Deployment</div>
+
+      <h2 id="cloud-ci-cd">Cloud deployment & CI/CD experience</h2>
+      <div class="block quote">
+        <ul>
+          <li>Set up CI/CD pipelines to run builds and tests; catch issues before staging or production</li>
+          <li>Use Docker locally to mirror production: runtime, dependencies, and environment variables</li>
+          <li>Deploy frontend to S3, backend APIs on Lambda, use managed databases</li>
+          <li>Versioned releases and rollback strategies for quick restoration if needed</li>
+          <li>Keep deployments smooth and predictable</li>
+        </ul>
+      </div>
+
+      <h2 id="git">Git experience</h2>
+      <div class="block quote">
+        <ul>
+          <li>Use daily for branching, pull requests, code reviews, and resolving conflicts</li>
+          <li>Keep repositories organized with clean commit history</li>
+        </ul>
+      </div>
+
+      <div class="section-title">Databases & API Design</div>
+
       <h2 id="databases-exp">SQL, ORMs, and database experience</h2>
       <div class="block quote">
         <ul>
           <li>Design relational databases: normalized schemas, indexes, transactional workflows</li>
           <li>Use ORMs like Prisma for consistent, maintainable data access</li>
+          <li>Comfortable building, executing, and debugging raw SQL queries when needed</li>
           <li>Work with NoSQL like MongoDB when document-based model fits better</li>
-        </ul>
-      </div>
-
-      <h2 id="ux-ui">UX/UI mindset and examples</h2>
-      <div class="block quote">
-        <ul>
-          <li>User-first mindset: intuitive, accessible, easy to navigate</li>
-          <li>Focus on loading skeletons, clear feedback, proper focus management</li>
-          <li>Use modular component libraries for consistent, scalable design</li>
         </ul>
       </div>
 
@@ -322,31 +354,53 @@
         </ul>
       </div>
 
-      <h2 id="cloud-ci-cd">Cloud deployment & CI/CD experience</h2>
+      <div class="section-title">UX/UI & Frontend Practices</div>
+
+      <h2 id="ux-ui">UX/UI mindset and examples</h2>
       <div class="block quote">
         <ul>
-          <li>Set up CI/CD pipelines with GitHub Actions; automate builds and tests on PRs</li>
-          <li>Deploy frontend and backend separately through repeatable pipelines</li>
-          <li>Use Docker and Docker Compose for local development, mirroring production</li>
-          <li>Deploy to AWS or Azure with rollback strategies; use ECS/App Service, S3/Blob storage, RDS/SQL Database</li>
-          <li>Store secrets securely; maintain consistency across environments</li>
+          <li>User-first mindset: intuitive, accessible, easy to navigate</li>
+          <li>Responsive and optimized for different mobile devices</li>
+          <li>Clear feedback during loading and interactions</li>
+          <li>Use semantic HTML and ARIA roles to support accessibility</li>
+          <li>Use modular component libraries for consistent, scalable design</li>
         </ul>
       </div>
 
-      <h2 id="git">Git experience</h2>
-      <div class="block quote">
-        <ul>
-          <li>Use daily for branching, pull requests, code reviews, and resolving conflicts</li>
-          <li>Keep repositories organized with clean commit history</li>
-        </ul>
-      </div>
+      <div class="section-title">Testing & Reliability</div>
 
       <h2 id="testing">Testing strategies</h2>
       <div class="block quote">
         <ul>
+          <li>Test at multiple levels to ensure reliability</li>
           <li>Unit tests for components, utilities, and business logic with Jest</li>
           <li>Integration testing for API and frontend-backend interactions</li>
           <li>Postman to validate APIs in real-world scenarios</li>
+          <li>Comfortable debugging raw SQL queries when needed</li>
+        </ul>
+      </div>
+
+      <h2 id="debugging-issues">Debugging production issues</h2>
+      <div class="block quote">
+        <ul>
+          <li>Debug production issues on both frontend and backend</li>
+          <li>When bug doesn't reproduce locally: check logs, compare staging and production environments</li>
+          <li>Spin up test environments to isolate problems</li>
+          <li>Handle misconfigured environment variables, unexpected API errors, database queries behaving differently in production</li>
+        </ul>
+      </div>
+
+      <div class="section-title">Project Leadership & Problem Solving</div>
+
+      <h2 id="problem-solving-example">
+        Complex Full Stack Project Leadership
+      </h2>
+      <div class="block quote">
+        <ul>
+          <li>Owned document submission and approval feature for New Jersey Office of Emergency Management, supporting FEMA compliance</li>
+          <li>Complex documents with strict validation and approval rules</li>
+          <li>Built React frontend for submissions and tracking, NestJS backend API with SQL logic enforcing rules</li>
+          <li>Worked closely with QA and support to handle edge cases, refine workflows, and incorporate client feedback</li>
         </ul>
       </div>
 
@@ -361,26 +415,7 @@
         </ul>
       </div>
 
-      <h2 id="problem-solving-example">
-        Complex Full Stack Project Leadership
-      </h2>
-      <div class="block quote">
-        <ul>
-          <li>Owned end-to-end document submission and approval feature for New Jersey Office of Emergency Management</li>
-          <li>Built modular React frontend with SQL logic enforcing validation and approval rules</li>
-          <li>Worked with QA and support to handle edge cases, balancing flexibility, correctness, and usability</li>
-        </ul>
-      </div>
-
-      <h2 id="debugging-issues">Debugging production issues</h2>
-      <div class="block quote">
-        <ul>
-          <li>Gather logs, user reports, and environment details when can't reproduce locally</li>
-          <li>Compare staging and production setups; add targeted logging</li>
-          <li>Create test environments mirroring production to isolate issues</li>
-          <li>Fixed Node.js API with misconfigured environment variable; corrected SQL query causing form rendering issues</li>
-        </ul>
-      </div>
+      <div class="section-title">Teamwork & Collaboration</div>
 
       <h2 id="teamwork">How do you work in a team?</h2>
       <div class="block quote">
@@ -400,6 +435,19 @@
         </ul>
       </div>
 
+      <h2 id="professional-development">
+        What does professional development mean to you?
+      </h2>
+      <div class="block quote">
+        <ul>
+          <li>Seek new challenges that push me technically</li>
+          <li>Deepen skills through hands-on work</li>
+          <li>Learn from others via mentorship, code reviews, and architecture discussions</li>
+        </ul>
+      </div>
+
+      <div class="section-title">AI & Productivity Tools</div>
+
       <h2 id="ai-workflow">How do you use AI in your workflow?</h2>
       <div class="block quote">
         <ul>
@@ -413,11 +461,13 @@
       <div class="block quote">
         <ul>
           <li>Built Airbnb Tracker: full-stack app tracking changes in listings over time</li>
-          <li>NestJS API, PostgreSQL with Prisma, Next.js frontend with diff views</li>
-          <li>Used AI tools for debugging and optimization while focusing on reliable features</li>
-          <li>Analyzes competing listings to identify patterns, helping hosts improve and stay competitive</li>
+          <li>Helps hosts spot patterns and improve listings based on competitor behavior</li>
+          <li>Next.js frontend, NestJS API, PostgreSQL with Prisma</li>
+          <li>Leverage AI tools to speed up debugging and optimization while keeping features reliable and maintainable</li>
         </ul>
       </div>
+
+      <div class="section-title">Interview Process & Closing</div>
 
       <h2 id="interviewer-questions">Questions to ask the Interviewer</h2>
       <div class="block quote">
@@ -439,8 +489,8 @@
       <h2 id="closing">Closing line</h2>
       <div class="block quote">
         <ul>
-          <li>I appreciate your time today</li>
-          <li>Based on our discussion, I would be happy to continue the process and talk further</li>
+          <li>Thanks for your time today</li>
+          <li>I'd be happy to continue the process and talk more</li>
         </ul>
       </div>
 

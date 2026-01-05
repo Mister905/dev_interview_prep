@@ -316,10 +316,27 @@
       <h2 id="cloud-ci-cd">Cloud deployment & CI/CD experience</h2>
       <div class="block quote">
         I have experience setting up CI/CD pipelines, automating builds and
-        tests on pull requests with tools like GitHub Actions. I deploy changes
-        through repeatable pipelines to staging and production reliably. I’ve
-        worked with both Azure and AWS, and I use Docker to ensure applications
-        run consistently across environments.
+        tests on pull requests with tools like GitHub Actions. I configure
+        pipelines to fail the deployment if tests don’t pass, giving clear
+        feedback in the PR and catching errors before they reach staging or
+        production. I deploy frontend and backend services separately through
+        repeatable pipelines, configured via environment variables. In
+        development, I containerize the frontend, backend, and optionally a
+        database using Docker, running them concurrently with Docker Compose.
+        This mirrors production conditions locally, allowing me to test
+        environment variables, networking, and inter-service communication in a
+        safe, isolated setup. I maintain a separate Docker Compose setup to
+        closely simulate production, ensuring new features behave as expected
+        before deployment. For staging and production, I deploy to AWS or Azure
+        using rollback strategies to ensure reliability. Conceptually, I’d use
+        ECS or App Service for containers, S3 or Blob storage for static assets,
+        and RDS or SQL Database for persistent data, with environment variables
+        and secrets stored securely via AWS Secrets Manager or Azure Key Vault.
+        Previous container images are tagged and ready for redeployment, so if
+        issues arise, I can quickly restore service either in personal projects
+        or via CI/CD rollback in production. This approach maintains consistency
+        across environments, catches issues early, and ensures smooth,
+        predictable releases.
       </div>
 
       <h2 id="git">Git experience</h2>

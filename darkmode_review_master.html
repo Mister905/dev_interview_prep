@@ -349,7 +349,7 @@
         <details>
           <summary><h2>What is semantic HTML?</h2></summary>
           <div class="block">
-            <p>Semantic HTML uses elements like <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, and <code>&lt;nav&gt;</code> to give meaning to content, improving accessibility, SEO, and code clarity.</p>
+            <p>Uses elements like <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, and <code>&lt;nav&gt;</code> to give meaning to content, improving accessibility, SEO, and code clarity.</p>
           </div>
         </details>
       </section>
@@ -358,7 +358,7 @@
         <details>
           <summary><h2>How do you use &lt;label&gt; for accessibility?</h2></summary>
           <div class="block">
-            <p>I link <code>&lt;label&gt;</code> elements to form controls to improve screen reader support and make click targets easier for users.</p>
+            <p>Link <code>&lt;label&gt;</code> elements to form controls to improve screen reader support and make click targets easier for users.</p>
           </div>
         </details>
       </section>
@@ -367,7 +367,7 @@
         <details>
           <summary><h2>What are component libraries and design systems?</h2></summary>
           <div class="block">
-            <p>Component libraries and design systems provide reusable UI components and guidelines, ensuring consistency across applications and devices while speeding up development.</p>
+            <p>Reusable UI components and guidelines that ensure consistency across applications and devices while speeding up development.</p>
           </div>
         </details>
       </section>
@@ -376,7 +376,7 @@
         <details>
           <summary><h2>How does CSS specificity and conflict resolution work?</h2></summary>
           <div class="block">
-            <p>CSS rules are applied based on specificity: inline styles override IDs, which override classes, which override elements. I avoid using !important and use browser DevTools to debug conflicts when needed.</p>
+            <p>Inline styles override IDs, which override classes, which override elements. Avoid !important and use DevTools to debug conflicts.</p>
           </div>
         </details>
       </section>
@@ -385,7 +385,7 @@
         <details>
           <summary><h2>What is the CSS box model?</h2></summary>
           <div class="block">
-            <p>The CSS box model consists of content, padding, border, and margin. Padding adds space inside the element, while margin adds space outside it.</p>
+            <p>Content, padding, border, and margin. Padding adds space inside; margin adds space outside.</p>
           </div>
         </details>
       </section>
@@ -394,7 +394,10 @@
         <details>
           <summary><h2>How do you create responsive layouts?</h2></summary>
           <div class="block">
-            <p>I use media queries, fluid units like percentages or rem, and layout systems such as Flexbox and CSS Grid. I also leverage CSS frameworks like Tailwind or Bootstrap to speed up building responsive designs.</p>
+            <ul>
+              <li>Media queries, fluid units, Flexbox, and CSS Grid</li>
+              <li>Frameworks like Tailwind or Bootstrap for faster development</li>
+            </ul>
           </div>
         </details>
       </section>
@@ -403,7 +406,7 @@
         <details>
           <summary><h2>What are the differences between em, rem, and px?</h2></summary>
           <div class="block">
-            <p>px is a fixed unit, em is relative to the parent element’s font size, and rem is relative to the root element’s font size, which helps maintain consistent scaling across the page.</p>
+            <p>px is fixed; em is relative to parent font size; rem is relative to root font size, maintaining consistent scaling.</p>
           </div>
         </details>
       </section>
@@ -414,7 +417,10 @@
         <details>
           <summary><h2>What are the differences between var, let, and const?</h2></summary>
           <div class="block">
-            <p>var is function-scoped, meaning it is accessible throughout the function it’s defined in. let and const are block-scoped, so they only exist within the block they are declared in. const is used for values that don’t change, while let is for variables that may be reassigned.</p>
+            <ul>
+              <li>var is function-scoped; let and const are block-scoped</li>
+              <li>const for values that don't change; let for reassignable variables</li>
+            </ul>
           </div>
         </details>
       </section>
@@ -422,70 +428,75 @@
       <section id="async-code">
         <details>
           <summary><h2>How do you handle async code?</h2></summary>
-          <div class="block"><p>I use async/await for readable asynchronous code and combine it with try/catch for error handling.</p></div>
+          <div class="block"><p>Use async/await with try/catch for readable asynchronous code and error handling.</p></div>
         </details>
       </section>
 
       <section id="primitives-vs-non-primitives">
         <details>
           <summary><h2>What are primitives vs non-primitives?</h2></summary>
-          <div class="block"><p>Primitives like strings, numbers, and booleans are immutable and compared by value, while non-primitives like objects and arrays are compared by reference. This distinction affects React re-renders and state updates.</p></div>
+          <div class="block"><p>Primitives like strings and numbers are compared by value; objects and arrays are compared by reference, affecting React re-renders.</p></div>
         </details>
       </section>
 
       <section id="data-integrity">
         <details>
           <summary><h2>How do you ensure data integrity on frontend and backend?</h2></summary>
-          <div class="block"><p>I validate data on both the frontend and backend. Frontend validation improves user experience, while backend validation ensures security, correctness, and prevents malicious or malformed data from affecting the system.</p></div>
+          <div class="block">
+            <ul>
+              <li>Frontend validation improves user experience</li>
+              <li>Backend validation ensures security and prevents malicious data</li>
+            </ul>
+          </div>
         </details>
       </section>
 
       <section id="sanitizing-input">
         <details>
           <summary><h2>How do you sanitize input?</h2></summary>
-          <div class="block"><p>I remove or escape harmful input on both frontend and backend to prevent security issues like SQL injection or XSS attacks.</p></div>
+          <div class="block"><p>Remove or escape harmful input on both frontend and backend to prevent SQL injection or XSS attacks.</p></div>
         </details>
       </section>
 
       <section id="equality-operators">
         <details>
           <summary><h2>What is the difference between == and ===?</h2></summary>
-          <div class="block"><p>== checks for equality with type coercion, while === checks both type and value. I always use === to avoid unexpected type conversions.</p></div>
+          <div class="block"><p>== checks equality with type coercion; === checks both type and value. Always use === to avoid unexpected conversions.</p></div>
         </details>
       </section>
 
       <section id="closures">
         <details>
           <summary><h2>What are closures?</h2></summary>
-          <div class="block"><p>Closures are functions that retain access to variables from their outer scope even after the outer function has finished executing, allowing for private state and encapsulation.</p></div>
+          <div class="block"><p>Functions that retain access to variables from their outer scope after the outer function finishes, enabling private state and encapsulation.</p></div>
         </details>
       </section>
 
       <section id="promises">
         <details>
           <summary><h2>What are promises?</h2></summary>
-          <div class="block"><p>Promises represent the result of asynchronous operations. They allow handling success with .then() and errors with .catch(), or using async/await for cleaner syntax.</p></div>
+          <div class="block"><p>Represent asynchronous operation results. Handle success with .then() and errors with .catch(), or use async/await for cleaner syntax.</p></div>
         </details>
       </section>
 
       <section id="hoisting">
         <details>
           <summary><h2>What is hoisting?</h2></summary>
-          <div class="block"><p>Hoisting means JavaScript moves variable and function declarations to the top of their scope. For example, a var variable can be accessed before it’s defined (it will be undefined), but let and const variables cannot be used until they are assigned a value.</p></div>
+          <div class="block"><p>JavaScript moves variable and function declarations to the top of their scope. var can be accessed before definition (undefined); let and const cannot.</p></div>
         </details>
       </section>
 
       <section id="arrow-functions">
         <details>
           <summary><h2>What are arrow functions?</h2></summary>
-          <div class="block"><p>Arrow functions provide a shorter syntax for writing functions and automatically inherit this from the surrounding scope, which simplifies context handling.</p></div>
+          <div class="block"><p>Shorter function syntax that automatically inherits this from the surrounding scope, simplifying context handling.</p></div>
         </details>
       </section>
 
       <section id="this-keyword">
         <details>
           <summary><h2>How does the 'this' keyword work?</h2></summary>
-          <div class="block"><p>this refers to the context in which a function is called. If a function is called as a method of an object, this points to that object. If it’s called on its own, this points to the global object or is undefined in strict mode.</p></div>
+          <div class="block"><p>Refers to the function's call context. As an object method, this points to that object; standalone, it points to global or is undefined in strict mode.</p></div>
         </details>
       </section>
 
@@ -494,84 +505,113 @@
       <section id="component-design">
         <details>
           <summary><h2>How do you design React components?</h2></summary>
-          <div class="block"><p>I design components to be small, reusable, and accessible. I manage side effects carefully and use memoization or other techniques to prevent unnecessary re-renders.</p></div>
+          <div class="block">
+            <ul>
+              <li>Small, reusable, and accessible</li>
+              <li>Manage side effects carefully</li>
+              <li>Use memoization to prevent unnecessary re-renders</li>
+            </ul>
+          </div>
         </details>
       </section>
 
       <section id="complex-state">
         <details>
           <summary><h2>How do you manage complex state?</h2></summary>
-          <div class="block"><p>For global state, I use Redux Toolkit to keep state predictable and maintainable. For form state, I use Formik to simplify validation and handling user input.</p></div>
+          <div class="block">
+            <ul>
+              <li>useState for local component state</li>
+              <li>Redux for global app-wide state</li>
+              <li>Formik for form state and validation</li>
+            </ul>
+          </div>
         </details>
       </section>
 
       <section id="preventing-performance-issues">
         <details>
           <summary><h2>How do you prevent performance issues?</h2></summary>
-          <div class="block"><p>I use memoization to avoid unnecessary re-renders of components, lazy loading to defer loading components or data until needed, place state correctly to minimize re-renders, and implement pagination or virtualization to efficiently display large datasets without slowing down the app.</p></div>
+          <div class="block">
+            <ul>
+              <li>Memoization to avoid unnecessary re-renders</li>
+              <li>Lazy loading for components and data</li>
+              <li>Pagination or virtualization for large datasets</li>
+            </ul>
+          </div>
         </details>
       </section>
 
       <section id="controlled-vs-uncontrolled">
         <details>
           <summary><h2>What is the difference between controlled and uncontrolled components?</h2></summary>
-          <div class="block"><p>Controlled components have their value synced with React state, giving full control over the input. Uncontrolled components manage their own internal state and are accessed via refs when needed.</p></div>
+          <div class="block"><p>Controlled components sync value with React state for full control. Uncontrolled components manage internal state and are accessed via refs.</p></div>
         </details>
       </section>
 
       <section id="useeffect">
         <details>
           <summary><h2>How do you use useEffect?</h2></summary>
-          <div class="block"><p>I use useEffect for side effects like data fetching, subscriptions, or syncing with the DOM. I carefully manage its dependency array and include cleanup functions to avoid memory leaks or unintended behavior.</p></div>
+          <div class="block">
+            <ul>
+              <li>Handle side effects like data fetching or subscriptions</li>
+              <li>Manage dependency array carefully</li>
+              <li>Include cleanup functions to avoid memory leaks</li>
+            </ul>
+          </div>
         </details>
       </section>
 
       <section id="api-calls">
         <details>
           <summary><h2>How do you make API calls in React?</h2></summary>
-          <div class="block"><p>I typically use useEffect with axios for fetching data in components. In larger apps, I use Redux async thunks to handle API calls in a centralized and predictable way.</p></div>
+          <div class="block">
+            <ul>
+              <li>useEffect with axios for component data fetching</li>
+              <li>Redux async thunks for centralized API calls in larger apps</li>
+            </ul>
+          </div>
         </details>
       </section>
 
       <section id="keys-in-lists">
         <details>
           <summary><h2>Why are keys important in lists?</h2></summary>
-          <div class="block"><p>Keys let React identify which items in a list have changed, been added, or removed, enabling efficient updates and preventing unnecessary re-renders.</p></div>
+          <div class="block"><p>Let React identify which items changed, enabling efficient updates and preventing unnecessary re-renders.</p></div>
         </details>
       </section>
 
       <section id="virtual-dom">
         <details>
           <summary><h2>What is the Virtual DOM and reconciliation?</h2></summary>
-          <div class="block"><p>The Virtual DOM is React’s lightweight representation of the real DOM. During reconciliation, React compares the Virtual DOM to the previous version and updates only the parts of the real DOM that changed, improving performance.</p></div>
+          <div class="block"><p>React's lightweight DOM representation. Reconciliation compares versions and updates only changed parts of the real DOM, improving performance.</p></div>
         </details>
       </section>
 
       <section id="state-vs-props">
         <details>
           <summary><h2>What is the difference between state and props?</h2></summary>
-          <div class="block"><p>State is mutable and managed within a component, while props are read-only values passed from a parent component to control or configure a child component.</p></div>
+          <div class="block"><p>State is mutable and managed within a component; props are read-only values passed from parent to child.</p></div>
         </details>
       </section>
 
       <section id="conditional-rendering">
         <details>
           <summary><h2>How do you do conditional rendering?</h2></summary>
-          <div class="block"><p>I use ternary operators, logical &&, or small helper components to render content conditionally based on state or props.</p></div>
+          <div class="block"><p>Use ternary operators, logical &&, or helper components to render content based on state or props.</p></div>
         </details>
       </section>
 
       <section id="react-router">
         <details>
           <summary><h2>How do you use React Router?</h2></summary>
-          <div class="block"><p>I use React Router to handle navigation and dynamic routes in single-page applications, allowing users to move between pages without full reloads.</p></div>
+          <div class="block"><p>Handle navigation and dynamic routes in single-page applications, allowing page changes without full reloads.</p></div>
         </details>
       </section>
 
       <section id="nextjs-ssr-ssg">
         <details>
           <summary><h2>What is the difference between Next.js SSR and SSG?</h2></summary>
-          <div class="block"><p>SSR, or server-side rendering, generates the page on each request, ensuring fresh data. SSG, or static site generation, pre-renders pages at build time for faster delivery, ideal when data does not change often.</p></div>
+          <div class="block"><p>SSR generates pages on each request for fresh data. SSG pre-renders at build time for faster delivery when data doesn't change often.</p></div>
         </details>
       </section>
 
@@ -579,7 +619,11 @@
         <details>
           <summary><h2>What performance issues have you encountered on the frontend, and how did you fix them?</h2></summary>
           <div class="block">
-            <p>I’ve handled slow initial loads caused by large bundles by code-splitting routes, lazy loading components, and optimizing images. To prevent unnecessary re-renders, I used React.memo, useMemo, and useCallback, and moved state closer to the components that needed it. I also optimized API calls with debouncing and caching, and used performance monitoring tools to identify bottlenecks.</p>
+            <ul>
+              <li>Code-split routes and lazy load components for slow initial loads</li>
+              <li>Use React.memo, useMemo, and useCallback to prevent re-renders</li>
+              <li>Debounce and cache API calls; use performance monitoring tools</li>
+            </ul>
           </div>
         </details>
       </section>
@@ -587,9 +631,7 @@
       <section id="state-management-global">
         <details>
           <summary><h2>Explain state management in a frontend app. When is global state necessary?</h2></summary>
-          <div class="block">
-            <p>I use local state for component-specific data and global state when multiple components or pages need the same data, like user authentication or theme settings.</p>
-          </div>
+          <div class="block"><p>Use local state for component-specific data; global state when multiple components or pages need the same data, like authentication or theme settings.</p></div>
         </details>
       </section>
 
@@ -597,7 +639,11 @@
         <details>
           <summary><h2>How do you handle forms, validation, and user feedback?</h2></summary>
           <div class="block">
-            <p>I use controlled components with React state, validating on both client and server. Client-side validation gives immediate feedback, while server-side ensures security. Errors are shown inline and invalid fields highlighted. For complex forms, I use Formik or React Hook Form. I manage loading states to prevent double submissions and show success messages when complete.</p>
+            <ul>
+              <li>Controlled components with client and server validation</li>
+              <li>Formik or React Hook Form for complex forms</li>
+              <li>Inline errors, loading states, and success messages</li>
+            </ul>
           </div>
         </details>
       </section>
@@ -606,7 +652,11 @@
         <details>
           <summary><h2>What causes unnecessary re-renders, and how do you prevent them?</h2></summary>
           <div class="block">
-            <p>Re-renders occur when state or props change. Common causes include creating new objects or arrays in render, passing inline functions, or parent state updates. I prevent them using useMemo for values, useCallback for functions, React.memo for components, moving state to the lowest necessary level, and using refs for non-rendering values. The React DevTools Profiler helps identify re-render sources.</p>
+            <ul>
+              <li>Creating new objects/arrays in render or passing inline functions</li>
+              <li>Prevent with useMemo, useCallback, React.memo, and moving state down</li>
+              <li>Use React DevTools Profiler to identify sources</li>
+            </ul>
           </div>
         </details>
       </section>
@@ -615,7 +665,11 @@
         <details>
           <summary><h2>How do you make an app accessible?</h2></summary>
           <div class="block">
-            <p>I use semantic HTML, ARIA labels, keyboard navigation, proper focus management, and test with screen readers, following WCAG guidelines to ensure accessibility for all users.</p>
+            <ul>
+              <li>Semantic HTML, ARIA labels, keyboard navigation</li>
+              <li>Proper focus management and screen reader testing</li>
+              <li>Follow WCAG guidelines</li>
+            </ul>
           </div>
         </details>
       </section>
@@ -626,7 +680,11 @@
         <details>
           <summary><h2>How do UX decisions impact backend or database design?</h2></summary>
           <div class="block">
-            <p>UX requirements often shape backend architecture. Real-time features need WebSockets or polling, search requires proper indexing, pagination affects API design, and user permissions determine authorization logic. Loading states may need endpoints that return partial data. Collaborating with UX ensures backend design supports user goals efficiently.</p>
+            <ul>
+              <li>Real-time features need WebSockets; search requires indexing</li>
+              <li>Pagination affects API design; permissions shape authorization logic</li>
+              <li>Loading states may need partial data endpoints</li>
+            </ul>
           </div>
         </details>
       </section>
@@ -635,8 +693,11 @@
         <details>
           <summary><h2>How do you ensure consistency in UI components?</h2></summary>
           <div class="block">
-            <p>I use a design system or component library with documented patterns, create reusable components with consistent props and styling, and define spacing, typography, and color tokens. Code reviews and Storybook help maintain consistency across the team, ensuring similar features look and behave the same throughout the app.
-            </p>
+            <ul>
+              <li>Design system or component library with documented patterns</li>
+              <li>Reusable components with consistent props and styling</li>
+              <li>Code reviews and Storybook to maintain consistency</li>
+            </ul>
           </div>
         </details>
       </section>
@@ -645,7 +706,11 @@
         <details>
           <summary><h2>How do you balance usability vs performance?</h2></summary>
           <div class="block">
-            <p>I focus on performance for core user flows while keeping the experience intuitive. I use progressive enhancement, loading states, and skeleton screens, measure performance with tools like Lighthouse, and rely on user feedback to guide the balance.</p>
+            <ul>
+              <li>Focus performance on core user flows</li>
+              <li>Use progressive enhancement, loading states, skeleton screens</li>
+              <li>Measure with Lighthouse and gather user feedback</li>
+            </ul>
           </div>
         </details>
       </section>
@@ -654,7 +719,11 @@
         <details>
           <summary><h2>How do you design forms to minimize user errors?</h2></summary>
           <div class="block">
-            <p>I use clear labels, helpful placeholders, and appropriate input types. Real-time validation and immediate error feedback guide users. I group fields logically, use progressive disclosure for complex forms, and provide examples for ambiguous inputs. Submit buttons are disabled until required fields are valid, and clear messages explain errors and how to fix them.</p>
+            <ul>
+              <li>Clear labels, helpful placeholders, appropriate input types</li>
+              <li>Real-time validation with immediate error feedback</li>
+              <li>Disable submit until required fields are valid</li>
+            </ul>
           </div>
         </details>
       </section>
@@ -663,7 +732,11 @@
         <details>
           <summary><h2>How do you handle loading states, errors, and empty states?</h2></summary>
           <div class="block">
-            <p>I use skeleton screens, which are placeholders shaped like the content, to show progress instead of a blank page or spinner. This helps users understand the layout while content loads. Errors display clear messages with next steps and retry options when appropriate. Empty states explain why content is missing and suggest actions. Different types of errors, such as network, validation, or server errors, get tailored messaging. These states are part of the design and guide users through the experience.</p>
+            <ul>
+              <li>Skeleton screens show layout while content loads</li>
+              <li>Errors display clear messages with next steps and retry options</li>
+              <li>Empty states explain missing content and suggest actions</li>
+            </ul>
           </div>
         </details>
       </section>
@@ -673,28 +746,34 @@
       <section id="why-typescript">
         <details>
           <summary><h2>Why use TypeScript?</h2></summary>
-          <div class="block"><p>TypeScript provides static typing, which helps catch bugs early. It makes code more maintainable and improves IDE support with autocomplete and type checking, helping teams work more efficiently.</p></div>
+          <div class="block">
+            <ul>
+              <li>Static typing catches bugs early</li>
+              <li>Improves maintainability and IDE support with autocomplete</li>
+              <li>Helps teams work more efficiently</li>
+            </ul>
+          </div>
         </details>
       </section>
 
       <section id="type-vs-interface">
         <details>
           <summary><h2>What is the difference between type and interface?</h2></summary>
-          <div class="block"><p>Interfaces are mainly used to define object shapes and can be extended. Types are more flexible and can define unions, tuples, and primitives. Both help with type safety, but interfaces are preferred for objects that may need to be extended.</p></div>
+          <div class="block"><p>Interfaces define object shapes and can be extended. Types are more flexible, defining unions, tuples, and primitives. Interfaces preferred for extensible objects.</p></div>
         </details>
       </section>
 
       <section id="generics">
         <details>
           <summary><h2>What are generics?</h2></summary>
-          <div class="block"><p>Generics let you create reusable functions or components that work with different types while keeping type safety. They help avoid code duplication and make components more flexible and predictable.</p></div>
+          <div class="block"><p>Create reusable functions or components that work with different types while keeping type safety, avoiding code duplication.</p></div>
         </details>
       </section>
 
       <section id="type-inference">
         <details>
           <summary><h2>What is type inference?</h2></summary>
-          <div class="block"><p>Type inference is when TypeScript automatically figures out the type of a variable or expression. You usually only need to add explicit types at public APIs or places where clarity matters.</p></div>
+          <div class="block"><p>TypeScript automatically figures out variable or expression types. Add explicit types at public APIs or where clarity matters.</p></div>
         </details>
       </section>
 
@@ -707,7 +786,11 @@
               <details>
                 <summary><h2>How do you design a Node.js API?</h2></summary>
                 <div class="block">
-                  <p>I design RESTful endpoints around clear resources, keep controllers thin, put business logic in services, and handle data with a data access layer or ORM. I ensure consistent request and response shapes, proper HTTP status codes, and centralized error handling for maintainability.</p>
+                  <ul>
+                    <li>RESTful endpoints around clear resources</li>
+                    <li>Thin controllers, business logic in services</li>
+                    <li>Data access layer or ORM; consistent responses and error handling</li>
+                  </ul>
                 </div>
               </details>
             </section>
@@ -716,7 +799,11 @@
               <details>
                 <summary><h2>How do you design a REST API? What makes one "good"?</h2></summary>
                 <div class="block">
-                  <p>I design REST APIs with clear, intuitive endpoints using appropriate HTTP verbs, and ensure reliability with unit and integration tests, often using Jest. I design clear resource-based URLs with proper HTTP verbs and consistent responses. Good APIs are stateless, cacheable, versioned, and documented. They handle errors predictably, support pagination and filtering, and focus on client needs rather than mirroring the database.</p>
+                  <ul>
+                    <li>Clear resource-based URLs with proper HTTP verbs</li>
+                    <li>Stateless, cacheable, versioned, and documented</li>
+                    <li>Predictable error handling, pagination, filtering; focus on client needs</li>
+                  </ul>
                 </div>
               </details>
             </section>
@@ -725,7 +812,11 @@
               <details>
                 <summary><h2>How do you handle errors and ensure reliability in Node?</h2></summary>
                 <div class="block">
-                  <p>I validate inputs early, return structured error responses, and centralize error handling. I log enough context to troubleshoot production issues and design services to fail gracefully instead of crashing.</p>
+                  <ul>
+                    <li>Validate inputs early, return structured error responses</li>
+                    <li>Centralize error handling with enough context for troubleshooting</li>
+                    <li>Design services to fail gracefully instead of crashing</li>
+                  </ul>
                 </div>
               </details>
             </section>
@@ -734,7 +825,11 @@
               <details>
                 <summary><h2>How do you think about scalability and performance?</h2></summary>
                 <div class="block">
-                  <p>I make sure the system can handle more users or data without slowing down. I optimize database queries, use caching, and organize the system so it can grow smoothly. I also watch for slow parts and fix them before they affect users.</p>
+                  <ul>
+                    <li>Optimize database queries and use caching</li>
+                    <li>Organize system for smooth growth</li>
+                    <li>Monitor and fix slow parts before they affect users</li>
+                  </ul>
                 </div>
               </details>
             </section>
@@ -743,8 +838,11 @@
               <details>
                 <summary><h2>How do you structure a Node.js project?</h2></summary>
                 <div class="block">
-                  <p>I organize code by feature or function, keeping routes, controllers, services, and data access separate. This makes it easier to maintain, test, and scale. Shared utilities and configs go in their own folders, and clear naming keeps the project predictable for anyone working on it.</p>
-                  <p>For scalability, I design stateless services, meaning they do not store user session data in memory and can handle any request independently. This allows multiple instances to run behind a load balancer, improving scalability and reliability. I separate routes, controllers, services, and data layers for clarity. I use connection pooling, caching, and external stores for session data. Async tasks go through message queues, and monitoring helps spot bottlenecks. The goal is a system that scales horizontally and remains maintainable as it grows.</p>
+                  <ul>
+                    <li>Organize by feature: routes, controllers, services, data access separate</li>
+                    <li>Shared utilities and configs in their own folders</li>
+                    <li>Clear naming for maintainability and scalability</li>
+                  </ul>
                 </div>
               </details>
             </section>
@@ -753,7 +851,7 @@
               <details>
                 <summary><h2>What's the difference between blocking and non-blocking code in Node?</h2></summary>
                 <div class="block">
-                  <p>Blocking code stops other requests until it finishes. Non-blocking code lets Node handle multiple requests simultaneously using async patterns. This keeps the server responsive</p>
+                  <p>Blocking code stops other requests until it finishes. Non-blocking code handles multiple requests simultaneously using async patterns, keeping the server responsive.</p>
                 </div>
               </details>
             </section>
@@ -761,9 +859,7 @@
             <section id="rest-vs-graphql">
               <details>
                 <summary><h2>When would you choose REST vs GraphQL?</h2></summary>
-                <div class="block">
-                  <p>I use REST for simple CRUD and predictable caching. GraphQL is better when clients need flexible queries and to avoid over-fetching. The choice depends on balancing simplicity and flexibility.</p>
-                </div>
+                <div class="block"><p>REST for simple CRUD and predictable caching. GraphQL when clients need flexible queries and to avoid over-fetching.</p></div>
               </details>
             </section>
 
@@ -771,7 +867,11 @@
               <details>
                 <summary><h2>How do you validate and sanitize user input?</h2></summary>
                 <div class="block">
-                  <p>I check input structure, types, and required fields using libraries like Joi or Zod. I sanitize by escaping harmful characters and using parameterized queries to prevent injection. Validation runs on both client and server, and I prefer whitelisting allowed values. The goal is safe, predictable data before processing.</p>
+                  <ul>
+                    <li>Check structure, types, and required fields using Joi or Zod</li>
+                    <li>Escape harmful characters and use parameterized queries</li>
+                    <li>Validate on both client and server; prefer whitelisting</li>
+                  </ul>
                 </div>
               </details>
             </section>
@@ -780,7 +880,11 @@
               <details>
                 <summary><h2>Explain middleware and when you'd use it.</h2></summary>
                 <div class="block">
-                  <p>Middleware are functions that run between a request and response. I use them for authentication, logging, error handling, request parsing, and CORS. They keep route handlers focused on business logic by handling cross-cutting concerns centrally.</p>
+                  <ul>
+                    <li>Functions that run between request and response</li>
+                    <li>Use for authentication, logging, error handling, request parsing, CORS</li>
+                    <li>Keep route handlers focused on business logic</li>
+                  </ul>
                 </div>
               </details>
             </section>
@@ -789,7 +893,11 @@
               <details>
                 <summary><h2>How do you structure a backend project for maintainability?</h2></summary>
                 <div class="block">
-                  <p>I separate concerns clearly: routes for endpoints, controllers for HTTP logic, services for business rules, and repositories for data access. Functions are small and focused, shared utilities are extracted, and consistent naming is used. Testing, documentation, and code reviews ensure maintainability and make it easy for new developers to understand the code.</p>
+                  <ul>
+                    <li>Separate routes, controllers, services, and repositories</li>
+                    <li>Small, focused functions with consistent naming</li>
+                    <li>Testing, documentation, and code reviews ensure maintainability</li>
+                  </ul>
                 </div>
               </details>
             </section>
@@ -798,7 +906,11 @@
               <details>
                 <summary><h2>What are common backend performance bottlenecks?</h2></summary>
                 <div class="block">
-                  <p>Slow database queries, N+1 problems, inefficient algorithms, blocking I/O, and memory leaks are frequent bottlenecks. Over-fetching, missing caching, and lack of connection pooling also affect performance. I identify issues with profiling, monitoring, and logs, then optimize queries, add indexes, implement caching, use async operations, and scale horizontally when needed.</p>
+                  <ul>
+                    <li>Slow queries, N+1 problems, inefficient algorithms, blocking I/O</li>
+                    <li>Identify with profiling and monitoring</li>
+                    <li>Optimize queries, add indexes, implement caching, scale horizontally</li>
+                  </ul>
                 </div>
               </details>
             </section>
@@ -807,7 +919,11 @@
               <details>
                 <summary><h2>How do you handle authentication?</h2></summary>
                 <div class="block">
-                  <p>I use token-based authentication with JWTs, validated via middleware on protected routes. Token lifetimes and secrets are configurable to maintain security, and authorization checks are enforced at the service level. I implement refresh tokens to allow session continuity, role-based access control to manage permissions, and ensure secure storage of secrets to protect sensitive information.</p>
+                  <ul>
+                    <li>Token-based authentication with JWTs, validated via middleware</li>
+                    <li>Refresh tokens for session continuity</li>
+                    <li>Role-based access control and secure secret storage</li>
+                  </ul>
                 </div>
               </details>
             </section>
@@ -816,7 +932,11 @@
               <details>
                 <summary><h2>How do you test APIs?</h2></summary>
                 <div class="block">
-                  <p>I test APIs by focusing on behavior rather than implementation. I use Postman for manual and exploratory testing, and Jest for automated integration and unit tests. Integration tests exercise endpoints with known inputs and verify responses, status codes, and side effects. For complex business logic, I add unit tests at the service level to ensure correctness in isolation.</p>
+                  <ul>
+                    <li>Postman for manual and exploratory testing</li>
+                    <li>Jest for automated integration and unit tests</li>
+                    <li>Focus on behavior: verify responses, status codes, and side effects</li>
+                  </ul>
                 </div>
               </details>
             </section>
@@ -825,7 +945,11 @@
               <details>
                 <summary><h2>How do you deploy Node services?</h2></summary>
                 <div class="block">
-                  <p>I deploy Node services using a CI/CD pipeline that builds, tests, and pushes updates to the cloud, such as AWS or Azure. Environment variables manage configuration, and services are stateless to allow safe redeployments. I monitor deployments for errors and performance issues, and implement rollback procedures when needed to maintain reliability.</p>
+                  <ul>
+                    <li>CI/CD pipeline builds, tests, and deploys to cloud</li>
+                    <li>Environment variables for configuration; stateless services</li>
+                    <li>Monitor deployments and implement rollback procedures</li>
+                  </ul>
                 </div>
               </details>
             </section>
@@ -834,7 +958,11 @@
               <details>
                 <summary><h2>How do you design a database schema?</h2></summary>
                 <div class="block">
-                  <p>I design a database schema by first understanding the key entities and their relationships. I normalize tables to reduce redundancy and choose appropriate data types for each field. I enforce data integrity using constraints and indexes, while keeping the schema flexible enough to accommodate future changes. I also revisit and adjust the design based on real-world usage patterns to ensure performance and maintainability.</p>
+                  <ul>
+                    <li>Understand key entities and relationships</li>
+                    <li>Normalize tables, choose appropriate data types</li>
+                    <li>Enforce integrity with constraints and indexes; adjust based on usage</li>
+                  </ul>
                 </div>
               </details>
             </section>
@@ -843,7 +971,11 @@
               <details>
                 <summary><h2>How do you optimize database performance?</h2></summary>
                 <div class="block">
-                  <p>I optimize database performance only when needed, such as for slow queries or over-fetching data. I use indexes and write efficient queries, and I design queries with pagination and careful planning to reduce load. Monitoring and analyzing query performance helps guide where optimization is most effective.</p>
+                  <ul>
+                    <li>Optimize only when needed: slow queries or over-fetching</li>
+                    <li>Use indexes and write efficient queries with pagination</li>
+                    <li>Monitor and analyze query performance to guide optimization</li>
+                  </ul>
                 </div>
               </details>
             </section>
@@ -852,7 +984,10 @@
               <details>
                 <summary><h2>How do you use ORMs effectively?</h2></summary>
                 <div class="block">
-                  <p>I use ORMs to ensure consistent and maintainable data access, taking advantage of abstractions for queries and relationships. For performance-critical operations, I drop down to raw queries when necessary to optimize speed and resource usage.</p>
+                  <ul>
+                    <li>Use for consistent, maintainable data access</li>
+                    <li>Drop to raw queries for performance-critical operations</li>
+                  </ul>
                 </div>
               </details>
             </section>
@@ -860,9 +995,7 @@
             <section id="sql-vs-nosql">
               <details>
                 <summary><h2>When would you choose SQL vs NoSQL?</h2></summary>
-                <div class="block">
-                  <p>I choose SQL when data relationships, transactions, and consistency are important. I use NoSQL when flexibility, horizontal scaling, or document-based storage fits better. The decision is driven by how the data will be accessed and used, not personal preference.</p>
-                </div>
+                <div class="block"><p>SQL when relationships, transactions, and consistency matter. NoSQL for flexibility, horizontal scaling, or document-based storage.</p></div>
               </details>
             </section>
 
@@ -870,7 +1003,11 @@
               <details>
                 <summary><h2>Explain indexing and how it improves performance.</h2></summary>
                 <div class="block">
-                  <p>Indexes are like a book’s index. They let the database quickly find the rows you need without scanning the whole table. They speed up searches, joins, and sorting, but can slow down writes because the index must be updated. I add indexes to frequently queried columns, foreign keys, and search fields, monitor performance, and avoid over-indexing to keep writes efficient.</p>
+                  <ul>
+                    <li>Indexes let databases quickly find rows without scanning the whole table</li>
+                    <li>Speed up searches, joins, and sorting; can slow down writes</li>
+                    <li>Add to frequently queried columns and foreign keys; avoid over-indexing</li>
+                  </ul>
                 </div>
               </details>
             </section>
@@ -879,7 +1016,11 @@
               <details>
                 <summary><h2>What is normalization? When might you not normalize?</h2></summary>
                 <div class="block">
-                  <p>Normalization organizes data into related tables to reduce redundancy and prevent update errors. I usually normalize to third normal form. Sometimes I denormalize for performance, such as when joins are expensive, read speed is critical, or the data is mostly read-only. Denormalization trades storage space and potential inconsistencies for faster reads. The choice depends on how often data is read versus written.</p>
+                  <ul>
+                    <li>Organizes data into related tables to reduce redundancy</li>
+                    <li>Denormalize when joins are expensive or read speed is critical</li>
+                    <li>Trade storage space for faster reads</li>
+                  </ul>
                 </div>
               </details>
             </section>
@@ -888,7 +1029,11 @@
               <details>
                 <summary><h2>How do you handle migrations and schema changes?</h2></summary>
                 <div class="block">
-                  <p>I handle migrations and schema changes using versioned migration files that are applied in order. Migrations are reviewed like code changes and tested in staging first. For risky changes like dropping columns, I create them in steps: add new column, migrate data, update code, then remove old column. I always backup before migrations and have a rollback plan. Risky or breaking changes are planned in advance to minimize downtime and ensure data integrity. Migrations are applied through deployment workflows, run as part of the deployment process, and I monitor for issues. The goal is making schema changes safe, reversible, and trackable.</p>
+                  <ul>
+                    <li>Versioned migration files applied in order</li>
+                    <li>Test in staging; for risky changes, add new column, migrate data, update code, then remove old</li>
+                    <li>Backup before migrations; have rollback plan</li>
+                  </ul>
                 </div>
               </details>
             </section>
@@ -896,9 +1041,7 @@
             <section id="slow-query-optimized">
               <details>
                 <summary><h2>Describe a slow query you've optimized.</h2></summary>
-                <div class="block">
-                  <p>I optimized a slow multi-table query for a production report that was taking several seconds to run. By adding indexes on join and filter columns and restructuring a subquery, I reduced execution time from 5 seconds to under 100 milliseconds.</p>
-                </div>
+                <div class="block"><p>Added indexes on join and filter columns and restructured a subquery, reducing execution time from 5 seconds to under 100 milliseconds.</p></div>
               </details>
             </section>
 
@@ -906,7 +1049,11 @@
               <details>
                 <summary><h2>How do transactions work, and when are they important?</h2></summary>
                 <div class="block">
-                  <p>Transactions group multiple database operations into a single unit so either all succeed or all fail, keeping data consistent. They are critical when operations must happen together, such as transferring funds or updating related records. I use transactions for multi-step operations that must be all-or-nothing to prevent inconsistent data.</p>
+                  <ul>
+                    <li>Group multiple operations so all succeed or all fail</li>
+                    <li>Essential for operations that must happen together, like fund transfers</li>
+                    <li>Prevent inconsistent or corrupted data</li>
+                  </ul>
                 </div>
               </details>
             </section>
@@ -915,7 +1062,11 @@
               <details>
                 <summary><h2>How do you deploy and run services in the cloud?</h2></summary>
                 <div class="block">
-                  <p>I deploy services using repeatable build and deployment steps, keeping environments like development, staging, and production separate. I design services to be stateless so they can scale and be redeployed safely. When needed, I use load balancers and scaling strategies, choosing between virtual machines or managed app services depending on the project requirements.</p>
+                  <ul>
+                    <li>Repeatable build and deployment steps</li>
+                    <li>Separate environments; stateless services for scaling</li>
+                    <li>Use load balancers and scaling strategies as needed</li>
+                  </ul>
                 </div>
               </details>
             </section>
@@ -924,7 +1075,11 @@
               <details>
                 <summary><h2>How do you approach CI/CD pipelines?</h2></summary>
                 <div class="block">
-                  <p>I use CI/CD to reduce risk and speed up delivery. Pipelines automatically run tests, build the application, and deploy it, ensuring consistency across environments. This helps catch issues early and keeps deployments reliable and repeatable.</p>
+                  <ul>
+                    <li>Automatically run tests, build, and deploy</li>
+                    <li>Ensure consistency across environments</li>
+                    <li>Catch issues early; keep deployments reliable and repeatable</li>
+                  </ul>
                 </div>
               </details>
             </section>
@@ -932,9 +1087,7 @@
             <section id="handle-configuration-secrets">
               <details>
                 <summary><h2>How do you handle configuration and secrets?</h2></summary>
-                <div class="block">
-                  <p>I keep configuration and secrets out of the codebase and manage them using environment variables. This ensures deployments are safe, secure, and environment-independent.</p>
-                </div>
+                <div class="block"><p>Keep out of codebase; manage with environment variables for safe, secure, environment-independent deployments.</p></div>
               </details>
             </section>
       
@@ -942,7 +1095,11 @@
               <details>
                 <summary><h2>How do you monitor and respond to issues in production?</h2></summary>
                 <div class="block">
-                  <p>I use logging and monitoring tools to track application behavior in production. When an issue arises, I reproduce it if possible, identify the root cause, apply a fix, and document what I learned to prevent future occurrences.</p>
+                  <ul>
+                    <li>Use logging and monitoring tools to track behavior</li>
+                    <li>Reproduce, identify root cause, apply fix</li>
+                    <li>Document learnings to prevent future occurrences</li>
+                  </ul>
                 </div>
               </details>
             </section>
@@ -951,7 +1108,11 @@
               <details>
                 <summary><h2>How do you think about scaling?</h2></summary>
                 <div class="block">
-                  <p>I design stateless services so new instances can be added easily, and use efficient data access to reduce bottlenecks. Load balancing distributes traffic, caching reduces repeated work, and async processing handles tasks without blocking. I introduce extra complexity only when performance or traffic demands it.</p>
+                  <ul>
+                    <li>Stateless services for easy instance addition</li>
+                    <li>Efficient data access, load balancing, caching</li>
+                    <li>Async processing; add complexity only when needed</li>
+                  </ul>
                 </div>
               </details>
             </section>
@@ -965,7 +1126,12 @@
         <details>
           <summary><h2>What is CI/CD, and how do you approach it?</h2></summary>
           <div class="block">
-            <p>CI/CD is the practice of automating how code is built, tested, and deployed. I use Continuous Integration to run linting, builds, and tests on every commit or pull request so issues are caught early. Continuous Deployment then promotes approved, passing changes to staging or production in a consistent, repeatable way. I’ve used tools like GitHub Actions, GitLab CI, and Jenkins to automate this flow. The goal is faster feedback, fewer manual errors, and reliable deployments that teams can trust.</p>
+            <ul>
+              <li>Automate building, testing, and deploying code</li>
+              <li>Run linting, builds, and tests on every commit</li>
+              <li>Promote approved changes consistently</li>
+              <li>Faster feedback, fewer manual errors, reliable deployments</li>
+            </ul>
           </div>
         </details>
       </section>
@@ -974,7 +1140,11 @@
         <details>
           <summary><h2>What is your experience with cloud and Docker?</h2></summary>
           <div class="block">
-            <p>I like to keep the frontend and backend in separate Docker containers and orchestrate them with Docker Compose. This isolates dependencies, makes it easier to scale services independently, and ensures consistent environments across development, staging, and production. Compose also simplifies networking and lets me start the full stack with a single command, which speeds up development and testing.</p>
+            <ul>
+              <li>Separate frontend and backend in Docker containers</li>
+              <li>Orchestrate with Docker Compose</li>
+              <li>Isolates dependencies, ensures consistent environments</li>
+            </ul>
           </div>
         </details>
       </section>
@@ -982,9 +1152,7 @@
       <section id="git">
         <details>
           <summary><h2>How do you use Git?</h2></summary>
-          <div class="block">
-            <p>Git is a version control system that tracks changes in code. I use it daily for branching, pull requests, code reviews, and resolving conflicts, keeping history clear and collaboration smooth.</p>
-          </div>
+          <div class="block"><p>Version control for tracking code changes. Use daily for branching, pull requests, code reviews, and resolving conflicts.</p></div>
         </details>
       </section>
 
@@ -992,7 +1160,10 @@
         <details>
           <summary><h2>How do you approach testing?</h2></summary>
           <div class="block">
-            <p>I approach testing by using Jest for unit and integration tests to ensure code works as expected, and Postman to validate API endpoints and responses.</p>
+            <ul>
+              <li>Jest for unit and integration tests</li>
+              <li>Postman to validate API endpoints</li>
+            </ul>
           </div>
         </details>
       </section>
@@ -1000,7 +1171,7 @@
       <section id="linux">
         <details>
           <summary><h2>What is your experience with Linux?</h2></summary>
-          <div class="block"><p>I’m comfortable using the Linux command line for navigation, managing files and directories, handling permissions, running common commands, and performing basic file editing.</p></div>
+          <div class="block"><p>Comfortable with command line for navigation, file management, permissions, and basic editing.</p></div>
         </details>
       </section>
 
@@ -1008,7 +1179,11 @@
         <details>
           <summary><h2>Walk me through how you'd deploy a full-stack app.</h2></summary>
           <div class="block">
-            <p>I design deployments to be automated and predictable. The frontend and backend are deployed separately, built through CI pipelines, and configured using environment variables. I use staging or preview environments to validate changes before production, and I rely on health checks, monitoring, and rollback strategies to keep deployments safe.</p>
+            <ul>
+              <li>Deploy frontend and backend separately through CI pipelines</li>
+              <li>Configure with environment variables</li>
+              <li>Use staging environments, health checks, monitoring, and rollback strategies</li>
+            </ul>
           </div>
         </details>
       </section>
@@ -1017,7 +1192,11 @@
         <details>
           <summary><h2>What are environment variables, and why do they matter?</h2></summary>
           <div class="block">
-            <p>Environment variables are configuration values provided at runtime, like API keys or database URLs, that live outside the codebase. They matter because they keep secrets out of source control, let the same code run in different environments, and make deployments safer and more portable.</p>
+            <ul>
+              <li>Configuration values at runtime, like API keys or database URLs</li>
+              <li>Keep secrets out of source control</li>
+              <li>Enable same code to run in different environments</li>
+            </ul>
           </div>
         </details>
       </section>
@@ -1028,7 +1207,11 @@
         <details>
           <summary><h2>What types of tests do you write (unit, integration, e2e)?</h2></summary>
           <div class="block">
-            <p>I focus mostly on unit tests for isolated logic, add integration tests to verify components and APIs work together, and use a small number of end-to-end tests for critical user flows. I follow the testing pyramid: many unit tests, some integration tests, and few E2E tests for confidence without slowing development.</p>
+            <ul>
+              <li>Many unit tests for isolated logic</li>
+              <li>Some integration tests for components and APIs</li>
+              <li>Few E2E tests for critical user flows</li>
+            </ul>
           </div>
         </details>
       </section>
@@ -1037,7 +1220,11 @@
         <details>
           <summary><h2>How do you decide what's worth testing?</h2></summary>
           <div class="block">
-            <p>I prioritize testing business logic, critical user flows, and edge cases. I avoid trivial code, implementation details, and third-party libraries. The goal is confidence that the app works correctly and that high-value tests catch real bugs users would notice.</p>
+            <ul>
+              <li>Prioritize business logic, critical user flows, and edge cases</li>
+              <li>Avoid trivial code, implementation details, and third-party libraries</li>
+              <li>Focus on high-value tests that catch real bugs</li>
+            </ul>
           </div>
         </details>
       </section>
@@ -1048,7 +1235,12 @@
         <details>
           <summary><h2>How would you design a simple chat application?</h2></summary>
           <div class="block">
-            <p>I’d use WebSockets for real-time messaging. The backend receives messages and routes them to the correct recipients while keeping track of which users are online or offline and storing messages in a database indexed by user and timestamp. For scaling, I’d add a message queue to handle high volumes across multiple servers. The frontend connects via WebSocket, displays messages in real-time, and handles reconnections. Features like message history, typing indicators, and read receipts can be added incrementally. The key is reliable real-time delivery and correct routing of messages.</p>
+            <ul>
+              <li>WebSockets for real-time messaging</li>
+              <li>Backend routes messages, tracks online/offline users, stores in indexed database</li>
+              <li>Message queue for scaling across multiple servers</li>
+              <li>Frontend handles reconnections and displays messages in real-time</li>
+            </ul>
           </div>
         </details>
       </section>
@@ -1057,7 +1249,13 @@
         <details>
           <summary><h2>How would you handle file uploads at scale?</h2></summary>
           <div class="block">
-            <p>I handle file uploads at scale by using cloud storage like S3 or Azure Blob Storage instead of storing files on the server. The backend generates temporary, secure upload tokens so clients can send files directly to cloud storage, reducing server load. Large files are uploaded in chunks, and I validate file types and sizes. Files are served through a CDN for faster delivery. Any processing, like image resizing or video encoding, is handled by background jobs. The database stores only metadata and references, not the files themselves. This approach scales horizontally and keeps uploads efficient and reliable.</p>
+            <ul>
+              <li>Cloud storage like S3 or Azure Blob Storage</li>
+              <li>Backend generates secure upload tokens for direct client-to-cloud uploads</li>
+              <li>Chunk large files; validate types and sizes</li>
+              <li>Serve through CDN; process with background jobs</li>
+              <li>Database stores only metadata, not files</li>
+            </ul>
           </div>
         </details>
       </section>
@@ -1066,7 +1264,11 @@
         <details>
           <summary><h2>How would you design an API for a to-do app used by thousands of users?</h2></summary>
           <div class="block">
-            <p>I’d create RESTful endpoints for todos with support for pagination and filtering. Users authenticate with JWTs so they can only access their own data. I’d add indexes on user_id and created_at for performance and use rate limiting to prevent abuse. The API would return consistent JSON with proper status codes. For scaling, I’d leverage caching for frequent queries. The goal is a secure, performant, and easy-to-maintain API.</p>
+            <ul>
+              <li>RESTful endpoints with pagination and filtering</li>
+              <li>JWT authentication; indexes on user_id and created_at</li>
+              <li>Rate limiting and caching for scaling</li>
+            </ul>
           </div>
         </details>
       </section>
@@ -1075,7 +1277,11 @@
         <details>
           <summary><h2>How would you prevent duplicate requests or race conditions?</h2></summary>
           <div class="block">
-            <p>I prevent duplicate requests and race conditions using both frontend and backend strategies. On the frontend, I disable buttons during submission and send a unique request key so the server knows if it’s already processed it. On the backend, I enforce database constraints, use transactions, and apply locking to prevent conflicts when multiple requests update the same data. This ensures each operation happens exactly once, keeping the app reliable and consistent.</p>
+            <ul>
+              <li>Frontend: disable buttons during submission, send unique request keys</li>
+              <li>Backend: enforce database constraints, use transactions and locking</li>
+              <li>Ensure each operation happens exactly once</li>
+            </ul>
           </div>
         </details>
       </section>

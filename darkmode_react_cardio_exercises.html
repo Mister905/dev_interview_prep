@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>React Cardio Exercises</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      :root {
+        --bg: #0b0f0d;
+        --surface: #121816;
+        --text: #e6f0ea;
+        --muted: #a7b8af;
+        --accent: #2ecc71;
+        --border: #1f2a25;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 32px;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Helvetica, Arial, sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 8px;
+        color: var(--accent);
+      }
+      h2 {
+        font-size: 1.4rem;
+        margin-top: 40px;
+        margin-bottom: 12px;
+        color: var(--accent);
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 6px;
+      }
+      h3 {
+        font-size: 1.1rem;
+        margin-top: 24px;
+        margin-bottom: 8px;
+        color: var(--accent);
+      }
+
+      p {
+        margin: 8px 0;
+        color: var(--text);
+      }
+
+      ul {
+        margin: 8px 0 8px 20px;
+        padding: 0;
+      }
+      li {
+        margin-bottom: 6px;
+        color: var(--text);
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      .block {
+        background-color: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 16px 20px;
+        margin-top: 12px;
+      }
+
+      .quote {
+        border-left: 3px solid var(--accent);
+        padding-left: 14px;
+        margin: 12px 0;
+        color: var(--text);
+      }
+
+      strong {
+        color: var(--accent);
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>React Cardio Exercises</h1>
+
+      <section>
+      <h2>Task 1: UserSearch Component</h2>
+      <p>Build a component that fetches and filters users by name.</p>
+
+      <h3>Functional Requirements:</h3>
+      <ul>
+        <li>Fetch users from an external API on initial load</li>
+        <li>Display a list of users showing name and email</li>
+        <li>Allow the user to filter by name using an input field</li>
+        <li>Filter results in real time as the user types</li>
+      </ul>
+
+      <h3>Technical Requirements:</h3>
+      <ul>
+        <li>Use functional components with React Hooks</li>
+        <li>Use TypeScript for all state and data typing</li>
+        <li>
+          Create a <code>User</code> interface with at least <code>id</code>,
+          <code>name</code>, and <code>email</code>
+        </li>
+        <li>Handle loading and error states</li>
+        <li>Use a stable <code>key</code> when rendering lists</li>
+      </ul>
+
+      <h3>API Endpoint:</h3>
+      <code>https://jsonplaceholder.typicode.com/users</code>
+
+      <p class="note">
+        You only need to use <code>id</code>, <code>name</code>, and
+        <code>email</code> from each user object.
+      </p>
+
+      <p class="note">
+        This component fetches user data on mount using axios, handles loading
+        and error states, and lets the user filter the list in real-time using
+        an input box. I used useState to track both the original and filtered
+        user arrays, and useEffect to update the filtered list when the query
+        changes. TypeScript enforces structure, especially with the User
+        interface, and everything is wrapped in a functional React component.
+      </p>
+    </section>
+
+    <section>
+      <h2>Task 2: Counter Component</h2>
+      <p>
+        Create a simple counter that displays a number and provides buttons to
+        increment and decrement the value.
+      </p>
+
+      <h3>Functional Requirements:</h3>
+      <ul>
+        <li>Start from 0</li>
+        <li>Increment with a "+" button</li>
+        <li>Decrement with a "−" button</li>
+      </ul>
+
+      <h3>Technical Requirements:</h3>
+      <ul>
+        <li>Use <code>useState</code> to manage the count</li>
+        <li>Use TypeScript for typing the state variable</li>
+      </ul>
+
+      <p class="note">
+        This is a simple <Counter /> component that uses useState to track a
+        numeric count. I added a guard in handleDecrement to prevent the value
+        from going below zero. I prefer extracting this logic into a separate
+        function to keep event handlers readable and testable. The + and −
+        buttons use arrow functions to update the state safely via the previous
+        value.
+      </p>
+    </section>
+
+    <section>
+      <h2>Task 3: Parent and Child Components</h2>
+      <p>Create two components that demonstrate communication via props.</p>
+
+      <h3>Functional Requirements:</h3>
+      <ul>
+        <li><code>Child</code> component contains a text input</li>
+        <li>When the input changes, it calls a function passed via props</li>
+        <li><code>Parent</code> receives and displays the value</li>
+      </ul>
+
+      <h3>Technical Requirements:</h3>
+      <ul>
+        <li>Use interface-based props for both components</li>
+        <li>Ensure all props and state are typed in TypeScript</li>
+        <li>Use controlled input in the child</li>
+      </ul>
+
+      <p class="note">
+        In this task, I created two components — a Parent and a Child — to
+        demonstrate bidirectional communication using interface-based props in
+        React with TypeScript.
+      </p>
+    </section>
+
+    <section>
+      <h2>Task 4: ProfileCard Component (Primitive Props)</h2>
+      <p>
+        Build a component that accepts simple primitive props:
+        <code>username</code>, <code>age</code>, and <code>isVerified</code>.
+      </p>
+
+      <h3>Functional Requirements:</h3>
+      <ul>
+        <li>Display the username and age</li>
+        <li>Display a visual indication if the user is verified</li>
+      </ul>
+
+      <h3>Technical Requirements:</h3>
+      <ul>
+        <li>Use TypeScript interface for props</li>
+        <li>Use a boolean prop for verification status</li>
+      </ul>
+
+      <p class="note">
+        In this component, I’m rendering a ProfileCard that receives props for a
+        username, age, and whether the user is verified. I used an interface
+        ProfileCardProps to strongly type the props, ensuring type safety and
+        clear expectations for the parent component. Inside the component, I
+        render each prop and use a ternary condition to convert the boolean
+        isVerified to a user-friendly 'Y' or 'N'. This is a good example of how
+        I structure simple, stateless components with clean prop contracts,
+        which makes them reusable and easy to test.
+      </p>
+    </section>
+
+    <section>
+      <h2>Task 5: BlogPost Component (Object and Array Props)</h2>
+      <p>
+        Create a component accepting an <code>author</code> object and a list of
+        <code>tags</code>.
+      </p>
+
+      <h3>Functional Requirements:</h3>
+      <ul>
+        <li>Display author's name and bio</li>
+        <li>Render tags as a list</li>
+      </ul>
+
+      <h3>Technical Requirements:</h3>
+      <ul>
+        <li>
+          Use separate TypeScript interfaces for author and blog post props
+        </li>
+        <li>Type the tags as an array of strings</li>
+        <li>Use a stable key when rendering the tags list</li>
+      </ul>
+
+      <p class="note">
+        I structured the prop types using two interfaces: Author and
+        BlogPostProps. Then I destructured the author object directly in the
+        function parameters for clarity. The tags array is mapped into list
+        items, each with a key based on the index. This helps React efficiently
+        update the DOM when the list changes.
+      </p>
+    </section>
+
+    <section>
+      <h2>Task 6: StringListForm Component (Form Handling and State Update)</h2>
+      <p>
+        Build a component that manages a list of strings added via a text input
+        and a submit button.
+      </p>
+
+      <h3>Functional Requirements:</h3>
+      <ul>
+        <li>Provide a controlled text input and a submit button</li>
+        <li>
+          On form submit, add the input value to an internal list of strings
+        </li>
+        <li>Display the full list of submitted strings</li>
+        <li>
+          Show a running message that says how many strings have been added so
+          far
+        </li>
+        <li>
+          The count message should update immediately when a new string is
+          submitted
+        </li>
+      </ul>
+
+      <h3>Technical Requirements:</h3>
+      <ul>
+        <li>Use <code>useState</code> to manage the list of strings</li>
+        <li>
+          Use the functional update form
+          <code>setState(prev =&gt; [...prev, value])</code>
+        </li>
+        <li>
+          Handle form submission using <code>onSubmit</code> and prevent page
+          reload
+        </li>
+        <li>Use TypeScript for all typing</li>
+      </ul>
+
+      <p class="note">
+        This component allows users to input strings via a form. The list of
+        strings is stored in state, and every submission appends the new string
+        to the array using the spread operator. I also track the number of
+        strings using stringList.length and render the full list below. The form
+        prevents default submission behavior, trims whitespace, and clears the
+        input after each valid submission.
+      </p>
+    </section>
+  </body>
+</html>

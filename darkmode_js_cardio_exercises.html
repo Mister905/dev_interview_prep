@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Technical Interview Practice - Full Stack JS</title>
+    <style>
+      :root {
+        --bg: #121212;
+        --surface: #1e1e1e;
+        --text: #e6e6e6;
+        --accent: #4caf50;
+        --block-bg: #1a1a1a;
+      }
+
+      body {
+        background-color: var(--bg);
+        color: var(--text);
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 20px;
+      }
+
+      h1,
+      h2 {
+        color: var(--accent);
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .section-title {
+        margin-top: 30px;
+        font-size: 1.3em;
+        color: var(--accent);
+        border-bottom: 1px solid #333;
+        padding-bottom: 5px;
+      }
+
+      .block {
+        background-color: var(--block-bg);
+        padding: 12px 15px;
+        margin: 10px 0 20px 0;
+        border-radius: 8px;
+        white-space: pre-wrap;
+      }
+
+      pre {
+        background-color: #2a2a2a;
+        padding: 10px;
+        border-radius: 6px;
+        overflow-x: auto;
+      }
+
+      details summary {
+        cursor: pointer;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      details[open] summary::after {
+        content: " ▲";
+      }
+
+      details summary::after {
+        content: " ▼";
+        font-weight: normal;
+      }
+
+      details {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Technical Interview Practice</h1>
+
+    <!-- ES6 Single-Method Fundamentals -->
+    <div class="section-title">ES6 Single-Method Fundamentals</div>
+
+    <h2>Square Each Number</h2>
+    <div class="block">
+      <p>Square each number in an array using map.</p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const square_each_number = (arr) =&gt; arr.map((number) =&gt; number * number);
+</pre
+        >
+      </details>
+    </div>
+
+    <h2>Return Even Numbers</h2>
+    <div class="block">
+      <p>Return even numbers from an array using filter.</p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const return_even_numbers = (arr) =&gt; arr.filter((number) =&gt; number % 2 === 0);
+</pre
+        >
+      </details>
+    </div>
+
+    <h2>Sum Array</h2>
+    <div class="block">
+      <p>Sum all numbers in an array using reduce.</p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const sum_array = (arr) =&gt; arr.reduce((acc, val) =&gt; acc + val, 0);
+</pre
+        >
+      </details>
+    </div>
+
+    <h2>Find Position</h2>
+    <div class="block">
+      <p>Find the position of a target value in an array using indexOf.</p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const find_position = (arr, target) =&gt; arr.indexOf(target) || -1;
+</pre
+        >
+      </details>
+    </div>
+
+    <h2>Extract Subarray</h2>
+    <div class="block">
+      <p>Extract a subarray using slice.</p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const extract_subarray = (arr, start, end) =&gt; arr.slice(start, end);
+</pre
+        >
+      </details>
+    </div>
+
+    <h2>Locate First Matching Element</h2>
+    <div class="block">
+      <p>Find the first element matching a condition using find.</p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const locate_first_matching_element = (arr) =&gt; arr.find((item) =&gt; item >= 3);
+</pre
+        >
+      </details>
+    </div>
+
+    <h2>Check Existence</h2>
+    <div class="block">
+      <p>Check if a value exists in an array using includes.</p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const check_existence = (arr, target) =&gt; arr.includes(target);
+</pre
+        >
+      </details>
+    </div>
+
+    <h2>Extract Keys</h2>
+    <div class="block">
+      <p>Extract keys from an object using Object.keys.</p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const extract_keys = (obj) =&gt; Object.keys(obj);
+</pre
+        >
+      </details>
+    </div>
+
+    <h2>Extract Values</h2>
+    <div class="block">
+      <p>Extract values from an object using Object.values.</p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const extract_values = (obj) =&gt; Object.values(obj);
+</pre
+        >
+      </details>
+    </div>
+
+    <h2>Merge Arrays</h2>
+    <div class="block">
+      <p>Merge two arrays using spread operator.</p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const merge_arrays = (arr1, arr2) =&gt; [...arr1, ...arr2];
+</pre
+        >
+      </details>
+    </div>
+
+    <!-- ES6 Two-Method Combinations -->
+    <div class="section-title">ES6 Two-Method Combinations</div>
+
+    <h2>Squares of Even Numbers</h2>
+    <div class="block">
+      <p>Filter even numbers and square them using filter and map.</p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const square_even_numbers = (arr) =&gt; arr.filter((item) =&gt; item % 2 == 0).map((item) =&gt; item * item);
+</pre
+        >
+      </details>
+    </div>
+
+    <!-- ES6 Multi-Method Combo Problems -->
+    <div class="section-title">ES6 Multi-Method Combo Problems</div>
+
+    <h2>Filter, Map, Reduce Combo</h2>
+    <div class="block">
+      <p>Filter even numbers, square them, and sum total.</p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const sum_of_squares_of_evens = (arr) =&gt;
+  arr.filter(x =&gt; x % 2 === 0).map(x =&gt; x*x).reduce((acc, val) =&gt; acc + val, 0);
+</pre
+        >
+      </details>
+    </div>
+
+    <h2>Uppercase Concatenated Strings</h2>
+    <div class="block">
+      <p>Filter, map to uppercase, and concatenate strings using filter, map, and reduce.</p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const uppercase_concat_strings = (arr) =&gt; arr.filter(item =&gt; item.length &gt; 0).map(item =&gt; item.toUpperCase()).reduce((acc, item) =&gt; acc + item, '');
+</pre
+        >
+      </details>
+    </div>
+
+    <h2>Sort Users by Age and Return Names</h2>
+    <div class="block">
+      <p>Sort array of objects by age and return names only.</p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const sort_users_by_age = (users) =&gt;
+  users.sort((a,b) =&gt; a.age - b.age).map(u =&gt; u.name);
+</pre
+        >
+      </details>
+    </div>
+
+    <h2>Extract Keys/Values & Destructure</h2>
+    <div class="block">
+      <p>Compute derived data using destructuring.</p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const total_cost = (items) =&gt;
+  items.map(({price, quantity}) =&gt; price*quantity).reduce((acc,val) =&gt; acc+val, 0);
+</pre
+        >
+      </details>
+    </div>
+
+    <!-- Loop to ES6 Refactoring -->
+    <div class="section-title">Loop to ES6 Refactoring</div>
+
+    <h2>Collect Even Numbers (Loop → Filter)</h2>
+    <div class="block">
+      <p>Refactor a for-loop to collect even numbers using filter.</p>
+      <pre>
+const arr = [1, 2, 3, 4, 5];
+const evens = [];
+for (let i = 0; i &lt; arr.length; i++) {
+  if (arr[i] % 2 === 0) {
+    evens.push(arr[i]);
+  }
+}
+console.log(evens); // [2, 4]
+</pre
+      >
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const collect_even_numbers = (arr) =&gt; arr.filter(item =&gt; item % 2 === 0);
+
+// Example:
+console.log(collect_even_numbers([1, 2, 3, 4, 5])); // [2,4]
+</pre
+        >
+      </details>
+    </div>
+
+    <h2>Refactor For-Loop → ES6</h2>
+    <div class="block">
+      <p>Refactor a for-loop to use filter and map.</p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const numbers = [5,12,8,20,7,15];
+const result = numbers.filter(item =&gt; item &gt; 10).map(item =&gt; item * 2);
+</pre
+        >
+      </details>
+    </div>
+
+    <!-- Array Manipulation -->
+    <div class="section-title">Array Manipulation</div>
+
+    <h2>Remove & Insert Element</h2>
+    <div class="block">
+      <p>Remove 1 element at index i and insert 'x'.</p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const remove_and_insert_element = (arr, i) =&gt; {
+  arr.splice(i, 1, 'x'); 
+  return arr;
+};
+
+// Example:
+console.log(remove_and_insert_element([1,2,3], 1)); // [1,'x',3]
+</pre
+        >
+      </details>
+    </div>
+
+    <h2>Unique Values</h2>
+    <div class="block">
+      <p>Return unique values from an array (manual or Set).</p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+// Using Set
+const unique_values = (arr) =&gt; [...new Set(arr)];
+
+// Manual
+const unique_values_manual = (arr) =&gt; {
+  const uniqueArr = [];
+  for (let i=0; i&lt;arr.length; i++) {
+    if (uniqueArr.indexOf(arr[i]) === -1) uniqueArr.push(arr[i]);
+  }
+  return uniqueArr;
+};
+</pre
+        >
+      </details>
+    </div>
+
+    <h2>First 3 Unique Numbers</h2>
+    <div class="block">
+      <p>Return the first three unique numbers from an array.</p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const first_3_unique_numbers = (arr) =&gt; [...new Set(arr)].slice(0, 3);
+
+// Example:
+console.log(first_3_unique_numbers([1,2,2,3,4,4,5])); // [1,2,3]
+</pre
+        >
+      </details>
+    </div>
+
+    <h2>Return Common Values Between Arrays</h2>
+    <div class="block">
+      <p>Return values that appear in both arrays without nested loops.</p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const return_common_values = (arr1, arr2) =&gt; {
+  const value_map = new Set(arr1);
+  const result = [];
+  for (let val of arr2) {
+    if (value_map.has(val)) {
+      result.push(val);
+      value_map.delete(val); 
+    }
+  }
+  return result;
+};
+
+// Example:
+console.log(return_common_values([1,2,3,4], [3,4,5,6])); // [3,4]
+</pre
+        >
+      </details>
+    </div>
+
+    <!-- Control Flow -->
+    <div class="section-title">Control Flow</div>
+
+    <h2>FizzBuzz</h2>
+    <div class="block">
+      <p>
+        Print numbers from 1 to n with "fizz" for multiples of 3, "buzz" for
+        multiples of 5, and "fizzbuzz" for multiples of both.
+      </p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const fizzbuzz = (n) =&gt; {
+  for (let i = 1; i &lt;= n; i++) {
+    if (i % 3 === 0 &amp;&amp; i % 5 === 0) console.log('fizzbuzz');
+    else if (i % 3 === 0) console.log('fizz');
+    else if (i % 5 === 0) console.log('buzz');
+    else console.log(i);
+  }
+};
+fizzbuzz(100);
+</pre
+        >
+      </details>
+    </div>
+
+    <!-- Strings & Hash Maps -->
+    <div class="section-title">Strings & Hash Maps</div>
+
+    <h2>Reverse String</h2>
+    <div class="block">
+      <p>Reverse a string.</p>
+      <pre>
+Input: "hello"
+Output: "olleh"
+</pre
+      >
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const reverse_string = (str) =&gt; {
+  let reverse_str = "";
+  let str_arr = str.split("");
+  for (let i = 0; i &lt; str.length; i++) {
+    reverse_str = str_arr[i] + reverse_str;
+  }
+  return reverse_str;
+};
+</pre
+        >
+      </details>
+    </div>
+
+    <h2>Palindrome Check</h2>
+    <div class="block">
+      <p>Check if a string is a palindrome.</p>
+      <pre>
+Input: "abba"
+Output: true
+</pre
+      >
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const isPalindrome = (str) =&gt; {
+  let reversed_str = "";
+  for (let i = str.length - 1; i &gt;= 0; i--) {
+    reversed_str += str[i];
+  }
+  return str === reversed_str;
+};
+</pre
+        >
+      </details>
+    </div>
+
+    <h2>Max Character</h2>
+    <div class="block">
+      <p>
+        Find the character that appears most frequently and return it along with
+        its count.
+      </p>
+      <pre>
+Input: "abccccccd"
+Output: "c: 6"
+</pre
+      >
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const max_character = (str) =&gt; {
+  let char_map = {};
+  for (let char of str.split("")) {
+    if (char_map[char]) char_map[char]++;
+    else char_map[char] = 1;
+  }
+  let max_char = "";
+  let max_char_count = 0;
+  for (let char in char_map) {
+    if (char_map[char] &gt; max_char_count) {
+      max_char = char;
+      max_char_count = char_map[char];
+    }
+  }
+  return `${max_char}: ${max_char_count}`;
+};
+</pre
+        >
+      </details>
+    </div>
+
+    <h2>Anagrams</h2>
+    <div class="block">
+      <p>
+        Check if two strings are anagrams of each other (ignoring spaces and
+        case).
+      </p>
+      <pre>
+Input: "rail safety", "fairy tales"
+Output: true
+</pre
+      >
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const create_char_map = (str) =&gt; {
+  let str_array = str.split("");
+  let char_map = {};
+  for (let char of str_array) {
+    if (char_map[char]) char_map[char]++;
+    else char_map[char] = 1;
+  }
+  return char_map;
+};
+
+const anagrams = (str1, str2) =&gt; {
+  let sanitized_str1 = str1.replace(/\W/g, "").toLowerCase();
+  let sanitized_str2 = str2.replace(/\W/g, "").toLowerCase();
+  let char_map_1 = create_char_map(sanitized_str1);
+  let char_map_2 = create_char_map(sanitized_str2);
+  if (Object.keys(char_map_1).length !== Object.keys(char_map_2).length) return false;
+  for (let char in char_map_1) {
+    if (char_map_1[char] !== char_map_2[char]) return false;
+  }
+  return true;
+};
+</pre
+        >
+      </details>
+    </div>
+
+    <h2>Longest Substring Without Repeating Characters</h2>
+    <div class="block">
+      <p>
+        Given a string, find the length of the longest substring without
+        repeating characters.
+      </p>
+      <pre>
+Input: "abcabcbb"
+Output: 3
+</pre
+      >
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const longest_substring_without_repeating = (str) =&gt; {
+  const char_map = {};
+  let max_length = 0;
+  let start = 0;
+  for (let i = 0; i &lt; str.length; i++) {
+    const current_char = str[i];
+    if (current_char in char_map &amp;&amp; char_map[current_char] &gt;= start) {
+      start = char_map[current_char] + 1;
+    }
+    char_map[current_char] = i;
+    max_length = Math.max(max_length, i - start + 1);
+  }
+  return max_length;
+};
+</pre
+        >
+      </details>
+    </div>
+
+    <!-- Algorithmic Variations -->
+    <div class="section-title">Algorithmic Variations</div>
+
+    <h2>Two Sum</h2>
+    <div class="block">
+      <p>
+        Given an array of integers and a target number, return the indices of
+        the two numbers that add up to the target.
+      </p>
+      <pre>
+Input: [1, 4, 6, 3], target = 7
+Output: [0, 3]
+</pre
+      >
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const two_sum = (arr, target) => {
+  const int_map = new Map();
+  for (let i = 0; i &lt; arr.length; i++) {
+    const current = arr[i];
+    const required_value = target - current;
+    if (int_map.has(required_value)) {
+      return [int_map.get(required_value), i];
+    }
+    int_map.set(current, i);
+  }
+  return null;
+};
+</pre
+        >
+      </details>
+    </div>
+
+    <h2>Two Pointer - Pair Sum</h2>
+    <div class="block">
+      <p>Check if any two numbers sum to target in sorted array.</p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const pair_sum = (arr, target) =&gt; {
+  let left=0, right=arr.length-1;
+  while(left&lt;right){
+    const sum = arr[left]+arr[right];
+    if(sum===target) return [arr[left], arr[right]];
+    else if(sum &lt; target) left++;
+    else right--;
+  }
+  return null;
+};
+</pre
+        >
+      </details>
+    </div>
+
+    <h2>Two Pointer - Remove Duplicates Sorted</h2>
+    <div class="block">
+      <p>Remove duplicates from sorted array in-place.</p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const remove_duplicates_sorted = (arr) =&gt; {
+  if(arr.length===0) return 0;
+  let i=0;
+  for(let j=1;j&lt;arr.length;j++){
+    if(arr[j]!==arr[i]){
+      i++;
+      arr[i]=arr[j];
+    }
+  }
+  return i+1; // length of unique array
+};
+</pre
+        >
+      </details>
+    </div>
+
+    <h2>Sliding Window - Max Sum of Subarray</h2>
+    <div class="block">
+      <p>Find maximum sum of contiguous subarray of size k.</p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const max_subarray_sum = (arr, k) =&gt; {
+  let maxSum = 0, windowSum = 0;
+  for (let i=0; i&lt;k; i++) windowSum += arr[i];
+  maxSum = windowSum;
+  for (let i=k; i&lt;arr.length; i++) {
+    windowSum += arr[i] - arr[i-k];
+    maxSum = Math.max(maxSum, windowSum);
+  }
+  return maxSum;
+};
+</pre
+        >
+      </details>
+    </div>
+
+    <h2>Sliding Window - Longest Substring K Distinct</h2>
+    <div class="block">
+      <p>Longest substring with at most K distinct characters.</p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const longest_substring_k_distinct = (s, k) =&gt; {
+  let map = {}, start=0, maxLen=0;
+  for (let end=0; end&lt;s.length; end++){
+    map[s[end]] = (map[s[end]]||0)+1;
+    while(Object.keys(map).length &gt; k){
+      map[s[start]]--;
+      if(map[s[start]]===0) delete map[s[start]];
+      start++;
+    }
+    maxLen = Math.max(maxLen, end-start+1);
+  }
+  return maxLen;
+};
+</pre
+        >
+      </details>
+    </div>
+
+    <!-- Node.js / Backend Logic -->
+    <div class="section-title">Node.js / Backend Logic</div>
+
+    <h2>Simple REST API</h2>
+    <div class="block">
+      <p>Set up a basic Express.js endpoint returning JSON data.</p>
+      <pre>
+// Expected input: GET request to /api/users
+// Expected output: JSON array of users
+// Example response: [{id:1, name:'Alice'}, {id:2, name:'Bob'}]
+  </pre
+      >
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const express = require('express');
+const app = express();
+const PORT = 3000;
+
+app.get('/api/users', (req, res) =&gt; {
+  res.json([{id:1, name:'Alice'}, {id:2, name:'Bob'}]);
+});
+
+app.listen(PORT, () =&gt; console.log(`Server running on port ${PORT}`));
+    </pre
+        >
+      </details>
+    </div>
+
+    <h2>Filter Array on Server</h2>
+    <div class="block">
+      <p>Filter array based on query parameters.</p>
+      <pre>
+// Expected input: GET request to /api/filter?min=3
+// Expected output: JSON array of numbers >= min
+// Example: /api/filter?min=3 -> [3,4,5]
+  </pre
+      >
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+app.get('/api/filter', (req, res) =&gt; {
+  const items = [1,2,3,4,5];
+  const min = parseInt(req.query.min) || 0;
+  const filtered = items.filter(item =&gt; item &gt;= min);
+  res.json(filtered);
+});
+    </pre
+        >
+      </details>
+    </div>
+  </body>
+</html>

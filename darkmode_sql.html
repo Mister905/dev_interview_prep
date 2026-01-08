@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SQL Interview Practice - Questions Only</title>
+    <style>
+      :root {
+        --bg: #121212;
+        --surface: #1e1e1e;
+        --text: #e6e6e6;
+        --accent: #4caf50; /* green accent */
+        --block-bg: #1a1a1a;
+      }
+
+      body {
+        background-color: var(--bg);
+        color: var(--text);
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 20px;
+      }
+
+      h1,
+      h2 {
+        color: var(--accent);
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .section-title {
+        margin-top: 30px;
+        font-size: 1.3em;
+        color: var(--accent);
+        border-bottom: 1px solid #333;
+        padding-bottom: 5px;
+      }
+
+      .block {
+        background-color: var(--block-bg);
+        padding: 12px 15px;
+        margin: 10px 0 20px 0;
+        border-radius: 8px;
+        white-space: pre-wrap;
+      }
+
+      pre {
+        background-color: #2a2a2a;
+        padding: 10px;
+        border-radius: 6px;
+        overflow-x: auto;
+      }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>SQL Interview Practice - Questions Only</h1>
+
+    <p>
+      Practice these challenges using
+      <a
+        href="https://www.w3schools.com/sql/trysql.asp?filename=trysql_select_all"
+        target="_blank"
+        >W3Schools SQL Tryit Editor</a
+      >.
+    </p>
+
+    <div class="section-title">Sample Database</div>
+    <div class="block">
+      <p>Tables:</p>
+      <pre>
+employees(id, name, department_id, salary, hire_date)
+departments(id, name, location)
+projects(id, name, department_id, budget)
+</pre
+      >
+      <p>Use the following sample data:</p>
+      <pre>
+employees:
+1, Alice, 1, 70000, 2020-01-15
+2, Bob, 2, 50000, 2019-03-22
+3, Carol, 1, 80000, 2021-07-01
+4, David, 3, 55000, 2022-02-12
+5, Eve, 2, 60000, 2020-11-30
+
+departments:
+1, Engineering, NY
+2, HR, SF
+3, Marketing, LA
+
+projects:
+1, Project A, 1, 100000
+2, Project B, 2, 50000
+3, Project C, 3, 75000
+4, Project D, 1, 200000
+</pre
+      >
+    </div>
+
+    <div class="section-title">SQL Practice Problems</div>
+
+    <h2>1. Select All Employees</h2>
+    <div class="block">
+      <p>Return all columns for all employees.</p>
+    </div>
+
+    <h2>2. Employees in Engineering</h2>
+    <div class="block">
+      <p>Return all employees whose department_id is 1.</p>
+    </div>
+
+    <h2>3. Employees with Salary &gt; 60000</h2>
+    <div class="block">
+      <p>Return name and salary for employees making more than 60000.</p>
+    </div>
+
+    <h2>4. Order Employees by Hire Date</h2>
+    <div class="block">
+      <p>Return name and hire_date ordered by earliest hire date first.</p>
+    </div>
+
+    <h2>5. Count Total Employees</h2>
+    <div class="block">
+      <p>Return the total number of employees as a single number.</p>
+    </div>
+
+    <h2>6. Average Salary per Department</h2>
+    <div class="block">
+      <p>
+        Return department_id and average salary of employees in that department.
+      </p>
+    </div>
+
+    <h2>7. Highest Salary Employee</h2>
+    <div class="block">
+      <p>Return the name and salary of the employee with the highest salary.</p>
+    </div>
+
+    <h2>8. Employees Hired After 2020-01-01</h2>
+    <div class="block">
+      <p>Return all columns for employees hired after 2020-01-01.</p>
+    </div>
+
+    <h2>9. Join Employees with Departments</h2>
+    <div class="block">
+      <p>
+        Return employee name and department name by joining employees with
+        departments.
+      </p>
+    </div>
+
+    <h2>10. Employees in NY Department</h2>
+    <div class="block">
+      <p>Return employee names where the department location is 'NY'.</p>
+    </div>
+
+    <h2>11. Departments with More Than 1 Employee</h2>
+    <div class="block">
+      <p>
+        Return department name and number of employees for departments with more
+        than 1 employee.
+      </p>
+    </div>
+
+    <h2>12. Employees in Projects with Budget &gt; 100000</h2>
+    <div class="block">
+      <p>
+        Return employee name and project name where project budget is greater
+        than 100000.
+      </p>
+      <p>Assume employees are in the same department as projects.</p>
+    </div>
+
+    <h2>13. Employees Earning More Than Department Average</h2>
+    <div class="block">
+      <p>
+        Return name and salary of employees earning more than the average salary
+        in their department.
+      </p>
+    </div>
+
+    <h2>14. Total Budget per Department</h2>
+    <div class="block">
+      <p>Return department_id and total budget of all its projects.</p>
+    </div>
+
+    <h2>15. Employee Names Concatenated with Department Names</h2>
+    <div class="block">
+      <p>Return results like: "Alice - Engineering".</p>
+    </div>
+  </body>
+</html>

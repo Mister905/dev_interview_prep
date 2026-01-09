@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tier 1 Interview Practice – Full Stack JS</title>
+
+    <style>
+      :root {
+        --bg: #0f1115;
+        --surface: #171a21;
+        --text: #e6e6e6;
+        --muted: #9aa0aa;
+        --accent: #4caf50;
+        --block: #1e2230;
+        --border: #2a2f3a;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Ubuntu, sans-serif;
+        margin: 0;
+        padding: 24px;
+        line-height: 1.6;
+      }
+
+      h1 {
+        text-align: center;
+        color: var(--accent);
+        margin-bottom: 8px;
+      }
+
+      .subtitle {
+        text-align: center;
+        color: var(--muted);
+        margin-bottom: 32px;
+      }
+
+      h2 {
+        color: var(--accent);
+        margin-top: 36px;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 6px;
+      }
+
+      .block {
+        background: var(--block);
+        border-radius: 8px;
+        padding: 14px 16px;
+        margin: 16px 0;
+      }
+
+      p {
+        margin-top: 0;
+      }
+
+      .context {
+        color: var(--muted);
+        font-size: 0.95em;
+        margin-bottom: 8px;
+      }
+
+      pre {
+        background: var(--surface);
+        padding: 12px;
+        border-radius: 6px;
+        overflow-x: auto;
+        margin: 12px 0 0 0;
+      }
+
+      details summary {
+        cursor: pointer;
+        font-weight: 600;
+        color: var(--accent);
+      }
+
+      details {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Tier 1 Interview Practice</h1>
+    <div class="subtitle">
+      High-frequency JavaScript + Express patterns with clear intent
+    </div>
+
+    <!-- ALGORITHM / PROBLEM-SOLVING -->
+
+    <h2>Algorithm / Problem-Solving</h2>
+
+    <div class="block">
+      <div class="context">
+        Tests hash map usage, string traversal, and clean code for identifying unique elements.
+      </div>
+      <p>
+        <strong>First Non-Repeating Character</strong><br />
+        Given a string, return the first non-repeating character. If none exists, return null.<br />
+        Input: "swiss"<br />
+        Output: "w"
+      </p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const firstNonRepeating = (str) => {
+
+  // Create Hash Map
+  const freq = {};
+
+  // Count character freqency
+  for (const ch of str) freq[ch] = (freq[ch] || 0) + 1;
+
+  // Return the first character with a frequency of 1 i.e. non-repeating
+  for (const ch of str) if (freq[ch] === 1) return ch;
+
+  return null;
+};
+        </pre>
+      </details>
+    </div>
+
+    <div class="block">
+      <div class="context">
+        Tests ability to extract values that satisfy a condition from an array.
+      </div>
+      <p>
+        <strong>Return Even Numbers</strong><br />
+        Given an array of numbers, return a new array containing only the even values.<br />
+        Input: [1, 2, 3, 4, 5]<br />
+        Output: [2, 4]
+      </p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const getEvens = (arr) => arr.filter(n => n % 2 === 0);
+        </pre>
+      </details>
+    </div>
+
+    <div class="block">
+      <div class="context">
+        Tests ability to accumulate values from an array into a single result.
+      </div>
+      <p>
+        <strong>Sum Array</strong><br />
+        Given an array of numbers, return the sum of all values.<br />
+        Input: [1, 2, 3, 4]<br />
+        Output: 10
+      </p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const sumArray = (arr) =>
+  arr.reduce((acc, n) => acc + n, 0);
+        </pre>
+      </details>
+    </div>
+
+    <div class="block">
+      <div class="context">
+        Tests ability to locate a single element that satisfies a condition.
+      </div>
+      <p>
+        <strong>Find First Matching Element</strong><br />
+        Given an array of numbers, return the first value that is greater than or equal to 3.<br />
+        Input: [1, 2, 3, 4, 5]<br />
+        Output: 3
+      </p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const findFirst = (arr) =>
+  arr.find(n => n >= 3);
+        </pre>
+      </details>
+    </div>
+
+    <div class="block">
+      <div class="context">
+        Given an array of integers and a target number, return the indices of the two numbers that add up to the target.
+      </div>
+      <p>
+        <strong>Two Sum</strong><br />
+        Input: [1, 4, 6, 3], target = 7<br />
+        Output: [0, 2]
+      </p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const twoSum = (arr, target) => {
+  const map = new Map();
+  for (let i = 0; i < arr.length; i++) {
+    const needed = target - arr[i];
+    if (map.has(needed)) return [map.get(needed), i];
+    map.set(arr[i], i);
+  }
+};
+        </pre>
+      </details>
+    </div>
+
+    <div class="block">
+      <div class="context">
+        Given a list of API request logs, return the number of unique users per endpoint.
+      </div>
+      <p>
+        <strong>Unique Users per Endpoint</strong><br />
+        <pre>
+        Input: [
+          { userId: 1, endpoint: "/login", timestamp: 1700000000 },
+          { userId: 1, endpoint: "/products", timestamp: 1700000100 },
+          { userId: 2, endpoint: "/login", timestamp: 1700000200 }
+        ]    
+        </pre>
+        <br />
+        Output: { "/login": 2, "/products": 1 }
+      </p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const countUsersPerEndpoint = (logs) => {
+  const result = {};
+  logs.forEach(({ userId, endpoint }) => {
+    if (!result[endpoint]) result[endpoint] = new Set();
+    result[endpoint].add(userId);
+  });
+  for (const key in result) result[key] = result[key].size;
+  return result;
+};
+        </pre>
+      </details>
+    </div>
+
+    <!-- LOOP / STRINGS -->
+
+    <h2>Loop / Strings</h2>
+
+    <div class="block">
+      <div class="context">
+        Tests ability to refactor imperative code into a more concise implementation.
+      </div>
+      <p>
+        <strong>Collect Even Numbers</strong><br />
+        Refactor the following code to collect even numbers from an array.
+      </p>
+      <pre>
+const arr = [1, 2, 3, 4, 5];
+const evens = [];
+
+for (let i = 0; i < arr.length; i++) {
+  if (arr[i] % 2 === 0) {
+    evens.push(arr[i]);
+  }
+}
+      </pre>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const evens = arr.filter(n => n % 2 === 0);
+        </pre>
+      </details>
+    </div>
+
+    <div class="block">
+      <div class="context">
+        Tests character traversal and string reconstruction.
+      </div>
+      <p>
+        <strong>Reverse String</strong><br />
+        Input: "hello"<br />
+        Output: "olleh"
+      </p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const reverseString = (str) => {
+  let out = '';
+  for (let i = str.length - 1; i >= 0; i--) {
+    out += str[i];
+  }
+  return out;
+};
+        </pre>
+      </details>
+    </div>
+
+    <!-- CODE REVIEWS -->
+
+    <h2>Code Reviews</h2>
+
+    <div class="block">
+      <div class="context">
+        Review this Express + Node.js endpoint. Identify issues and suggest improvements.
+      </div>
+      <p>
+        <strong>Backend Code Review</strong><br />
+        <pre>
+app.get("/users/:id", async (req, res) => {
+  const user = await db.query(
+    `SELECT * FROM users WHERE id = ${req.params.id}`
+  );
+  res.send(user);
+});
+        </pre>
+      </p>
+      <details>
+        <summary>Key Issues</summary>
+        <pre>
+- SQL injection vulnerability
+    → Use parameterized queries / prepared statements to prevent user input from being executed as SQL.
+    
+- No error handling  
+    → Wrap logic in try/catch and return a controlled error response instead of crashing the request.
+    
+- No validation of id  
+    → Validate and sanitize req.params.id (e.g. ensure it’s a number) before querying the database.
+    
+- Exposes full user object  
+    → Return only necessary fields; never expose sensitive or internal data.
+    
+- No status codes  
+    → Use proper HTTP status codes (200, 400, 404, 500) to clearly communicate outcomes.
+    
+- Bonus: parameterized queries, try/catch, proper HTTP responses  
+    → Combine all fixes for a secure, predictable, production‑ready endpoint.
+        </pre>
+      </details>
+    </div>
+
+    <div class="block">
+      <div class="context">
+        Review this React component. Identify problems with state and effects.
+      </div>
+      <p>
+        <strong>Frontend Code Review</strong><br />
+        <pre>
+function UserProfile({ user }) {
+  const [name, setName] = useState(user.name);
+  useEffect(() => {
+    fetch("/api/user/" + user.id)
+      .then(res => res.json())
+      .then(data => setName(data.name));
+  });
+  return {name}</h1>;
+}
+        </pre>
+      </p>
+      <details>
+        <summary>Key Issues</summary>
+        <pre>
+- Missing dependency array in useEffect  
+    → Add a dependency array to control when the effect runs and avoid unintended re-runs.
+    
+- Infinite re-render risk  
+    → Ensure state updates inside useEffect do not trigger continuous re-renders; use correct dependencies.
+    
+- No error handling  
+    → Handle fetch errors with try/catch or .catch to prevent uncaught exceptions.
+    
+- Fetching on every render  
+    → useEffect with proper dependencies prevents unnecessary fetches on every render.
+    
+- Side effects not isolated  
+    → Keep effects focused on a single responsibility; avoid mixing state updates, logging, or DOM changes.
+        </pre>
+      </details>
+    </div>
+
+    <div class="block">
+      <div class="context">
+        Identify issues in this full-stack order-saving function.
+      </div>
+      <p>
+        <strong>Full-Stack Logic Review</strong><br />
+        <pre>
+function saveOrder(order) {
+  if (order.items.length > 0) {
+    order.items.map(item => {
+      db.save(item);
+    });
+    return true;
+  }
+  return false;
+}
+        </pre>
+      </p>
+      <details>
+        <summary>Key Issues</summary>
+        <pre>
+- map used incorrectly (side effects)  
+    → Use forEach or a loop for side effects; map should only be used for transforming arrays.
+    
+- No async handling  
+    → Make db.save calls async and await them to ensure proper completion.
+    
+- No transaction / rollback  
+    → Wrap multiple database operations in a transaction to ensure atomicity.
+    
+- No error handling  
+    → Use try/catch to catch and handle errors instead of silently failing.
+    
+- Boolean return hides failures  
+    → Return detailed status or throw errors so callers know if operations failed.
+        </pre>
+      </details>
+    </div>
+
+    <!-- TYPESCRIPT FUNDAMENTALS -->
+
+<h2>TypeScript Fundamentals</h2>
+
+<div class="block">
+  <div class="context">
+    Demonstrates basic variable types and type safety.
+  </div>
+  <p>
+    <strong>Basic Types</strong><br />
+    Declare variables with explicit types. Show what happens if you try to assign the wrong type.<br />
+    Input: name = "James", age = 26, isActive = true<br />
+    Output: Variables typed as string, number, boolean
+  </p>
+  <details>
+    <summary>Show Example</summary>
+    <pre>
+// Declare variables with explicit types
+const name: string = "James";
+const age: number = 26;
+const isActive: boolean = true;
+
+// name = 42; // ❌ TypeScript will error
+    </pre>
+  </details>
+</div>
+
+<div class="block">
+  <div class="context">
+    Shows how to define the shape of objects with interfaces.
+  </div>
+  <p>
+    <strong>Interfaces</strong><br />
+    Define object properties including optional fields. Create an object of that interface.<br />
+    Input: id = 1, name = "Alice"<br />
+    Output: user object matching interface
+  </p>
+  <details>
+    <summary>Show Example</summary>
+    <pre>
+interface User {
+  id: number;
+  name: string;
+  email?: string; // optional
+}
+
+const user: User = { id: 1, name: "Alice" };
+console.log(user); // { id: 1, name: "Alice" }
+    </pre>
+  </details>
+</div>
+
+<div class="block">
+  <div class="context">
+    Demonstrates function typing for parameters and return values.
+  </div>
+  <p>
+    <strong>Typed Functions</strong><br />
+    Write functions with typed parameters and return types. Show expected output.<br />
+    Input: add(2, 3), greet("James")<br />
+    Output: 5, logs "Hello, James"
+  </p>
+  <details>
+    <summary>Show Example</summary>
+    <pre>
+function add(a: number, b: number): number {
+  return a + b;
+}
+
+const sum = add(2, 3); // 5
+
+const greet = (name: string): void => {
+  console.log(`Hello, ${name}`);
+};
+
+greet("James"); // Hello, James
+    </pre>
+  </details>
+</div>
+
+<div class="block">
+  <div class="context">
+    Shows reusable and type-safe functions with generics.
+  </div>
+  <p>
+    <strong>Generics</strong><br />
+    Implement a function that works with multiple types. Show examples with number and string.<br />
+    Input: identity(42), identity("Hello")<br />
+    Output: 42, "Hello"
+  </p>
+  <details>
+    <summary>Show Example</summary>
+    <pre>
+function identity<T>(arg: T): T {
+  return arg;
+}
+
+const num = identity<number>(42);      // 42
+const str = identity<string>("Hello"); // "Hello"
+    </pre>
+  </details>
+</div>
+
+<div class="block">
+  <div class="context">
+    Demonstrates type narrowing for safe handling of union types.
+  </div>
+  <p>
+    <strong>Type Guards</strong><br />
+    Write a function that safely handles string or number input. Show expected output.<br />
+    Input: process("hello"), process(5)<br />
+    Output: "HELLO", 6
+  </p>
+  <details>
+    <summary>Show Example</summary>
+    <pre>
+function process(value: string | number) {
+  if (typeof value === "string") {
+    console.log(value.toUpperCase());
+  } else {
+    console.log(value + 1);
+  }
+}
+
+process("hello"); // "HELLO"
+process(5);       // 6
+    </pre>
+  </details>
+</div>
+
+<div class="block">
+  <div class="context">
+    Shows TypeScript usage with React components and hooks.
+  </div>
+  <p>
+    <strong>React + TypeScript</strong><br />
+    Type props and state for safer components. Show example rendering.<br />
+    Input: user = { id: 1, name: "Alice" }, initialCount = 0<br />
+    Output: renders "Alice", state counter initialized
+  </p>
+  <details>
+    <summary>Show Example</summary>
+    <pre>
+interface User { id: number; name: string }
+
+const UserCard: React.FC<{ user: User }> = ({ user }) => (
+  &lt;div&gt;{user.name}&lt;/div&gt;
+);
+
+const [count, setCount] = useState<number>(0);
+    </pre>
+  </details>
+</div>
+
+  </body>
+</html>

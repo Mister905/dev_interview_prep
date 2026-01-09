@@ -84,7 +84,7 @@
 
     <h2>Square Each Number</h2>
     <div class="block">
-      <p>Square each number in an array using map.</p>
+      <p>Given an array of numbers, return a new array where each value is squared.<br>Input: [1, 2, 3, 4]<br>Output: [1, 4, 9, 16]</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -96,7 +96,7 @@ const square_each_number = (arr) =&gt; arr.map((number) =&gt; number * number);
 
     <h2>Return Even Numbers</h2>
     <div class="block">
-      <p>Return even numbers from an array using filter.</p>
+      <p>Given an array of numbers, return a new array containing only the even values.<br>Input: [1, 2, 3, 4, 5]<br>Output: [2, 4]</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -108,7 +108,7 @@ const return_even_numbers = (arr) =&gt; arr.filter((number) =&gt; number % 2 ===
 
     <h2>Sum Array</h2>
     <div class="block">
-      <p>Sum all numbers in an array using reduce.</p>
+      <p>Given an array of numbers, return the sum of all values.<br>Input: [1, 2, 3, 4]<br>Output: 10</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -120,7 +120,7 @@ const sum_array = (arr) =&gt; arr.reduce((acc, val) =&gt; acc + val, 0);
 
     <h2>Find Position</h2>
     <div class="block">
-      <p>Find the position of a target value in an array using indexOf.</p>
+      <p>Given an array and a target value, return the index where the target first appears. Return -1 if not found.<br>Input: [1, 2, 3, 4], target = 3<br>Output: 2</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -132,7 +132,9 @@ const find_position = (arr, target) =&gt; arr.indexOf(target) || -1;
 
     <h2>Extract Subarray</h2>
     <div class="block">
-      <p>Extract a subarray using slice.</p>
+      <p>Given an array, a start index, and an end index, return a new array containing elements from start (inclusive) to end (exclusive).<br>
+        Input: [1, 2, 3, 4, 5], start = 1, end = 4<br>
+        Output: [2, 3, 4]</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -144,7 +146,7 @@ const extract_subarray = (arr, start, end) =&gt; arr.slice(start, end);
 
     <h2>Locate First Matching Element</h2>
     <div class="block">
-      <p>Find the first element matching a condition using find.</p>
+      <p>Given an array of numbers, return the first value that is greater than or equal to 3.<br>Input: [1, 2, 3, 4, 5]<br>Output: 3</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -156,7 +158,7 @@ const locate_first_matching_element = (arr) =&gt; arr.find((item) =&gt; item >= 
 
     <h2>Check Existence</h2>
     <div class="block">
-      <p>Check if a value exists in an array using includes.</p>
+      <p>Given an array and a target value, return true if the value exists in the array, false otherwise.<br>Input: [1, 2, 3, 4], target = 3<br>Output: true</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -168,7 +170,7 @@ const check_existence = (arr, target) =&gt; arr.includes(target);
 
     <h2>Extract Keys</h2>
     <div class="block">
-      <p>Extract keys from an object using Object.keys.</p>
+      <p>Given an object, return an array containing all of its property names.<br>Input: {name: 'John', age: 30, city: 'NYC'}<br>Output: ['name', 'age', 'city']</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -180,7 +182,7 @@ const extract_keys = (obj) =&gt; Object.keys(obj);
 
     <h2>Extract Values</h2>
     <div class="block">
-      <p>Extract values from an object using Object.values.</p>
+      <p>Given an object, return an array containing all of its property values.<br>Input: {name: 'John', age: 30, city: 'NYC'}<br>Output: ['John', 30, 'NYC']</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -192,7 +194,7 @@ const extract_values = (obj) =&gt; Object.values(obj);
 
     <h2>Merge Arrays</h2>
     <div class="block">
-      <p>Merge two arrays using spread operator.</p>
+      <p>Given two arrays, return a new array that contains all elements from both arrays combined.<br>Input: [1, 2], [3, 4]<br>Output: [1, 2, 3, 4]</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -207,7 +209,7 @@ const merge_arrays = (arr1, arr2) =&gt; [...arr1, ...arr2];
 
     <h2>Squares of Even Numbers</h2>
     <div class="block">
-      <p>Filter even numbers and square them using filter and map.</p>
+      <p>Given an array of numbers, return a new array containing only the even values, each squared.<br>Input: [1, 2, 3, 4, 5]<br>Output: [4, 16]</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -222,7 +224,7 @@ const square_even_numbers = (arr) =&gt; arr.filter((item) =&gt; item % 2 == 0).m
 
     <h2>Filter, Map, Reduce Combo</h2>
     <div class="block">
-      <p>Filter even numbers, square them, and sum total.</p>
+      <p>Filter even numbers, square them, and sum total.<br>Input: [1, 2, 3, 4, 5]<br>Output: 20</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -235,7 +237,7 @@ const sum_of_squares_of_evens = (arr) =&gt;
 
     <h2>Uppercase Concatenated Strings</h2>
     <div class="block">
-      <p>Filter, map to uppercase, and concatenate strings using filter, map, and reduce.</p>
+      <p>Given an array of strings, remove empty strings, convert remaining strings to uppercase, then concatenate them with a space between each.<br>Input: ['hello', '', 'world']<br>Output: 'HELLO WORLD'</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -247,7 +249,7 @@ const uppercase_concat_strings = (arr) =&gt; arr.filter(item =&gt; item.length &
 
     <h2>Sort Users by Age and Return Names</h2>
     <div class="block">
-      <p>Sort array of objects by age and return names only.</p>
+      <p>Sort array of objects by age and return names only.<br>Input: [{name: 'Alice', age: 30}, {name: 'Bob', age: 25}]<br>Output: ['Bob', 'Alice']</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -260,7 +262,8 @@ const sort_users_by_age = (users) =&gt;
 
     <h2>Extract Keys/Values & Destructure</h2>
     <div class="block">
-      <p>Compute derived data using destructuring.</p>
+      <p>Compute the total cost of items by multiplying <code>price</code> and <code>quantity</code> for each object and summing the results.<br>Input: [{price: 10, quantity: 2}, {price: 5, quantity: 3}]<br>Output: 35
+      </p>
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -276,7 +279,7 @@ const total_cost = (items) =&gt;
 
     <h2>Collect Even Numbers (Loop → Filter)</h2>
     <div class="block">
-      <p>Refactor a for-loop to collect even numbers using filter.</p>
+      <p>Refactor the following for-loop to collect even numbers from an array.<br>Input: [1, 2, 3, 4, 5]<br>Output: [2, 4]</p>
       <pre>
 const arr = [1, 2, 3, 4, 5];
 const evens = [];
@@ -302,7 +305,22 @@ console.log(collect_even_numbers([1, 2, 3, 4, 5])); // [2,4]
 
     <h2>Refactor For-Loop → ES6</h2>
     <div class="block">
-      <p>Refactor a for-loop to use filter and map.</p>
+      <p>
+        Refactor the following for-loop to a more concise implementation that produces the same result.<br>
+        Input: [5, 12, 8, 20, 7, 15]<br>
+        Output: [24, 40, 30]<br><br>
+        Original for-loop:
+        <pre>
+        const numbers = [5, 12, 8, 20, 7, 15];
+        const result = [];
+        for (let i = 0; i &lt; numbers.length; i++) {
+          if (numbers[i] &gt; 10) {
+            result.push(numbers[i] * 2);
+          }
+        }
+        console.log(result); // [24, 40, 30]
+        </pre>
+        </p>
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -318,7 +336,7 @@ const result = numbers.filter(item =&gt; item &gt; 10).map(item =&gt; item * 2);
 
     <h2>Remove & Insert Element</h2>
     <div class="block">
-      <p>Remove 1 element at index i and insert 'x'.</p>
+      <p>Remove 1 element at index i and insert 'x'.<br>Input: [1, 2, 3], i = 1<br>Output: [1, 'x', 3]</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -336,7 +354,7 @@ console.log(remove_and_insert_element([1,2,3], 1)); // [1,'x',3]
 
     <h2>Unique Values</h2>
     <div class="block">
-      <p>Return unique values from an array (manual or Set).</p>
+      <p>Return unique values from an array (manual or Set).<br>Input: [1, 2, 2, 3, 3, 4]<br>Output: [1, 2, 3, 4]</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -358,7 +376,7 @@ const unique_values_manual = (arr) =&gt; {
 
     <h2>First 3 Unique Numbers</h2>
     <div class="block">
-      <p>Return the first three unique numbers from an array.</p>
+      <p>Return the first three unique numbers from an array.<br>Input: [1, 2, 2, 3, 4, 4, 5]<br>Output: [1, 2, 3]</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -373,7 +391,7 @@ console.log(first_3_unique_numbers([1,2,2,3,4,4,5])); // [1,2,3]
 
     <h2>Return Common Values Between Arrays</h2>
     <div class="block">
-      <p>Return values that appear in both arrays without nested loops.</p>
+      <p>Return values that appear in both arrays without nested loops.<br>Input: [1, 2, 3, 4], [3, 4, 5, 6]<br>Output: [3, 4]</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -401,10 +419,7 @@ console.log(return_common_values([1,2,3,4], [3,4,5,6])); // [3,4]
 
     <h2>FizzBuzz</h2>
     <div class="block">
-      <p>
-        Print numbers from 1 to n with "fizz" for multiples of 3, "buzz" for
-        multiples of 5, and "fizzbuzz" for multiples of both.
-      </p>
+      <p>Print numbers from 1 to n with "fizz" for multiples of 3, "buzz" for multiples of 5, and "fizzbuzz" for multiples of both.<br>Input: n = 15<br>Output: 1, 2, fizz, 4, buzz, fizz, 7, 8, fizz, buzz, 11, fizz, 13, 14, fizzbuzz</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -427,23 +442,21 @@ fizzbuzz(100);
 
     <h2>Reverse String</h2>
     <div class="block">
-      <p>Reverse a string.</p>
-      <pre>
-Input: "hello"
-Output: "olleh"
-</pre
-      >
+      <p>Reverse a string.<br>Input: "hello"<br>Output: "olleh"</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
-const reverse_string = (str) =&gt; {
-  let reverse_str = "";
-  let str_arr = str.split("");
-  for (let i = 0; i &lt; str.length; i++) {
-    reverse_str = str_arr[i] + reverse_str;
+const reverse_string = (str) => {
+
+  let reversed_str = '';
+
+  for (let i = str.length - 1; i >= 0; i--) {
+
+    reversed_str += str[i];
   }
-  return reverse_str;
-};
+
+  return reversed_str;
+}
 </pre
         >
       </details>
@@ -451,12 +464,7 @@ const reverse_string = (str) =&gt; {
 
     <h2>Palindrome Check</h2>
     <div class="block">
-      <p>Check if a string is a palindrome.</p>
-      <pre>
-Input: "abba"
-Output: true
-</pre
-      >
+      <p>Check if a string is a palindrome.<br>Input: "abba"<br>Output: true</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -474,15 +482,7 @@ const isPalindrome = (str) =&gt; {
 
     <h2>Max Character</h2>
     <div class="block">
-      <p>
-        Find the character that appears most frequently and return it along with
-        its count.
-      </p>
-      <pre>
-Input: "abccccccd"
-Output: "c: 6"
-</pre
-      >
+      <p>Find the character that appears most frequently and return it along with its count.<br>Input: "abccccccd"<br>Output: "c: 6"</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -509,15 +509,8 @@ const max_character = (str) =&gt; {
 
     <h2>Anagrams</h2>
     <div class="block">
-      <p>
-        Check if two strings are anagrams of each other (ignoring spaces and
-        case).
+      <p>Check if two strings are anagrams of each other (ignoring spaces and case).<br>Input: "rail safety", "fairy tales"<br>Output: true
       </p>
-      <pre>
-Input: "rail safety", "fairy tales"
-Output: true
-</pre
-      >
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -549,15 +542,7 @@ const anagrams = (str1, str2) =&gt; {
 
     <h2>Longest Substring Without Repeating Characters</h2>
     <div class="block">
-      <p>
-        Given a string, find the length of the longest substring without
-        repeating characters.
-      </p>
-      <pre>
-Input: "abcabcbb"
-Output: 3
-</pre
-      >
+      <p>Given a string, find the length of the longest substring without repeating characters.<br>Input: "abcabcbb"<br>Output: 3</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -585,15 +570,7 @@ const longest_substring_without_repeating = (str) =&gt; {
 
     <h2>Two Sum</h2>
     <div class="block">
-      <p>
-        Given an array of integers and a target number, return the indices of
-        the two numbers that add up to the target.
-      </p>
-      <pre>
-Input: [1, 4, 6, 3], target = 7
-Output: [0, 3]
-</pre
-      >
+      <p>Given an array of integers and a target number, return the indices of the two numbers that add up to the target.<br>Input: [1, 4, 6, 3], target = 7<br>Output: [0, 3]</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -616,7 +593,7 @@ const two_sum = (arr, target) => {
 
     <h2>Two Pointer - Pair Sum</h2>
     <div class="block">
-      <p>Check if any two numbers sum to target in sorted array.</p>
+      <p>Check if any two numbers sum to target in sorted array.<br>Input: [1, 2, 3, 4, 5], target = 7<br>Output: [2, 5]</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -637,7 +614,7 @@ const pair_sum = (arr, target) =&gt; {
 
     <h2>Two Pointer - Remove Duplicates Sorted</h2>
     <div class="block">
-      <p>Remove duplicates from sorted array in-place.</p>
+      <p>Remove duplicates from sorted array in-place.<br>Input: [1, 1, 2, 2, 3, 3]<br>Output: 3 (length of unique array)</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -659,7 +636,7 @@ const remove_duplicates_sorted = (arr) =&gt; {
 
     <h2>Sliding Window - Max Sum of Subarray</h2>
     <div class="block">
-      <p>Find maximum sum of contiguous subarray of size k.</p>
+      <p>Find maximum sum of contiguous subarray of size k.<br>Input: [1, 4, 2, 10, 23, 3, 1, 0, 20], k = 4<br>Output: 39</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -680,7 +657,7 @@ const max_subarray_sum = (arr, k) =&gt; {
 
     <h2>Sliding Window - Longest Substring K Distinct</h2>
     <div class="block">
-      <p>Longest substring with at most K distinct characters.</p>
+      <p>Longest substring with at most K distinct characters.<br>Input: "araaci", k = 2<br>Output: 4</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -707,13 +684,7 @@ const longest_substring_k_distinct = (s, k) =&gt; {
 
     <h2>Simple REST API</h2>
     <div class="block">
-      <p>Set up a basic Express.js endpoint returning JSON data.</p>
-      <pre>
-// Expected input: GET request to /api/users
-// Expected output: JSON array of users
-// Example response: [{id:1, name:'Alice'}, {id:2, name:'Bob'}]
-  </pre
-      >
+      <p>Set up a basic Express.js endpoint returning JSON data.<br>Input: GET request to /api/users<br>Output: [{id:1, name:'Alice'}, {id:2, name:'Bob'}]</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -733,13 +704,7 @@ app.listen(PORT, () =&gt; console.log(`Server running on port ${PORT}`));
 
     <h2>Filter Array on Server</h2>
     <div class="block">
-      <p>Filter array based on query parameters.</p>
-      <pre>
-// Expected input: GET request to /api/filter?min=3
-// Expected output: JSON array of numbers >= min
-// Example: /api/filter?min=3 -> [3,4,5]
-  </pre
-      >
+      <p>Filter array based on query parameters.<br>Input: GET request to /api/filter?min=3<br>Output: [3, 4, 5]</p>
       <details>
         <summary>Show Solution</summary>
         <pre>

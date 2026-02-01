@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Next.js Fundamentals for React Devs - Dark Mode</title>
+    <style>
+      :root {
+        --bg: #121212;
+        --surface: #1e1e1e;
+        --text: #e0e0e0;
+        --accent: #ff6f61;
+        --muted: #999999;
+        --code-bg: #2a2a2a;
+        --code-text: #dcdcdc;
+      }
+
+      body {
+        background-color: var(--bg);
+        color: var(--text);
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        padding: 2rem;
+      }
+
+      h1,
+      h2,
+      h3 {
+        color: var(--accent);
+      }
+
+      code,
+      pre {
+        background-color: var(--code-bg);
+        color: var(--code-text);
+        font-family: "Fira Code", monospace;
+        padding: 0.2rem 0.4rem;
+        border-radius: 4px;
+      }
+
+      pre {
+        padding: 1rem;
+        overflow-x: auto;
+      }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      section {
+        margin-bottom: 2rem;
+        padding: 1rem;
+        background-color: var(--surface);
+        border-radius: 8px;
+      }
+
+      ul {
+        margin-left: 1.2rem;
+      }
+
+      .parallel {
+        color: #81c784; /* green to highlight React parallels */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Next.js Fundamentals for React Developers</h1>
+
+    <section>
+      <h2>1. Project Structure</h2>
+      <ul>
+        <li>
+          <code>pages/</code> –
+          <span class="parallel"
+            >React components used as routes automatically</span
+          >
+        </li>
+        <li>
+          <code>app/</code> (Next 13+) –
+          <span class="parallel"
+            >React Server Components and nested layouts</span
+          >
+        </li>
+        <li>
+          <code>components/</code> –
+          <span class="parallel"
+            >Reusable React components (same as in React projects)</span
+          >
+        </li>
+        <li>
+          <code>public/</code> – Static assets like React’s <code>public/</code>
+        </li>
+        <li>
+          <code>styles/</code> –
+          <span class="parallel"
+            >CSS Modules, Tailwind, or global CSS just like in React</span
+          >
+        </li>
+        <li>
+          <code>next.config.js</code> –
+          <span class="parallel"
+            >Extra configuration for routing, images, environment
+            variables</span
+          >
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>2. Routing</h2>
+      <ul>
+        <li>
+          File-based routing: <code>pages/index.js → /</code> (<span
+            class="parallel"
+            >React does not handle routing automatically; Next.js builds on
+            React Router concepts</span
+          >)
+        </li>
+        <li>
+          Dynamic routes: <code>pages/posts/[id].js → /posts/123</code> (<span
+            class="parallel"
+            >React Router would use <code>:id</code> params</span
+          >)
+        </li>
+        <li>Catch-all routes: <code>pages/blog/[...slug].js</code></li>
+        <li>
+          Linking:
+          <code>&lt;Link href="/about"&gt;About&lt;/Link&gt;</code> (<span
+            class="parallel"
+            >similar to React Router’s
+            <code>&lt;Link to="/about"&gt;</code></span
+          >)
+        </li>
+        <li>
+          App Router (Next 13+): nested layouts
+          <span class="parallel"
+            >(like React layouts, but automatic and SSR-aware)</span
+          >
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>3. Data Fetching</h2>
+      <ul>
+        <li>
+          <code>getStaticProps()</code> – pre-render data at build time (<span
+            class="parallel"
+            >like fetching before render in React apps using props</span
+          >)
+        </li>
+        <li>
+          <code>getServerSideProps()</code> – fetch data on every request (<span
+            class="parallel"
+            >similar to React useEffect + fetch but server-side</span
+          >)
+        </li>
+        <li>
+          getStaticPaths() – define dynamic paths for SSG pages (<span
+            class="parallel"
+            >like mapping data to routes in React Router</span
+          >)
+        </li>
+        <li>
+          App Router async components:
+          <span class="parallel"
+            >fetch directly inside React server components instead of
+            useEffect</span
+          >
+        </li>
+        <li>
+          Client-side fetching: SWR / React Query (<span class="parallel"
+            >same as client-side React fetch patterns</span
+          >)
+        </li>
+        <li>
+          React dev note: Server vs Client Components is unique; client
+          components behave like normal React components
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. API Routes</h2>
+      <ul>
+        <li>
+          <code>pages/api/hello.js → /api/hello</code> (<span class="parallel"
+            >like mini Express endpoints inside your React project</span
+          >)
+        </li>
+        <li>Supports GET, POST, etc. via <code>req.method</code></li>
+        <li>Server-only code, safe for env variables</li>
+        <li>
+          React devs: API routes let you stay in Next.js ecosystem without a
+          separate backend
+        </li>
+        <pre><code>export default function handler(req, res) {
+  if (req.method === 'POST') {
+    res.status(200).json({ message: 'Hello from API' })
+  }
+}</code></pre>
+      </ul>
+    </section>
+
+    <section>
+      <h2>5. Styling</h2>
+      <ul>
+        <li>
+          Global CSS, CSS Modules, Tailwind —
+          <span class="parallel">identical usage as in React projects</span>
+        </li>
+        <li>
+          Styled JSX / styled-components —
+          <span class="parallel">React devs already familiar with these</span>
+        </li>
+        <li>Next.js just ensures efficient bundling</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>6. Next.js Features for React Developers</h2>
+      <ul>
+        <li>
+          <code>&lt;Image /&gt;</code> component — optimized images (<span
+            class="parallel"
+            >like using <code>&lt;img /&gt;</code> in React but with automatic
+            optimization)</span
+          >)
+        </li>
+        <li>
+          <code>Head</code> component for meta tags (<span class="parallel"
+            >like <code>react-helmet</code>)</span
+          >)
+        </li>
+        <li>
+          Automatic code splitting & prefetching (<span class="parallel"
+            >React devs manually split bundles with React.lazy / Suspense</span
+          >)
+        </li>
+        <li>
+          Server Components (<span class="parallel"
+            >React components, but run on server for lighter client
+            bundles)</span
+          >)
+        </li>
+        <li>
+          Middleware / edge functions (<span class="parallel"
+            >similar to server-side logic in Express + React, but
+            integrated)</span
+          >)
+        </li>
+        <li>
+          Fast Refresh (<span class="parallel"
+            >like React HMR in CRA or Vite</span
+          >)
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>7. Deployment</h2>
+      <ul>
+        <li>
+          Vercel first-class (<span class="parallel"
+            >like hosting a CRA app on Netlify, but SSR-ready</span
+          >)
+        </li>
+        <li>
+          Static export: <code>next export</code> (<span class="parallel"
+            >like React static export build</span
+          >)
+        </li>
+        <li>
+          Environment variables: <code>.env.local</code>,
+          <code>.env.production</code> (<span class="parallel"
+            >same as CRA env files</span
+          >)
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>8. References / React-to-Next Mapping</h2>
+      <ul>
+        <li>
+          <a
+            href="https://nextjs.org/docs/app/building-your-application/routing"
+            target="_blank"
+            >Next.js App Router Docs</a
+          >
+          – Learn nested layouts & server components
+        </li>
+        <li>
+          <a
+            href="https://nextjs.org/docs/basic-features/data-fetching"
+            target="_blank"
+            >Data Fetching (SSG, SSR, ISR)</a
+          >
+          – Compare with React useEffect patterns
+        </li>
+        <li>
+          <a
+            href="https://nextjs.org/docs/basic-features/image-optimization"
+            target="_blank"
+            >Next.js Image Component</a
+          >
+          – Like optimized <code>&lt;img /&gt;</code> in React
+        </li>
+        <li>
+          <a
+            href="https://nextjs.org/docs/advanced-features/middleware"
+            target="_blank"
+            >Middleware / Edge Functions</a
+          >
+          – Think server-side React logic
+        </li>
+        <li>
+          <a href="https://beta.reactjs.org/learn" target="_blank"
+            >React Docs Beta</a
+          >
+          – Reference React concepts you already know
+        </li>
+      </ul>
+    </section>
+  </body>
+</html>

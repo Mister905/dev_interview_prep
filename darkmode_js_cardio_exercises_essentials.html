@@ -93,9 +93,6 @@
     <h2>Algorithm / Problem-Solving</h2>
 
     <div class="block">
-      <div class="context">
-        Tests hash map usage, string traversal, and clean code for identifying unique elements.
-      </div>
       <p>
         <strong>First Non-Repeating Character</strong><br />
         Given a string, return the first non-repeating character. If none exists, return null.<br />
@@ -123,9 +120,6 @@ const firstNonRepeating = (str) => {
     </div>
 
     <div class="block">
-      <div class="context">
-        Tests ability to extract values that satisfy a condition from an array.
-      </div>
       <p>
         <strong>Return Even Numbers</strong><br />
         Given an array of numbers, return a new array containing only the even values.<br />
@@ -141,9 +135,6 @@ const getEvens = (arr) => arr.filter(n => n % 2 === 0);
     </div>
 
     <div class="block">
-      <div class="context">
-        Tests ability to accumulate values from an array into a single result.
-      </div>
       <p>
         <strong>Sum Array</strong><br />
         Given an array of numbers, return the sum of all values.<br />
@@ -160,9 +151,6 @@ const sumArray = (arr) =>
     </div>
 
     <div class="block">
-      <div class="context">
-        Tests ability to locate a single element that satisfies a condition.
-      </div>
       <p>
         <strong>Find First Matching Element</strong><br />
         Given an array of numbers, return the first value that is greater than or equal to 3.<br />
@@ -179,9 +167,6 @@ const findFirst = (arr) =>
     </div>
 
     <div class="block">
-      <div class="context">
-        Given an array of integers and a target number, return the indices of the two numbers that add up to the target.
-      </div>
       <p>
         <strong>Two Sum</strong><br />
         Input: [1, 4, 6, 3], target = 7<br />
@@ -203,9 +188,6 @@ const twoSum = (arr, target) => {
     </div>
 
     <div class="block">
-      <div class="context">
-        Given a list of API request logs, return the number of unique users per endpoint.
-      </div>
       <p>
         <strong>Unique Users per Endpoint</strong><br />
         <pre>
@@ -239,9 +221,6 @@ const countUsersPerEndpoint = (logs) => {
     <h2>Loop / Strings</h2>
 
     <div class="block">
-      <div class="context">
-        Tests ability to refactor imperative code into a more concise implementation.
-      </div>
       <p>
         <strong>Collect Even Numbers</strong><br />
         Refactor the following code to collect even numbers from an array.
@@ -265,9 +244,6 @@ const evens = arr.filter(n => n % 2 === 0);
     </div>
 
     <div class="block">
-      <div class="context">
-        Tests character traversal and string reconstruction.
-      </div>
       <p>
         <strong>Reverse String</strong><br />
         Input: "hello"<br />
@@ -292,9 +268,6 @@ const reverseString = (str) => {
     <h2>Code Reviews</h2>
 
     <div class="block">
-      <div class="context">
-        Review this Express + Node.js endpoint. Identify issues and suggest improvements.
-      </div>
       <p>
         <strong>Backend Code Review</strong><br />
         <pre>
@@ -331,9 +304,6 @@ app.get("/users/:id", async (req, res) => {
     </div>
 
     <div class="block">
-      <div class="context">
-        Review this React component. Identify problems with state and effects.
-      </div>
       <p>
         <strong>Frontend Code Review</strong><br />
         <pre>
@@ -369,53 +339,11 @@ function UserProfile({ user }) {
       </details>
     </div>
 
-    <div class="block">
-      <div class="context">
-        Identify issues in this full-stack order-saving function.
-      </div>
-      <p>
-        <strong>Full-Stack Logic Review</strong><br />
-        <pre>
-function saveOrder(order) {
-  if (order.items.length > 0) {
-    order.items.map(item => {
-      db.save(item);
-    });
-    return true;
-  }
-  return false;
-}
-        </pre>
-      </p>
-      <details>
-        <summary>Key Issues</summary>
-        <pre>
-- map used incorrectly (side effects)  
-    → Use forEach or a loop for side effects; map should only be used for transforming arrays.
-    
-- No async handling  
-    → Make db.save calls async and await them to ensure proper completion.
-    
-- No transaction / rollback  
-    → Wrap multiple database operations in a transaction to ensure atomicity.
-    
-- No error handling  
-    → Use try/catch to catch and handle errors instead of silently failing.
-    
-- Boolean return hides failures  
-    → Return detailed status or throw errors so callers know if operations failed.
-        </pre>
-      </details>
-    </div>
-
     <!-- TYPESCRIPT FUNDAMENTALS -->
 
 <h2>TypeScript Fundamentals</h2>
 
 <div class="block">
-  <div class="context">
-    Demonstrates basic variable types and type safety.
-  </div>
   <p>
     <strong>Basic Types</strong><br />
     Declare variables with explicit types. Show what happens if you try to assign the wrong type.<br />
@@ -436,9 +364,6 @@ const isActive: boolean = true;
 </div>
 
 <div class="block">
-  <div class="context">
-    Shows how to define the shape of objects with interfaces.
-  </div>
   <p>
     <strong>Interfaces</strong><br />
     Define object properties including optional fields. Create an object of that interface.<br />
@@ -461,9 +386,6 @@ console.log(user); // { id: 1, name: "Alice" }
 </div>
 
 <div class="block">
-  <div class="context">
-    Demonstrates function typing for parameters and return values.
-  </div>
   <p>
     <strong>Typed Functions</strong><br />
     Write functions with typed parameters and return types. Show expected output.<br />
@@ -489,9 +411,6 @@ greet("James"); // Hello, James
 </div>
 
 <div class="block">
-  <div class="context">
-    Shows reusable and type-safe functions with generics.
-  </div>
   <p>
     <strong>Generics</strong><br />
     Implement a function that works with multiple types. Show examples with number and string.<br />
@@ -512,9 +431,6 @@ const str = identity<string>("Hello"); // "Hello"
 </div>
 
 <div class="block">
-  <div class="context">
-    Demonstrates type narrowing for safe handling of union types.
-  </div>
   <p>
     <strong>Type Guards</strong><br />
     Write a function that safely handles string or number input. Show expected output.<br />
@@ -539,9 +455,6 @@ process(5);       // 6
 </div>
 
 <div class="block">
-  <div class="context">
-    Shows TypeScript usage with React components and hooks.
-  </div>
   <p>
     <strong>React + TypeScript</strong><br />
     Type props and state for safer components. Show example rendering.<br />

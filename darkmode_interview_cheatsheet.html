@@ -1,491 +1,705 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Interview Cheat Sheet</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <style>
-      :root {
-        --bg: #0b0f0d;
-        --surface: #121816;
-        --text: #e6f0ea;
-        --muted: #a7b8af;
-        --accent: #2ecc71;
-        --section-header: #4dd0e1;
-        --border: #1f2a25;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <title>Interview Cheat Sheet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-      * {
-        box-sizing: border-box;
-      }
+  <style>
+    :root {
+      --bg: #0b0f0d;
+      --surface: #121816;
+      --text: #e6f0ea;
+      --muted: #a7b8af;
+      --accent: #2ecc71;
+      --section-header: #4dd0e1;
+      --border: #1f2a25;
+    }
 
-      body {
-        margin: 0;
-        padding: 32px;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-          Roboto, Helvetica, Arial, sans-serif;
-        background-color: var(--bg);
-        color: var(--text);
-        line-height: 1.6;
-      }
+    * {
+      box-sizing: border-box;
+    }
 
-      .container {
-        max-width: 900px;
-        margin: 0 auto;
-      }
+    body {
+      margin: 0;
+      padding: 32px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-      .section-title {
-        font-size: 1.8rem;
-        margin-top: 50px;
-        margin-bottom: 20px;
-        color: var(--section-header);
-        font-weight: 700;
-      }
-      .section-title:first-of-type {
-        margin-top: 30px;
-      }
-      h2 {
-        font-size: 1.3rem;
-        margin-top: 40px;
-        margin-bottom: 12px;
-        color: var(--accent);
-        border-bottom: 1px solid var(--border);
-        padding-bottom: 6px;
-      }
-      h3 {
-        font-size: 1.1rem;
-        margin-top: 24px;
-        margin-bottom: 8px;
-        color: var(--text);
-      }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
 
-      p,
-      li {
-        color: var(--text);
-      }
-      p {
-        margin: 8px 0;
-      }
-      ul {
-        margin: 8px 0 8px 20px;
-        padding: 0;
-      }
-      li {
-        margin-bottom: 6px;
-      }
+    .section-title {
+      font-size: 1.8rem;
+      margin-top: 50px;
+      margin-bottom: 20px;
+      color: var(--section-header);
+      font-weight: 700;
+    }
 
-      .muted {
-        color: var(--muted);
-      }
-      .block {
-        background-color: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        padding: 16px 20px;
-        margin-top: 12px;
-      }
-      .quote {
-        border-left: 3px solid var(--accent);
-        padding-left: 14px;
-        margin: 12px 0;
-        color: var(--text);
-      }
-      strong {
-        color: var(--accent);
-        font-weight: 600;
-      }
-      .toc li.section-header strong {
-        color: var(--section-header);
-      }
+    .section-title:first-of-type {
+      margin-top: 30px;
+    }
 
-      .toc a {
-        color: var(--accent);
-        text-decoration: none;
-      }
-      .toc a:hover {
-        text-decoration: underline;
-      }
-      .toc li.section-header {
-        list-style: none;
-        margin-left: -20px;
-        margin-top: 16px;
-        margin-bottom: 8px;
-      }
-      .toc li.section-header:first-child {
-        margin-top: 0;
-      }
+    h2 {
+      font-size: 1.3rem;
+      margin-top: 40px;
+      margin-bottom: 12px;
+      color: var(--accent);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+    }
 
-      #back-to-toc {
-        position: fixed;
-        bottom: 24px;
-        right: 24px;
-        background-color: var(--surface);
-        border: 1px solid var(--border);
-        color: var(--accent);
-        padding: 10px 14px;
-        border-radius: 8px;
-        font-weight: bold;
-        cursor: pointer;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
-        z-index: 1000;
-        transition: background 0.2s, transform 0.2s;
-      }
-      #back-to-toc:hover {
-        background-color: var(--border);
-        transform: translateY(-2px);
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <div id="toc" class="block toc">
-        <ul>
-          <li class="section-header"><strong>Intro & Motivation</strong></li>
-          <li><a href="#intro">Elevator pitch</a></li>
-          <li>
-            <a href="#why-this-role">Why are you interested in this role?</a>
-          </li>
-          <li>
-            <a href="#career-path">Why did you choose software development?</a>
-          </li>
-          <li><a href="#last-role">Why did you leave your last role?</a></li>
-          <li>
-            <a href="#consulting-work">What consulting work have you done?</a>
-          </li>
-          <li class="section-header">
-            <strong>Technical Stack & Experience</strong>
-          </li>
-          <li><a href="#stack">Describe your preferred stack</a></li>
-          <li><a href="#frontend-exp">Describe your frontend experience</a></li>
-          <li><a href="#backend-exp">Describe your backend experience</a></li>
-          <li>
-            <a href="#end-preference"
-              >Do you prefer frontend or backend development?</a
-            >
-          </li>
-          <li>
-            <a href="#have-you-used-technology"
-              >Have you used [technology] before?</a
-            >
-          </li>
-          <li class="section-header"><strong>Cloud & Deployment</strong></li>
-          <li>
-            <a href="#cloud-ci-cd">Cloud deployment & CI/CD experience</a>
-          </li>
-          <li><a href="#git">Git experience</a></li>
-          <li class="section-header">
-            <strong>Databases & API Design</strong>
-          </li>
-          <li>
-            <a href="#databases-exp">SQL, ORMs, and database experience</a>
-          </li>
-          <li><a href="#api-design">How do you design APIs?</a></li>
-          <li class="section-header">
-            <strong>UX/UI & Frontend Practices</strong>
-          </li>
-          <li><a href="#ux-ui">UX/UI mindset and examples</a></li>
-          <li class="section-header"><strong>Testing & Reliability</strong></li>
-          <li><a href="#testing">Testing strategies</a></li>
-          <li><a href="#debugging-issues">Debugging production issues</a></li>
-          <li class="section-header">
-            <strong>Project Leadership & Problem Solving</strong>
-          </li>
-          <li>
-            <a href="#problem-solving-example"
-              >Complex Full Stack Project Leadership</a
-            >
-          </li>
-          <li>
-            <a href="#prioritize-work"
-              >How do you prioritize work when multiple tasks compete?</a
-            >
-          </li>
-          <li class="section-header">
-            <strong>Teamwork & Collaboration</strong>
-          </li>
-          <li><a href="#teamwork">How do you work in a team?</a></li>
-          <li><a href="#conflict">Handling disagreements</a></li>
-          <li>
-            <a href="#professional-development"
-              >What does professional development mean to you?</a
-            >
-          </li>
-          <li class="section-header">
-            <strong>AI & Productivity Tools</strong>
-          </li>
-          <li>
-            <a href="#ai-workflow">How do you use AI in your workflow?</a>
-          </li>
-          <li><a href="#clever-ai-usage">Clever AI Usage / Projects</a></li>
-          <li class="section-header">
-            <strong>Interview Process & Closing</strong>
-          </li>
-          <li>
-            <a href="#interviewer-questions"
-              >Questions to ask the Interviewer</a
-            >
-          </li>
-          <li><a href="#closing">Closing line</a></li>
-        </ul>
-      </div>
+    h3 {
+      font-size: 1.1rem;
+      margin-top: 24px;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
 
-      <div class="section-title">Intro & Motivation</div>
+    p,
+    li {
+      color: var(--text);
+    }
 
-      <h2 id="intro">Elevator pitch</h2>
-      <div class="block quote">
-        I'm a full-stack developer with over six years of experience working on
-        SaaS products. I usually own features end to end, from figuring out
-        requirements to building the UI, wiring up the APIs, and supporting
-        things in production.
-      </div>
+    p {
+      margin: 8px 0;
+    }
 
-      <h2 id="why-this-role">Why are you interested in this role?</h2>
-      <div class="block quote">
-        The chance to own full-stack features within systems that help detect
-        threats and respond faster feels meaningful, and the mix of modern web
-        tech and AI is exciting to me.
-      </div>
+    ul {
+      margin: 8px 0 8px 20px;
+      padding: 0;
+    }
 
-      <h2 id="career-path">Why did you choose software development?</h2>
-      <div class="block quote">
-        I actually started out studying history and political science, but I
-        realized I really enjoy building things, so I transitioned into web
-        development through training and on-the-job experience.
-      </div>
+    li {
+      margin-bottom: 6px;
+    }
 
-      <h2 id="last-role">Why did you leave your last role?</h2>
-      <div class="block quote">
-        I felt like I'd hit a plateau in my last role, and then my position was
-        cut due to budget issues. Since then, I've been doing freelance
-        consulting while looking for new full-stack opportunities.
-      </div>
+    .muted {
+      color: var(--muted);
+    }
 
-      <h2 id="consulting-work">What consulting work have you done?</h2>
-      <div class="block quote">
-        I've been helping a friend test out a business idea by giving
-        architecture advice and quickly prototyping the product using React,
-        TypeScript, Node, and SQL.
-      </div>
+    .block {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-top: 12px;
+    }
 
-      <div class="section-title">Technical Stack & Experience</div>
+    .quote {
+      border-left: 3px solid var(--accent);
+      padding-left: 14px;
+      margin: 12px 0;
+      color: var(--text);
+    }
 
-      <h2 id="stack">Describe your preferred stack</h2>
-      <div class="block quote">
-        I've built full-stack applications using React and Next.js on the
-        frontend. On the backend, I use Node.js with Express.js and NestJS to
-        build APIs, and I work with both SQL and NoSQL databases like MongoDB.
-      </div>
+    strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
 
-      <h2 id="frontend-exp">Describe your frontend experience</h2>
-      <div class="block quote">
-        I've spent over six years building web apps with React, focusing on
-        reusable components, modular architecture, and managing state cleanly. I
-        also use Next.js for server-side rendering and routing, which which
-        optimizes page load and SEO. I prioritize responsive, accessible
-        interfaces and rely on component libraries and utility frameworks to
-        keep designs consistent and easy to maintain.
-      </div>
+    .toc li.section-header strong {
+      color: var(--section-header);
+    }
 
-      <h2 id="backend-exp">Describe your backend experience</h2>
-      <div class="block quote">
-        I build backends with Node.js, using Express.js for quick APIs and
-        NestJS for structured, modular services. I design REST APIs, handle
-        auth, validation, and error handling, experience working with SQL and
-        MongoDB, and deploying to AWS using CI/CD. I enjoy owning features
-        end-to-end, balancing scalability and usability.
-      </div>
+    .toc a {
+      color: var(--accent);
+      text-decoration: none;
+    }
 
-      <h2 id="end-preference">
-        Do you prefer frontend or backend development?
-      </h2>
-      <div class="block quote">
-        I enjoy full-stack work and don't really have a strong preference. I'm
-        comfortable jumping between frontend and backend
-      </div>
+    .toc a:hover {
+      text-decoration: underline;
+    }
 
-      <h2 id="have-you-used-technology">Have you used [technology] before?</h2>
-      <div class="block quote">
-        I haven't used Angular or Vue.js professionally yet, but I pick up new
-        frameworks quickly. I'm aware that Vue is pretty similar to React, with
-        Vuex for state and Nuxt.js like Next.js, so my experience with modular,
-        component-based architectures transfers easily.
-      </div>
+    .toc li.section-header {
+      list-style: none;
+      margin-left: -20px;
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
 
-      <div class="section-title">Cloud & Deployment</div>
+    .toc li.section-header:first-child {
+      margin-top: 0;
+    }
 
-      <h2 id="cloud-ci-cd">Cloud deployment & CI/CD experience</h2>
-      <div class="block quote">
-        I set up CI/CD pipelines to run builds and tests so issues are caught
-        before staging or production. Locally, I use Docker to mirror
-        production, including runtime, dependencies, and environment variables,
-        which lets me safely test features and service interactions. For AWS, I
-        deploy the frontend to S3, backend APIs on Lambda, and use managed
-        databases. I rely on versioned releases and rollback strategies so that
-        if anything goes wrong, I can quickly restore a previous working state,
-        keeping deployments smooth and predictable.
-      </div>
+    #back-to-toc {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      transition: background 0.2s, transform 0.2s;
+    }
 
-      <h2 id="git">Git experience</h2>
-      <div class="block quote">
-        I use Git daily for branching, PRs, and code reviews, keeping repos
-        organized and commit history clean so the team stays aligned.
-      </div>
+    #back-to-toc:hover {
+      background-color: var(--border);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
 
-      <div class="section-title">Databases & API Design</div>
-
-      <h2 id="databases-exp">SQL, ORMs, and database experience</h2>
-      <div class="block quote">
-        I have solid experience with relational databases, designing schemas,
-        indexes, and transactional workflows. I use ORMs like Prisma to keep
-        things consistent and maintainable, but I'm not dependent on them
-        because I'm comfortable building, executing, and debugging raw SQL
-        queries.
-      </div>
-
-      <h2 id="api-design">How do you design APIs?</h2>
-      <div class="block quote">
-        I design APIs following REST principles, with clear endpoints, proper
-        HTTP verbs, and meaningful status codes. I keep responses consistent and
-        predictable so the front end can use them easily and safely. I've
-        implemented JWT authentication and role-based access control, and I
-        build in pagination, filtering, and caching from the start to optimize
-        performance.
-      </div>
-
-      <div class="section-title">UX/UI & Frontend Practices</div>
-
-      <h2 id="ux-ui">UX/UI mindset and examples</h2>
-      <div class="block quote">
-        I focus on UI and UX with a user-first mindset, building interfaces that
-        are intuitive, accessible, and easy to navigate. I make sure apps are
-        responsive and optimized for different mobile devices, and I provide
-        clear feedback during loading or other interactions, using semantic HTML
-        and ARIA roles to support accessibility. I also use modular component
-        libraries to keep designs consistent and scalable.
-      </div>
-
-      <div class="section-title">Testing & Reliability</div>
-
-      <h2 id="testing">Testing strategies</h2>
-      <div class="block quote">
-        I test at multiple levels to make sure everything works reliably. I
-        write unit tests with Jest for components and logic, run integration
-        tests to verify frontend-backend interactions, and use Postman to
-        validate APIs in real-world scenarios. I'm also comfortable debugging
-        raw SQL queries when needed.
-      </div>
-
-      <h2 id="debugging-issues">Debugging production issues</h2>
-      <div class="block quote">
-        I've debugged production issues on both frontend and backend. When a bug
-        doesn't reproduce locally, I check logs, compare staging and production
-        environments, and sometimes spin up a test environment to isolate the
-        problem. I'm used to handling things like misconfigured environment
-        variables, unexpected API errors, or database queries that behave
-        differently in production.
-      </div>
-
-      <div class="section-title">Project Leadership & Problem Solving</div>
-
-      <h2 id="problem-solving-example">
-        Complex Full Stack Project Leadership
-      </h2>
-      <div class="block quote">
-        At Civix, I owned a document submission and approval feature for the New
-        Jersey Office of Emergency Management, supporting FEMA compliance.
-        Agencies submitted complex documents with strict validation and approval
-        rules. I built a React frontend for submissions and tracking, NestJS for
-        the backend API which make requests to SQL logic enforcing the rules.
-        Working closely with QA and support, I handled edge cases, refined
-        workflows and incorporated client feedack.
-      </div>
-
-      <h2 id="prioritize-work">
-        How do you prioritize work when multiple tasks compete?
-      </h2>
-      <div class="block quote">
-        I focus on urgency, weigh the impact of dependencies, and communicate
-        progress proactively to keep the team aligned.
-      </div>
-
-      <div class="section-title">Teamwork & Collaboration</div>
-
-      <h2 id="teamwork">How do you work in a team?</h2>
-      <div class="block quote">
-        I work closely with my team through code reviews, architecture
-        discussions, and pair programming. I give and take feedback and support
-        teammates with guidance when it's helpful.
-      </div>
-
-      <h2 id="conflict">Handling disagreements</h2>
-      <div class="block quote">
-        When disagreements come up, I listen first, explain my reasoning
-        clearly, and focus on solutions so discussions stay productive.
-      </div>
-
-      <h2 id="professional-development">
-        What does professional development mean to you?
-      </h2>
-      <div class="block quote">
-        I focus on tackling challenges that push me technically, learning
-        through building, and picking up new skills from others through
-        mentorship, code reviews, and architecture discussions.
-      </div>
-
-      <div class="section-title">AI & Productivity Tools</div>
-
-      <h2 id="ai-workflow">How do you use AI in your workflow?</h2>
-      <div class="block quote">
-        I use AI to speed up my workflow and keep quality high without replacing
-        my judgment. In my Airbnb Tracker project, for example, I follow a
-        structured AI workflow with Cursor: start with a project brief, generate
-        a technical plan, build features step by step, and then run a code
-        review in a fresh AI context to catch errors and edge cases. This helps
-        me stay efficient, consistent, and focused on building complex features.
-      </div>
-
-      <h2 id="clever-ai-usage">Clever AI Usage / Projects</h2>
-      <div class="block quote">
-        I built Airbnb Tracker, a full-stack app that tracks changes in Airbnb
-        listings over time to help hosts spot patterns and improve their
-        listings based on competitor behavior. It uses a Next.js frontend,
-        NestJS API, and PostgreSQL with Prisma. I also leverage AI tools to
-        speed up debugging and optimization while keeping features reliable and
-        maintainable.
-      </div>
-
-      <div class="section-title">Interview Process & Closing</div>
-
-      <h2 id="interviewer-questions">Questions to ask the Interviewer</h2>
-      <div class="block quote">
-        <ul>
-          <li>
-            Can you describe what a typical day or week looks like in this role?
-          </li>
-          <li>
-            What would success in the first few months look like for someone in
-            this position?
-          </li>
-          <li>
-            How is the team structured, and who would I work most closely with?
-          </li>
-          <li>What are the next steps in the interview process?</li>
-        </ul>
-      </div>
-
-      <h2 id="closing">Closing line</h2>
-      <div class="block quote">
-        Thanks for your time today. I'd be happy to continue the process and
-        talk more.
-      </div>
-
-      <button
-        id="back-to-toc"
-        onclick="document.getElementById('toc').scrollIntoView({ behavior: 'smooth' });"
-      >
-        Back to TOC
-      </button>
+<body>
+  <div class="container">
+    <div id="toc" class="block toc">
+      <ul>
+        <li class="section-header"><strong>Intro & Motivation</strong></li>
+        <li><a href="#intro">Elevator pitch</a></li>
+        <li>
+          <a href="#why-this-role">Why are you interested in this role?</a>
+        </li>
+        <li>
+          <a href="#next-role">What are you looking for in your next role?</a>
+        </li>
+        <li>
+          <a href="#career-path">Why did you choose software development?</a>
+        </li>
+        <li><a href="#last-role">Why did you leave your last role?</a></li>
+        <li>
+          <a href="#consulting-work">What consulting work have you done?</a>
+        </li>
+        <li class="section-header">
+          <strong>Technical Stack & Experience</strong>
+        </li>
+        <li><a href="#stack">Describe your preferred stack</a></li>
+        <li><a href="#frontend-exp">Describe your frontend experience</a></li>
+        <li><a href="#backend-exp">Describe your backend experience</a></li>
+        <li>
+          <a href="#end-preference">Do you prefer frontend or backend development?</a>
+        </li>
+        <li>
+          <a href="#have-you-used-technology">Have you used [technology] before?</a>
+        </li>
+        <li class="section-header">
+          <strong>State Management / Redux</strong>
+        </li>
+        <li>
+          <a href="#redux-vs-local-state">When should you use Redux vs local React state?</a>
+        </li>
+        <li>
+          <a href="#redux-structure-large-apps">What are best practices for structuring Redux in large apps?</a>
+        </li>
+        <li class="section-header">
+          <strong>API Design & System Architecture</strong>
+        </li>
+        <li><a href="#api-design">How do you design APIs?</a></li>
+        <li>
+          <a href="#structure-large-scale-react">How do you structure large-scale React applications?</a>
+        </li>
+        <li>
+          <a href="#api-scalability-maintainability">How do you design APIs for scalability and maintainability?</a>
+        </li>
+        <li class="section-header"><strong>Databases</strong></li>
+        <li>
+          <a href="#databases-exp">SQL, ORMs, and database experience</a>
+        </li>
+        <li class="section-header">
+          <strong>Scalability & Performance</strong>
+        </li>
+        <li>
+          <a href="#cloud-ci-cd">Cloud deployment & CI/CD experience</a>
+        </li>
+        <li><a href="#git">Git experience</a></li>
+        <li>
+          <a href="#optimize-react-large-datasets">How do you optimize React for large datasets?</a>
+        </li>
+        <li>
+          <a href="#api-performance-heavy-load">How do you handle API performance under heavy load?</a>
+        </li>
+        <li class="section-header">
+          <strong>UX/UI & Frontend Practices</strong>
+        </li>
+        <li><a href="#ux-ui">UX/UI mindset and examples</a></li>
+        <li class="section-header">
+          <strong>Testing, Observability & Reliability</strong>
+        </li>
+        <li><a href="#testing">Testing strategies</a></li>
+        <li><a href="#debugging-issues">Debugging production issues</a></li>
+        <li>
+          <a href="#monitor-production-frontend">How do you monitor production frontend apps?</a>
+        </li>
+        <li>
+          <a href="#testing-complex-react">What testing strategies do you use for complex React applications?</a>
+        </li>
+        <li class="section-header">
+          <strong>Leadership, Mentorship & Staff Skills</strong>
+        </li>
+        <li>
+          <a href="#problem-solving-example">Complex Full Stack Project Leadership</a>
+        </li>
+        <li>
+          <a href="#prioritize-work">How do you prioritize work when multiple tasks compete?</a>
+        </li>
+        <li>
+          <a href="#approach-ambiguous-problems">How do you approach unclear requirements or ambiguous problems?</a>
+        </li>
+        <li>
+          <a href="#measure-feature-success">How do you measure the success of your features or technical decisions?</a>
+        </li>
+        <li><a href="#teamwork">How do you work in a team?</a></li>
+        <li><a href="#conflict">Handling disagreements</a></li>
+        <li>
+          <a href="#professional-development">What does professional development mean to you?</a>
+        </li>
+        <li>
+          <a href="#mentor-junior-engineers">How do you mentor junior engineers?</a>
+        </li>
+        <li>
+          <a href="#influence-architecture-standards">How do you influence architecture and team standards?</a>
+        </li>
+        <li>
+          <a href="#resolve-team-conflicts">How do you resolve conflicts in the team?</a>
+        </li>
+        <li>
+          <a href="#communicate-tradeoffs-product-design">How do you communicate technical trade-offs to product and
+            design teams?</a>
+        </li>
+        <li>
+          <a href="#drive-technical-vision">How do you drive technical vision without formal authority?</a>
+        </li>
+        <li class="section-header">
+          <strong>Past Failures & Technical Weaknesses</strong>
+        </li>
+        <li><a href="#dealing-with-failure">Dealing with failure</a></li>
+        <li>
+          <a href="#addressing-technical-weakness">Addressing technical weakness</a>
+        </li>
+        <li class="section-header">
+          <strong>AI & Productivity Tools</strong>
+        </li>
+        <li>
+          <a href="#ai-workflow">How do you use AI in your workflow?</a>
+        </li>
+        <li class="section-header">
+          <strong>Interview Process & Closing</strong>
+        </li>
+        <li>
+          <a href="#interviewer-questions">Questions to ask the Interviewer</a>
+        </li>
+        <li><a href="#closing">Closing line</a></li>
+      </ul>
     </div>
-  </body>
+
+    <div class="section-title">Intro & Motivation</div>
+
+    <h2 id="intro">Elevator pitch</h2>
+    <div class="block quote">
+      I’m a full-stack engineer with six years of experience building SaaS products end to end. I take ownership from
+      requirements and design through implementation and production, which lets me connect technical architecture
+      directly to real user impact.
+    </div>
+
+    <h2 id="why-this-role">Why are you interested in this role?</h2>
+    <div class="block quote">
+
+    </div>
+
+    <h2 id="next-role">What are you looking for in your next role?</h2>
+    <div class="block quote">
+      I’m looking for a role where I can continue to develop professionally with meaningful projects and really take
+      ownership of my work. I
+      also value being part of a team that works hard but still makes time to collaborate and have a good time together.
+    </div>
+
+    <h2 id="professional-development">
+      What does professional development mean to you?
+    </h2>
+    <div class="block quote">
+      I grow most by working on problems that push my technical boundaries and force me to learn through real-world
+      implementation. I also see collaboration as a core part of development. Architecture discussions and code reviews
+      are where I pick up new perspectives and help keep the team’s standards high.
+    </div>
+
+    <h2 id="career-path">Why did you choose software development?</h2>
+    <div class="block quote">
+      I enjoyed the analytical side of my studies, but I realized I was more excited by actually building things. I
+      taught myself to code, moved into a development role, and found that my research background helps a lot when I’m
+      digging into complex requirements.
+    </div>
+
+    <h2 id="last-role">Why did you leave your last role?</h2>
+    <div class="block quote">
+      I had reached a point where I was ready for a new challenge, and my role was later impacted by budget-related
+      changes. Since then, I’ve been doing some freelance consulting while looking for my next full-time role.
+    </div>
+
+    <h2 id="consulting-work">What consulting work have you done?</h2>
+    <div class="block quote">
+      I’m helping a friend validate a business idea by acting as a technical consultant. I’m responsible for the
+      architecture and for building a prototype using React, TypeScript, and Node. The product tracks how Airbnb
+      listings change over time by capturing daily snapshots of things like amenities and photos, keeping a full history
+      so users can compare any two dates. I’ve focused on making the interface clean and responsive so the data is easy
+      to explore.
+
+      I’m also helping a friend who is a teacher build a trivia app based on historical Jeopardy data, giving fans a fun
+      way to play and sharpen their knowledge.
+    </div>
+
+    <div class="section-title">Technical Stack & Experience</div>
+
+    <h2 id="stack">Describe your preferred stack</h2>
+    <div class="block quote">
+      I’m most productive with React and Next.js on the frontend. For the backend, I usually go with Node, using either
+      Express or NestJS depending on how much structure the project needs. I’m also comfortable jumping between SQL and
+      NoSQL databases.
+    </div>
+
+    <h2 id="frontend-exp">Describe your frontend experience</h2>
+    <div class="block quote">
+      On the frontend, I mainly work with React and Next.js, with a focus on reusable components and clean state
+      management. I typically choose Next.js for production because it handles routing and image optimization out of the
+      box, but I’ll use a standard React setup for simpler internal tools where SEO is not a concern.
+
+      I also prioritize accessibility and responsiveness using Tailwind and Shadcn. I like that stack because it avoids
+      the overhead of a large component library. Since Shadcn components live directly in the codebase, I fully own and
+      customize them, which makes layout changes easier and keeps the codebase lean.
+    </div>
+
+    <h2 id="backend-exp">Describe your backend experience</h2>
+    <div class="block quote">
+      I build backends primarily with Node.js, using Express for lighter APIs and NestJS when I need a more structured
+      and modular architecture. I’ve also worked with Flask, which has given me perspective on how different ecosystems
+      approach routing and middleware. Regardless of the framework, my focus is on building robust REST APIs, handling
+      authentication, and keeping data validation consistent throughout the system.
+    </div>
+
+    <h2 id="end-preference">
+      Do you prefer frontend or backend development?
+    </h2>
+    <div class="block quote">
+      I enjoy full-stack work because I like seeing how the architecture on both sides connects. I’m comfortable moving
+      between frontend and backend and especially enjoy the problem solving that happens at the intersection. For me,
+      it’s less about choosing a favorite layer and more about owning a feature from the database through to the UI.
+    </div>
+
+    <h2 id="have-you-used-technology">Have you used [technology] before?</h2>
+    <div class="block quote">
+      I haven't used [technology] professionally yet, but I’m a fast learner when it comes to new stacks. Since I have a
+      strong grasp of the underlying patterns in my current stack, I’ve found that I can usually translate those
+      concepts to new frameworks and get up to speed very quickly.
+    </div>
+
+    <div class="section-title">State Management / Redux</div>
+
+    <h2 id="redux-vs-local-state">When should you use Redux vs local React state?</h2>
+    <div class="block quote">
+      I use Redux for global state that multiple components need, like auth, theme, or app-wide preferences. For state
+      that lives in a single component, I stick with useState or useReducer to keep things simple and avoid unnecessary
+      re-renders. I use Redux Toolkit to reduce boilerplate and follow standard patterns.
+    </div>
+
+    <h2 id="redux-structure-large-apps">What are best practices for structuring Redux in large apps?</h2>
+    <div class="block quote">
+      In large apps, I structure Redux by splitting the store into feature slices, which keeps each domain manageable
+      and easier to maintain, while the root reducer stays simple. I keep side-effects out of reducers and handle async
+      logic separately. I use memoized selectors to prevent unnecessary re-renders and only store state that truly needs
+      to be shared, deriving everything else in selectors to keep the store clean.
+    </div>
+
+    <div class="section-title">API Design & System Architecture</div>
+
+    <h2 id="api-design">How do you design APIs?</h2>
+    <div class="block quote">
+      I follow RESTful principles with clear, resource-based naming and meaningful status codes so APIs are predictable
+      and easy to use. For security, I use JWT authentication with roles embedded in the token, letting the API handle
+      authorization without extra database lookups. I also focus on performance with pagination, filtering, and caching
+      from the start. Consistent response structures ensure the frontend always knows what to expect, keeping
+      development fast and predictable.
+    </div>
+
+    <h2 id="structure-large-scale-react">How do you structure large-scale React applications?</h2>
+    <div class="block quote">
+      I organize code by feature, so each domain owns its components, hooks, and types, letting teams work in parallel
+      and reducing the chance of conflicts. This also makes the codebase easier to navigate and scale as the app grows.
+    </div>
+
+    <h2 id="api-scalability-maintainability">How do you design APIs for scalability and maintainability?</h2>
+    <div class="block quote">
+      I design APIs with clear resource boundaries, consistent response shapes, and built-in features like pagination
+      and filtering so the frontend can use them predictably and scale easily. I structure the backend modularly, add
+      logging and metrics early, and enforce conventions and shared types to keep the system maintainable as it grows.
+    </div>
+
+    <div class="section-title">Databases</div>
+
+    <h2 id="databases-exp">SQL, ORMs, and database experience</h2>
+    <div class="block quote">
+      I have strong experience with relational databases, designing schemas, managing indexes, and handling
+      transactions. I use ORMs like Prisma for type safety and speed but can write raw SQL when needed for complex
+      queries or optimizations. I typically use SQL for structured, integrity-critical data and NoSQL for flexible
+      schemas or fast iteration.
+    </div>
+
+    <div class="section-title">Scalability & Performance</div>
+
+    <h2 id="cloud-ci-cd">Cloud deployment & CI/CD experience</h2>
+    <div class="block quote">
+      I use Docker to standardize my local environment once the project structure is in place. After defining the
+      frontend and backend directories, I containerize them so the team is aligned on the same versions and
+      configurations from the start.
+
+      For deployment, I typically use AWS, with S3 for the frontend and Lambda for the backend, and I set up CI/CD
+      pipelines to automate testing and versioned releases. I focus on predictability and always plan for rollbacks so a
+      known good state can be restored quickly if issues arise.
+    </div>
+
+    <h2 id="git">Git experience</h2>
+    <div class="block quote">
+      I use Git daily following a feature-branch workflow. I maintain a clean, linear history by squashing incremental
+      updates into meaningful commits and rebasing to keep my branch current. This helps avoid messy merge commits and
+      makes the project history easier to audit.
+
+      I treat pull requests as more than just code checks. They are opportunities for peer review and knowledge sharing.
+      By using clear naming conventions and descriptive PRs, I make sure the team understands the reasoning behind each
+      change, which makes it easier for others to work in the codebase later.
+    </div>
+
+    <h2 id="optimize-react-large-datasets">How do you optimize React for large datasets?</h2>
+    <div class="block quote">
+      I optimize React for large datasets by rendering only what’s visible and avoiding storing huge lists in global
+      state. I fetch or stream data in chunks, and I memoize components so only what actually changes re-renders. This
+      keeps the UI fast and responsive even with tens of thousands of items.
+    </div>
+
+    <h2 id="api-performance-heavy-load">How do you handle API performance under heavy load?</h2>
+    <div class="block quote">
+      I handle API performance under heavy load by building in pagination, caching, and rate limiting, which controls
+      how many requests a client can make in a given time to protect the system. On the backend, I optimize queries, use
+      batching or joins to avoid repeated lookups, and handle heavy operations asynchronously. I monitor performance
+      with logging and metrics so I can spot bottlenecks, add indexes or caching where needed, and prevent slowdowns
+      before they affect users.
+    </div>
+
+    <div class="section-title">UX/UI & Frontend Practices</div>
+
+    <h2 id="ux-ui">UX/UI mindset and examples</h2>
+    <div class="block quote">
+      I focus on UI and UX with a user-first mindset, building interfaces that
+      are intuitive, accessible, and easy to navigate. I make sure apps are
+      responsive and optimized for different mobile devices, and I provide
+      clear feedback during loading or other interactions, using semantic HTML
+      and ARIA roles to support accessibility. I also use modular component
+      libraries to keep designs consistent and scalable.
+    </div>
+
+    <div class="section-title">Testing, Observability & Reliability</div>
+
+    <h2 id="testing">Testing strategies</h2>
+    <div class="block quote">
+      I follow a multi-layered testing strategy using Jest for unit tests and integration tests to verify service
+      interactions. I treat API validation as a priority, using Postman to simulate real-world scenarios.
+
+      Beyond automated suites, I'm highly comfortable with manual data debugging when troubleshooting production edge
+      cases. I use raw SQL to investigate state-dependent issues, ensuring I can identify the root cause, reproduce it
+      in a safe environment, and ultimately lock in a fix with a new regression test.
+    </div>
+
+    <h2 id="debugging-issues">Debugging production issues</h2>
+    <div class="block quote">
+      I tackle production issues by starting with logs and monitoring to spot patterns missing in development. I isolate
+      the failing component, reproduce the issue in a safe environment, and fix the root cause. I also add durable
+      improvements like tests or validation to prevent the same problem from recurring.
+    </div>
+
+    <h2 id="monitor-production-frontend">How do you monitor production frontend apps?</h2>
+    <div class="block quote">
+      I monitor production frontend apps using error tracking and real user monitoring to catch issues users actually
+      experience. I track key performance metrics and set up alerts for regressions. I also focus on critical user
+      flows, monitoring their success and speed so we can quickly trace and fix any problems that slip past staging.
+    </div>
+
+    <h2 id="testing-complex-react">What testing strategies do you use for complex React applications?</h2>
+    <div class="block quote">
+      I use a layered testing approach. Unit tests cover pure logic and reusable functions, while component tests focus
+      on user-facing behavior. I prioritize critical paths and edge cases to keep tests fast and meaningful. For
+      integration, I test key flows that cross components or API boundaries, focusing on the areas that would have the
+      biggest impact if they broke.
+    </div>
+
+    <div class="section-title">Leadership, Mentorship & Staff Skills</div>
+
+    <h2 id="problem-solving-example">
+      Complex Full Stack Project Leadership
+    </h2>
+    <div class="block quote">
+      At Civix, I led the full-stack development of a document submission and approval system for the NJ Office of
+      Emergency Management. The biggest challenge was FEMA compliance, requiring strict data validation and a
+      multi-stage approval workflow. I built the frontend in React, backend in NestJS, and designed the SQL schema to
+      enforce compliance at the data level. Working closely with QA and stakeholders, I turned a rigid regulatory
+      process into an intuitive user experience, handling everything from architecture to production support.
+    </div>
+
+    <h2 id="prioritize-work">
+      How do you prioritize work when multiple tasks compete?
+    </h2>
+    <div class="block quote">
+      When tasks compete, I prioritize them by weighing their importance to the business against how quickly they need
+      to be done. I specifically look for tasks that are holding up other team members and handle those first so the
+      whole team can keep moving.
+
+      I also believe in clear, early communication. If a major bug forces me to pause my current work, I let my manager
+      and stakeholders know right away. This allows us to adjust the timeline together and ensures we stay focused on
+      the most important work without any surprises.
+    </div>
+
+    <h2 id="approach-ambiguous-problems">How do you approach unclear requirements or ambiguous problems?</h2>
+    <div class="block quote">
+      I start by clarifying the goal and the constraints. I ask what success looks like, who is affected, and what
+      we can and cannot change. I then break the problem into smaller pieces and tackle the riskiest or most
+      uncertain parts first, often with a spike or a small prototype so we learn quickly.
+
+      I document assumptions and share them with product and stakeholders so we stay aligned. If the requirements
+      keep changing, I focus on a minimal solution that delivers value and is easy to extend, rather than building
+      for every possible future. I have used this approach on projects where the product was still being defined
+      and we had to ship while the scope evolved.
+    </div>
+
+    <h2 id="measure-feature-success">How do you measure the success of your features or technical decisions?</h2>
+    <div class="block quote">
+      I tie success to outcomes that matter to the business and the user. For a feature, that might be adoption,
+      completion rate, or time on task. For a technical change, it might be reduced latency, fewer bugs, or faster
+      deploys. I define these up front when possible so we know what we are optimizing for.
+
+      I use the data we already have, like analytics, error rates, and performance metrics, and I avoid adding
+      instrumentation everywhere. When we shipped a refactor of a critical flow, we tracked error rate and
+      load time before and after and used that to confirm the change was safe and to justify future investments.
+    </div>
+
+    <h2 id="teamwork">How do you work in a team?</h2>
+    <div class="block quote">
+      I thrive in a collaborative environment where code reviews and architecture discussions are used to share
+      knowledge and keep our standards consistent. I’m a big fan of pair programming for tackling complex problems, and
+      I make it a priority to be available whenever a teammate needs a second pair of eyes.
+
+      I also view feedback as a two-way street. I try to provide constructive suggestions that help the code improve,
+      while staying open to different perspectives on my own work. Ultimately, I want to be the reliable partner who
+      helps the team stay productive and builds a better product together.
+    </div>
+
+    <h2 id="conflict">Handling disagreements</h2>
+    <div class="block quote">
+      When I encounter a technical disagreement, I start by listening to the other perspective to make sure I fully
+      understand their concerns. I then explain my own reasoning, focusing on the trade-offs and how each choice affects
+      the project goals.
+
+      By keeping the conversation centered on the problem rather than the person, we can stay focused on the most
+      effective solution. My priority is always to reach a consensus that keeps the team moving forward without
+      compromising on quality or maintainability.
+    </div>
+
+    <h2 id="mentor-junior-engineers">How do you mentor junior engineers?</h2>
+    <div class="block quote">
+      I give junior engineers ownership of small, clear tasks so they can learn by doing. I pair on tricky parts, do
+      code reviews that explain the why, and encourage them to propose solutions first. I share system and business
+      context so they can make better decisions, helping them grow quickly in a safe environment.
+    </div>
+
+    <h2 id="influence-architecture-standards">How do you influence architecture and team standards?</h2>
+    <div class="block quote">
+      I lead by example and by writing things down. I document decisions and trade-offs in ADRs or design docs so
+      the team has a shared reference. I propose standards when I see repeated pain, and I get buy-in by
+      showing the impact with a small pilot or proof of concept before we roll it out broadly.
+
+      I also use code reviews and architecture discussions to align on patterns. I do not insist on my way;
+      I frame options and trade-offs so the team can choose together. When we introduced a new testing
+      strategy, I ran a short workshop and left runbooks and examples so everyone could adopt it over time.
+    </div>
+
+    <h2 id="resolve-team-conflicts">How do you resolve conflicts in the team?</h2>
+    <div class="block quote">
+      I focus on the problem, not the person. I listen to each perspective and make sure everyone feels heard.
+      I then help the team compare options against our goals and constraints so we can choose a path that
+      everyone can support, even if it is not everyone's first choice.
+
+      When there is a technical disagreement, I suggest we prototype or spike both approaches when it is
+      feasible so we can decide on data rather than opinion. If we are stuck, I am willing to make a call and
+      own it, and we document the decision and revisit it later if needed.
+    </div>
+
+    <div class="section-title">Past Failures & Technical Weaknesses</div>
+
+    <h2 id="dealing-with-failure">Dealing with failure</h2>
+    <div class="block quote">
+      I once deployed a database migration that caused downtime. I took full ownership and fixed it, then updated our
+      process to require staging tests with production-sized data and added granular monitoring. I learned that a fix
+      isn’t done until the system is improved to prevent it from happening again.
+    </div>
+
+    <h2 id="addressing-technical-weakness">Addressing technical weakness</h2>
+    <div class="block quote">
+      Early in my career, I often over-engineered solutions for future needs. Now I focus more on simple, maintainable
+      code that solves the current problem. This keeps things clean and makes it easier to adapt when new requirements
+      actually come up.
+    </div>
+
+    <div class="section-title">AI & Productivity Tools</div>
+
+    <h2 id="ai-workflow">How do you use AI in your workflow?</h2>
+    <div class="block quote">
+      I use AI to speed up my workflow without replacing my judgment. I start with a clear brief, let the AI help plan
+      and generate code, then review everything carefully. This keeps work consistent and lets me focus on complex
+      architectural challenges.
+    </div>
+
+    <h2 id="communicate-tradeoffs-product-design">How do you communicate technical trade-offs to product and design
+      teams?</h2>
+    <div class="block quote">
+      I focus on outcomes and trade-offs, not implementation details. I explain options clearly, use simple language or
+      sketches, and make decisions collaboratively. Being transparent about risks and priorities builds trust and avoids
+      surprises.
+    </div>
+
+    <h2 id="drive-technical-vision">How do you drive technical vision without formal authority?</h2>
+    <div class="block quote">
+      I build credibility by shipping and helping others succeed. I propose ideas with clear problems, options, and a
+      recommended path, backed by data or a quick proof of concept. I start pilots or docs without waiting for
+      permission and break vision into actionable steps the team can take now. This approach has led to tangible wins,
+      like improving frontend performance through a targeted spike and rollout.
+    </div>
+
+    <div class="section-title">Interview Process & Closing</div>
+
+    <h2 id="interviewer-questions">Questions to ask the Interviewer</h2>
+    <div class="block quote">
+      <ul>
+        <li>
+          Can you describe what a typical day or week looks like in this role?
+        </li>
+        <li>
+          What would success in the first few months look like for someone in
+          this position?
+        </li>
+        <li>
+          How is the team structured, and who would I work most closely with?
+        </li>
+        <li>What are the next steps in the interview process?</li>
+      </ul>
+    </div>
+
+    <h2 id="closing">Closing line</h2>
+    <div class="block quote">
+      Thanks for your time today. I'd be happy to continue the process and
+      talk more.
+    </div>
+
+    <button id="back-to-toc" onclick="document.getElementById('toc').scrollIntoView({ behavior: 'smooth' });">
+      Back to TOC
+    </button>
+  </div>
+</body>
+
 </html>

@@ -176,7 +176,8 @@
         <li><a href="#redux-structure-large-apps">What are best practices for structuring Redux in large apps?</a></li>
         <li><a href="#api-design">How do you design APIs?</a></li>
         <li><a href="#structure-large-scale-react">How do you structure large-scale React applications?</a></li>
-        <li><a href="#api-scalability-maintainability">How do you design APIs for scalability and maintainability?</a></li>
+        <li><a href="#api-scalability-maintainability">How do you design APIs for scalability and maintainability?</a>
+        </li>
         <li><a href="#databases-exp">SQL, ORMs, and database experience</a></li>
         <li><a href="#ux-ui">UX/UI mindset and examples</a></li>
         <li><a href="#server-vs-client">Server vs client responsibilities</a></li>
@@ -184,6 +185,8 @@
         <li><a href="#data-fetching-caching">Data fetching and caching strategies</a></li>
         <li><a href="#hooks-design">Hooks design and reusability</a></li>
         <li><a href="#performance-beyond-component">Performance beyond the component level</a></li>
+        <li><a href="#event-driven-systems">Have you worked with event-driven systems, queues, or workflow
+            orchestrators?</a></li>
         <li class="section-header"><strong>3. Scalability, Performance & Deployment</strong></li>
         <li><a href="#cloud-ci-cd">Cloud deployment & CI/CD experience</a></li>
         <li><a href="#git">Git experience</a></li>
@@ -196,10 +199,12 @@
         <li class="section-header"><strong>5. Leadership, Collaboration & Staff Skills</strong></li>
         <li><a href="#problem-solving-example">Complex Full Stack Project Leadership</a></li>
         <li><a href="#prioritize-work">How do you prioritize work when multiple tasks compete?</a></li>
-        <li><a href="#approach-ambiguous-problems">How do you approach unclear requirements or ambiguous problems?</a></li>
+        <li><a href="#approach-ambiguous-problems">How do you approach unclear requirements or ambiguous problems?</a>
+        </li>
         <li><a href="#teamwork">How do you work in a team?</a></li>
         <li><a href="#resolve-team-conflicts">How do you resolve conflicts in the team?</a></li>
-        <li><a href="#communicate-non-technical">How do you communicate with non-technical teammates or stakeholders?</a></li>
+        <li><a href="#communicate-non-technical">How do you communicate with non-technical teammates or
+            stakeholders?</a></li>
         <li><a href="#customer-facing-experience">How do you work with customers or non-internal stakeholders?</a></li>
         <li class="section-header"><strong>6. Consultancy & Client Work</strong></li>
         <li><a href="#unfamiliar-codebase">Adapting to unfamiliar client codebases</a></li>
@@ -222,10 +227,10 @@
     <h2 id="intro">Elevator pitch</h2>
     <div class="block quote">
       <ul>
-        <li>Full-stack, 6+ years, production web apps</li>
+        <li>Full-stack developer with 6+ years building production web applications</li>
         <li>React, TypeScript, Node.js, SQL</li>
-        <li>Own features end to end: DB → APIs → UI → deployment → support</li>
-        <li>Work with product and QA</li>
+        <li>Own features end to end: backend → UI → deployment</li>
+        <li>Collaborate with product managers, QA, and external partners</li>
       </ul>
     </div>
 
@@ -243,7 +248,8 @@
       <ul>
         <li>Ownership of meaningful work</li>
         <li>Technical growth</li>
-        <li>Team that values: clear communication, shared accountability, constructive feedback, support + high standards</li>
+        <li>Team that values: clear communication, shared accountability, constructive feedback, support + high
+          standards</li>
       </ul>
     </div>
 
@@ -289,7 +295,8 @@
       <ul>
         <li>Focused on remote; delivered consistently remotely</li>
         <li>Open to discussing on-site expectations</li>
-        <li>If hybrid matters: understand how often, what problems it solves; many needs met with communication + clear processes</li>
+        <li>If hybrid matters: understand how often, what problems it solves; many needs met with communication + clear
+          processes</li>
       </ul>
     </div>
 
@@ -441,9 +448,21 @@
     <h2 id="performance-beyond-component">Performance beyond the component level</h2>
     <div class="block quote">
       <ul>
-        <li>Layers: bundle (code-split, tree-shake, lazy routes), network (cache, prefetch), render (virtualize lists, memo where profiling shows gain)</li>
+        <li>Layers: bundle (code-split, tree-shake, lazy routes), network (cache, prefetch), render (virtualize lists,
+          memo where profiling shows gain)</li>
         <li>Measure before/after; don’t memoize by default</li>
         <li>Server Components + streaming remove client work; React DevTools Profiler for bottlenecks</li>
+      </ul>
+    </div>
+
+    <h2 id="event-driven-systems">Event-driven systems, queues, workflow orchestrators</h2>
+    <div class="block quote">
+      <ul>
+        <li>Worked with event-driven systems and queues</li>
+        <li>Backend tasks run asynchronously: independent of user actions</li>
+        <li>Examples: send welcome emails, multi-step workflows (payment → inventory → shipping)</li>
+        <li>Frontend shows progress, handles delays/errors, updates users when tasks complete</li>
+        <li>UI stays predictable and responsive</li>
       </ul>
     </div>
 
@@ -453,7 +472,8 @@
     <div class="block quote">
       <ul>
         <li>Docker for standardized environments; CI/CD to build, test, and deploy reliably</li>
-        <li>GitHub Actions pipeline: backend tests, Docker build, push to ECR, ECS rolling deploy; frontend static build, sync to S3, CloudFront invalidation</li>
+        <li>GitHub Actions pipeline: backend tests, Docker build, push to ECR, ECS rolling deploy; frontend static
+          build, sync to S3, CloudFront invalidation</li>
         <li>AWS: ECS (containers), ECR (images), S3 (static), CloudFront (CDN)</li>
         <li>Explicit rollback: previous ECS task or image for backend; versioned S3 files for frontend</li>
         <li>After stability, fix the issue and deploy forward through the pipeline</li>
@@ -594,7 +614,8 @@
       <ul>
         <li>Spell out trade-offs: what we defer, what risk</li>
         <li>Minimum bar: tests on critical paths, error handling, no known security holes</li>
-        <li>Cut scope or simplify before shipping tech debt with no fix path; say when timeline is unrealistic, propose achievable</li>
+        <li>Cut scope or simplify before shipping tech debt with no fix path; say when timeline is unrealistic, propose
+          achievable</li>
       </ul>
     </div>
 
@@ -602,7 +623,8 @@
     <div class="block quote">
       <ul>
         <li>Outcomes and consequences, not implementation</li>
-        <li>“If we skip this, risk X, need Y later”; “Option A faster to build, harder to change; B longer now, more flexible”</li>
+        <li>“If we skip this, risk X, need Y later”; “Option A faster to build, harder to change; B longer now, more
+          flexible”</li>
         <li>Simple analogies; they understand choice and cost → decide together</li>
       </ul>
     </div>

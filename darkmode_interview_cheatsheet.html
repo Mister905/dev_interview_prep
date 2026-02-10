@@ -207,6 +207,11 @@
           <a href="#databases-exp">SQL, ORMs, and database experience</a>
         </li>
         <li><a href="#ux-ui">UX/UI mindset and examples</a></li>
+        <li><a href="#server-vs-client">Server vs client responsibilities</a></li>
+        <li><a href="#state-modeling-derived">State modeling and derived state</a></li>
+        <li><a href="#data-fetching-caching">Data fetching and caching strategies</a></li>
+        <li><a href="#hooks-design">Hooks design and reusability</a></li>
+        <li><a href="#performance-beyond-component">Performance beyond the component level</a></li>
         <li class="section-header">
           <strong>3. Scalability, Performance & Deployment</strong>
         </li>
@@ -251,20 +256,27 @@
           <a href="#customer-facing-experience">How do you work with customers or non-internal stakeholders?</a>
         </li>
         <li class="section-header">
-          <strong>6. Past Failures & Continuous Improvement</strong>
+          <strong>6. Consultancy & Client Work</strong>
+        </li>
+        <li><a href="#unfamiliar-codebase">Adapting to unfamiliar client codebases</a></li>
+        <li><a href="#quality-vs-timelines">Balancing technical quality with delivery timelines</a></li>
+        <li><a href="#communicate-tradeoffs">Communicating trade-offs to non-technical stakeholders</a></li>
+        <li><a href="#pushing-back">Pushing back when requirements are flawed</a></li>
+        <li class="section-header">
+          <strong>7. Past Failures & Continuous Improvement</strong>
         </li>
         <li><a href="#dealing-with-failure">Dealing with failure</a></li>
         <li>
           <a href="#addressing-technical-weakness">Addressing technical weakness</a>
         </li>
         <li class="section-header">
-          <strong>7. Productivity Tools & AI</strong>
+          <strong>8. Productivity Tools & AI</strong>
         </li>
         <li>
           <a href="#ai-workflow">How do you use AI in your workflow?</a>
         </li>
         <li class="section-header">
-          <strong>8. Interview Process & Closing</strong>
+          <strong>9. Interview Process & Closing</strong>
         </li>
         <li>
           <a href="#interviewer-questions">Questions to ask the Interviewer</a>
@@ -436,23 +448,36 @@
       styling. I also use modular component libraries like Shadcn to keep designs consistent and scalable.
     </div>
 
+    <h2 id="server-vs-client">Server vs client responsibilities</h2>
+    <div class="block quote">
+      I push work to the server when it improves UX or security: data fetching so the client gets HTML with content, auth checks, and heavy computation. The client owns interactivity, client-only state, and anything that depends on browser APIs. In Next.js I use Server Components by default and opt into client components only where I need hooks, events, or dynamic behavior. That keeps bundles smaller and avoids sending logic that could run on the server.
+    </div>
+
+    <h2 id="state-modeling-derived">State modeling and derived state</h2>
+    <div class="block quote">
+      I store the minimal source of truth and derive the rest. If the list is filtered or sorted, I keep the raw list and the filter/sort inputs; the displayed list is computed (e.g. with useMemo or a selector). That way there's no chance of the store and derived view getting out of sync. I'm careful not to duplicate in state what can be computed from props or other state.
+    </div>
+
+    <h2 id="data-fetching-caching">Data fetching and caching strategies</h2>
+    <div class="block quote">
+      I prefer a single strategy per app: React Query, SWR, or server-side in Next.js. I care about loading and error states, deduplication, and cache invalidation when data changes. For server-rendered apps I fetch at the route or layout level so the page has data before paint. I avoid ad-hoc useEffect fetches in every component; that leads to waterfalls and inconsistent caching.
+    </div>
+
+    <h2 id="hooks-design">Hooks design and reusability</h2>
+    <div class="block quote">
+      I extract hooks when logic is reused or when a component gets hard to follow. A good hook has a clear responsibility, a simple API, and returns only what consumers need. I keep side effects and subscriptions inside hooks with proper cleanup. I don't over-abstract—if it's used once, it can live in the component until the second use case appears.
+    </div>
+
+    <h2 id="performance-beyond-component">Performance beyond the component level</h2>
+    <div class="block quote">
+      I think in layers: bundle size (code-splitting, tree-shaking, lazy routes), network (caching, prefetching, fewer round-trips), and render (virtualization for long lists, memoization where profiling shows benefit). I measure before and after; I don't memoize everything by default. Server Components and streaming can remove whole classes of client work. I use the React DevTools Profiler when something feels slow and fix the actual bottleneck.
+    </div>
+
     <div class="section-title">3. Scalability, Performance & Deployment</div>
 
     <h2 id="cloud-ci-cd">Cloud deployment & CI/CD experience</h2>
     <div class="block quote">
-      I standardize environments with Docker and use CI/CD (Continuous Integration / Continuous Deployment) to build,
-      test, and deploy changes reliably. On AWS, I deploy backend containers to Elastic Container Service (ECS), which
-      runs and manages Docker containers at scale. The container images are stored in Elastic Container Registry (ECR),
-      a secure place for Docker images. Frontend builds are synced to Simple Storage Service (S3), which stores static
-      files like HTML, CSS, and JavaScript. I use CloudFront, AWS’s content delivery network, to cache and deliver
-      frontend content globally for faster load times.
-
-      If something goes wrong, I can roll back ECS to a previous task definition, instantly restoring the last
-      known-good backend container. For the frontend, I restore the previous versioned files in S3 and invalidate
-      CloudFront, which tells the network to refresh its cache so users immediately see the restored version instead of
-      the outdated or broken files. After stability is restored, I investigate, fix the issue, and deploy forward again
-      through the CI/CD pipeline, ensuring safe and predictable releases.
-
+      I standardize environments with Docker and use CI/CD to build, test, and deploy reliably. I set up a production-safe GitHub Actions pipeline: on push to main, the backend runs tests, builds a Docker image, pushes to ECR, and triggers an ECS rolling deployment, while the frontend builds a static export, syncs to S3, and invalidates CloudFront. Rollback is explicit, using the previous ECS task or image for the backend and versioned S3 files for the frontend. After restoring stability, I fix the issue and deploy forward, keeping releases safe and predictable.
     </div>
 
     <h2 id="git">Git experience</h2>
@@ -559,7 +584,29 @@
       I work directly with customers to understand their goals and constraints, then translate that into clear technical decisions. I ask clarifying questions early, explain trade-offs in plain language, and make sure expectations are aligned so there are no surprises. I have supported requirements, delivery, and deployments in regulated, high-stakes environments, with a strong focus on trust, transparency, and accountability.
     </div>
 
-    <div class="section-title">6. Past Failures & Continuous Improvement</div>
+    <div class="section-title">6. Consultancy & Client Work</div>
+
+    <h2 id="unfamiliar-codebase">Adapting to unfamiliar client codebases</h2>
+    <div class="block quote">
+      I start by understanding the problem domain and how the current code is structured—routes, data flow, and key conventions. I read tests and recent PRs to see how the team works. I make small, low-risk changes first and ask for review so I learn the norms. I document as I go so the next person benefits. I don't rewrite for the sake of it; I improve where I'm working and leave the rest consistent.
+    </div>
+
+    <h2 id="quality-vs-timelines">Balancing technical quality with delivery timelines</h2>
+    <div class="block quote">
+      I'm explicit about trade-offs: what we're deferring and what risk that creates. I push for the minimum quality bar that keeps the system maintainable and operable—tests on critical paths, clear error handling, and no known security issues. I'll cut scope or simplify implementation before I ship something that will cost us more later without a clear path to fix it. I say when a timeline is unrealistic and propose what's achievable instead.
+    </div>
+
+    <h2 id="communicate-tradeoffs">Communicating trade-offs to non-technical stakeholders</h2>
+    <div class="block quote">
+      I talk in outcomes and consequences, not implementation. "If we skip this, we risk X and we'll need to do Y later" or "Option A is faster to build but harder to change; Option B takes longer now but gives us flexibility." I use simple analogies when they help. I make sure they understand the choice and the cost of each path so we can decide together instead of me deciding in a vacuum.
+    </div>
+
+    <h2 id="pushing-back">Pushing back constructively when requirements are flawed</h2>
+    <div class="block quote">
+      I assume good intent and focus on the goal behind the requirement. I explain the downside of the current ask—e.g. "This approach will make it hard to maintain" or "That scope will push the date by X"—and suggest an alternative that still gets them what they need. I offer to prototype or spike so we can validate with less commitment. I'm not defensive; I'm trying to align on a better outcome. If we still disagree after that, I document the decision and move forward.
+    </div>
+
+    <div class="section-title">7. Past Failures & Continuous Improvement</div>
 
     <h2 id="dealing-with-failure">Dealing with failure</h2>
     <div class="block quote">
@@ -573,7 +620,7 @@
       that solve the current problem while remaining flexible for future changes.
     </div>
 
-    <div class="section-title">7. Productivity Tools & AI</div>
+    <div class="section-title">8. Productivity Tools & AI</div>
 
     <h2 id="ai-workflow">How do you use AI in your workflow?</h2>
     <div class="block quote">
@@ -583,7 +630,7 @@
       architectural challenges.
     </div>
 
-    <div class="section-title">8. Interview Process & Closing</div>
+    <div class="section-title">9. Interview Process & Closing</div>
 
     <h2 id="interviewer-questions">Questions to ask the Interviewer</h2>
     <div class="block quote">

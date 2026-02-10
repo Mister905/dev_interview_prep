@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Interview Cheat Sheet — Minimalist</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg: #0b0f0d;
+      --surface: #121816;
+      --text: #e6f0ea;
+      --muted: #a7b8af;
+      --accent: #2ecc71;
+      --section-header: #4dd0e1;
+      --border: #1f2a25;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 32px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin-top: 50px;
+      margin-bottom: 20px;
+      color: var(--section-header);
+      font-weight: 700;
+    }
+
+    .section-title:first-of-type {
+      margin-top: 30px;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      margin-top: 40px;
+      margin-bottom: 12px;
+      color: var(--accent);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      margin-top: 24px;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    p,
+    li {
+      color: var(--text);
+    }
+
+    p {
+      margin: 8px 0;
+    }
+
+    ul {
+      margin: 8px 0 8px 20px;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .block {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-top: 12px;
+    }
+
+    .quote {
+      border-left: 3px solid var(--accent);
+      padding-left: 14px;
+      margin: 12px 0;
+      color: var(--text);
+    }
+
+    strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .toc li.section-header strong {
+      color: var(--section-header);
+    }
+
+    .toc a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .toc a:hover {
+      text-decoration: underline;
+    }
+
+    .toc li.section-header {
+      list-style: none;
+      margin-left: -20px;
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+
+    .toc li.section-header:first-child {
+      margin-top: 0;
+    }
+
+    #back-to-toc {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    #back-to-toc:hover {
+      background-color: var(--border);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div id="toc" class="block toc">
+      <ul>
+        <li class="section-header"><strong>1. Intro & Motivation</strong></li>
+        <li><a href="#intro">Elevator pitch</a></li>
+        <li><a href="#why-this-role">Why are you interested in this role?</a></li>
+        <li><a href="#next-role">What are you looking for in your next role?</a></li>
+        <li><a href="#career-path">Why did you choose software development?</a></li>
+        <li><a href="#last-role">Why did you leave your last role?</a></li>
+        <li><a href="#consulting-work">What consulting work have you done?</a></li>
+        <li><a href="#see-yourself">Where do you see yourself in the future?</a></li>
+        <li><a href="#relocate">Are you willing to relocate to [city]?</a></li>
+        <li class="section-header"><strong>2. Technical Stack & Core Experience</strong></li>
+        <li><a href="#stack">Describe your preferred stack</a></li>
+        <li><a href="#frontend-exp">Describe your frontend experience</a></li>
+        <li><a href="#backend-exp">Describe your backend experience</a></li>
+        <li><a href="#end-preference">Do you prefer frontend or backend development?</a></li>
+        <li><a href="#have-you-used-technology">Have you used [technology] before?</a></li>
+        <li><a href="#redux-vs-local-state">When should you use Redux vs local React state?</a></li>
+        <li><a href="#redux-structure-large-apps">What are best practices for structuring Redux in large apps?</a></li>
+        <li><a href="#api-design">How do you design APIs?</a></li>
+        <li><a href="#structure-large-scale-react">How do you structure large-scale React applications?</a></li>
+        <li><a href="#api-scalability-maintainability">How do you design APIs for scalability and maintainability?</a></li>
+        <li><a href="#databases-exp">SQL, ORMs, and database experience</a></li>
+        <li><a href="#ux-ui">UX/UI mindset and examples</a></li>
+        <li><a href="#server-vs-client">Server vs client responsibilities</a></li>
+        <li><a href="#state-modeling-derived">State modeling and derived state</a></li>
+        <li><a href="#data-fetching-caching">Data fetching and caching strategies</a></li>
+        <li><a href="#hooks-design">Hooks design and reusability</a></li>
+        <li><a href="#performance-beyond-component">Performance beyond the component level</a></li>
+        <li class="section-header"><strong>3. Scalability, Performance & Deployment</strong></li>
+        <li><a href="#cloud-ci-cd">Cloud deployment & CI/CD experience</a></li>
+        <li><a href="#git">Git experience</a></li>
+        <li><a href="#optimize-react-large-datasets">How do you optimize React for large datasets?</a></li>
+        <li><a href="#api-performance-heavy-load">How do you handle API performance under heavy load?</a></li>
+        <li class="section-header"><strong>4. Testing, Debugging & Reliability</strong></li>
+        <li><a href="#testing">Testing strategies</a></li>
+        <li><a href="#debugging-issues">Debugging production issues</a></li>
+        <li><a href="#monitor-production-frontend">How do you monitor production frontend apps?</a></li>
+        <li class="section-header"><strong>5. Leadership, Collaboration & Staff Skills</strong></li>
+        <li><a href="#problem-solving-example">Complex Full Stack Project Leadership</a></li>
+        <li><a href="#prioritize-work">How do you prioritize work when multiple tasks compete?</a></li>
+        <li><a href="#approach-ambiguous-problems">How do you approach unclear requirements or ambiguous problems?</a></li>
+        <li><a href="#teamwork">How do you work in a team?</a></li>
+        <li><a href="#resolve-team-conflicts">How do you resolve conflicts in the team?</a></li>
+        <li><a href="#communicate-non-technical">How do you communicate with non-technical teammates or stakeholders?</a></li>
+        <li><a href="#customer-facing-experience">How do you work with customers or non-internal stakeholders?</a></li>
+        <li class="section-header"><strong>6. Consultancy & Client Work</strong></li>
+        <li><a href="#unfamiliar-codebase">Adapting to unfamiliar client codebases</a></li>
+        <li><a href="#quality-vs-timelines">Balancing technical quality with delivery timelines</a></li>
+        <li><a href="#communicate-tradeoffs">Communicating trade-offs to non-technical stakeholders</a></li>
+        <li><a href="#pushing-back">Pushing back when requirements are flawed</a></li>
+        <li class="section-header"><strong>7. Past Failures & Continuous Improvement</strong></li>
+        <li><a href="#dealing-with-failure">Dealing with failure</a></li>
+        <li><a href="#addressing-technical-weakness">Addressing technical weakness</a></li>
+        <li class="section-header"><strong>8. Productivity Tools & AI</strong></li>
+        <li><a href="#ai-workflow">How do you use AI in your workflow?</a></li>
+        <li class="section-header"><strong>9. Interview Process & Closing</strong></li>
+        <li><a href="#interviewer-questions">Questions to ask the Interviewer</a></li>
+        <li><a href="#closing">Closing line</a></li>
+      </ul>
+    </div>
+
+    <div class="section-title">1. Intro & Motivation</div>
+
+    <h2 id="intro">Elevator pitch</h2>
+    <div class="block quote">
+      <ul>
+        <li>Full-stack, 6+ years, production web apps</li>
+        <li>React, TypeScript, Node.js, SQL</li>
+        <li>Own features end to end: DB → APIs → UI → deployment → support</li>
+        <li>Work with product and QA</li>
+      </ul>
+    </div>
+
+    <h2 id="why-this-role">Why are you interested in this role?</h2>
+    <div class="block quote">
+      <ul>
+        <li>Build full-stack apps on a strong team</li>
+        <li>Learn and ship</li>
+        <li>Experience in dev, testing, collaboration → contribute quickly</li>
+      </ul>
+    </div>
+
+    <h2 id="next-role">What are you looking for in your next role?</h2>
+    <div class="block quote">
+      <ul>
+        <li>Ownership of meaningful work</li>
+        <li>Technical growth</li>
+        <li>Team that values: clear communication, shared accountability, constructive feedback, support + high standards</li>
+      </ul>
+    </div>
+
+    <h2 id="career-path">Why did you choose software development?</h2>
+    <div class="block quote">
+      <ul>
+        <li>Build solutions to complex problems</li>
+        <li>Self-taught, moved into dev role</li>
+        <li>Analytical/research background → breaking down requirements, delivering practical software</li>
+      </ul>
+    </div>
+
+    <h2 id="last-role">Why did you leave your last role?</h2>
+    <div class="block quote">
+      <ul>
+        <li>Ready for new challenge</li>
+        <li>Role later impacted by budget changes</li>
+        <li>Now: freelance consulting + searching for right full-time fit</li>
+      </ul>
+    </div>
+
+    <h2 id="consulting-work">What consulting work have you done?</h2>
+    <div class="block quote">
+      <ul>
+        <li><strong>Airbnb Tracker:</strong> prototype, technical consultant</li>
+        <li>Daily snapshots of listings → history + side-by-side comparison</li>
+        <li>Own architecture + implementation: React, TypeScript, NestJS, PostgreSQL</li>
+        <li>Focus: clean UI for complex data; versioning, scraping, data normalization</li>
+      </ul>
+    </div>
+
+    <h2 id="see-yourself">Where do you see yourself in the future?</h2>
+    <div class="block quote">
+      <ul>
+        <li>Tackle complex projects, help team solve problems</li>
+        <li>Contribute where impact is highest</li>
+        <li>When engaged: provide value wherever needed</li>
+      </ul>
+    </div>
+
+    <h2 id="relocate">Are you willing to relocate to [city]?</h2>
+    <div class="block quote">
+      <ul>
+        <li>Focused on remote; delivered consistently remotely</li>
+        <li>Open to discussing on-site expectations</li>
+        <li>If hybrid matters: understand how often, what problems it solves; many needs met with communication + clear processes</li>
+      </ul>
+    </div>
+
+    <div class="section-title">2. Technical Stack & Core Experience</div>
+
+    <h2 id="stack">Describe your preferred stack</h2>
+    <div class="block quote">
+      <ul>
+        <li>Frontend: React, Next.js</li>
+        <li>Backend: Node, Express or NestJS (by complexity)</li>
+        <li>SQL and NoSQL; choose by problem</li>
+      </ul>
+    </div>
+
+    <h2 id="frontend-exp">Describe your frontend experience</h2>
+    <div class="block quote">
+      <ul>
+        <li>React, Next.js: reusable components, structured state</li>
+        <li>React for interactive UIs; Next.js when SEO, performance, routing matter</li>
+        <li>Accessibility, responsive: semantic HTML, ARIA, Tailwind, Shadcn</li>
+      </ul>
+    </div>
+
+    <h2 id="backend-exp">Describe your backend experience</h2>
+    <div class="block quote">
+      <ul>
+        <li>Node.js: Express (lightweight APIs), NestJS (modular systems)</li>
+        <li>Also Flask → perspective on routing, middleware</li>
+        <li>Focus: REST APIs, validation, auth</li>
+      </ul>
+    </div>
+
+    <h2 id="end-preference">Do you prefer frontend or backend development?</h2>
+    <div class="block quote">
+      <ul>
+        <li>Full-stack: like seeing frontend and backend connect</li>
+        <li>Comfortable switching layers; enjoy intersection problems</li>
+        <li>Own feature DB → UI, not pick a layer</li>
+      </ul>
+    </div>
+
+    <h2 id="have-you-used-technology">Have you used [technology] before?</h2>
+    <div class="block quote">
+      <ul>
+        <li>Not professionally</li>
+        <li>Learn new stacks quickly; similar patterns → fast ramp-up</li>
+      </ul>
+    </div>
+
+    <h2 id="redux-vs-local-state">When should you use Redux vs local React state?</h2>
+    <div class="block quote">
+      <ul>
+        <li>Redux: global state shared across app (e.g. auth)</li>
+        <li>Local state: component-only, avoid unnecessary re-renders</li>
+        <li>Redux: one place for state + update logic, consistent patterns, predictable global state</li>
+      </ul>
+    </div>
+
+    <h2 id="redux-structure-large-apps">What are best practices for structuring Redux in large apps?</h2>
+    <div class="block quote">
+      <ul>
+        <li>Feature slices in store; simple root reducer</li>
+        <li>Pure reducers; async via Redux Thunk or Redux Toolkit createAsyncThunk</li>
+        <li>No redundant/computed data in store; derive on the fly</li>
+      </ul>
+    </div>
+
+    <h2 id="api-design">How do you design APIs?</h2>
+    <div class="block quote">
+      <ul>
+        <li>RESTful: resource-based naming, meaningful status codes</li>
+        <li>JWTs with roles for auth</li>
+        <li>Pagination, filtering, caching from the start; consistent response shapes</li>
+      </ul>
+    </div>
+
+    <h2 id="structure-large-scale-react">How do you structure large-scale React applications?</h2>
+    <div class="block quote">
+      <ul>
+        <li>By feature: components, hooks, types per domain</li>
+        <li>Easier to navigate, scale, work in parallel</li>
+      </ul>
+    </div>
+
+    <h2 id="api-scalability-maintainability">How do you design APIs for scalability and maintainability?</h2>
+    <div class="block quote">
+      <ul>
+        <li>One resource per endpoint (/users, /listings); same fields, consistent types</li>
+        <li>Pagination, filtering for large data</li>
+        <li>Backend: feature modules, shared types, validation, error handling</li>
+      </ul>
+    </div>
+
+    <h2 id="databases-exp">SQL, ORMs, and database experience</h2>
+    <div class="block quote">
+      <ul>
+        <li>Relational DBs: schema design, indexing, transactions</li>
+        <li>Prisma: TypeScript types from schema, type-checked queries, migrations</li>
+        <li>Raw SQL when performance or complexity demands it</li>
+        <li>SQL for integrity-critical; NoSQL for flexible schemas, iteration</li>
+      </ul>
+    </div>
+
+    <h2 id="ux-ui">UX/UI mindset and examples</h2>
+    <div class="block quote">
+      <ul>
+        <li>Intuitive, accessible, easy to navigate</li>
+        <li>Responsive; clear feedback; semantic HTML, ARIA, Tailwind</li>
+        <li>Modular libraries (e.g. Shadcn) for consistency</li>
+      </ul>
+    </div>
+
+    <h2 id="server-vs-client">Server vs client responsibilities</h2>
+    <div class="block quote">
+      <ul>
+        <li>Server: data fetch (HTML with content), auth, heavy compute → better UX/security</li>
+        <li>Client: interactivity, client-only state, browser APIs</li>
+        <li>Next.js: Server Components default; client only for hooks, events, dynamic behavior → smaller bundles</li>
+      </ul>
+    </div>
+
+    <h2 id="state-modeling-derived">State modeling and derived state</h2>
+    <div class="block quote">
+      <ul>
+        <li>Minimal source of truth; derive the rest</li>
+        <li>Filter/sort: keep raw list + inputs; display = computed (useMemo or selector) → no sync bugs</li>
+        <li>Don’t duplicate in state what can be computed from props/state</li>
+      </ul>
+    </div>
+
+    <h2 id="data-fetching-caching">Data fetching and caching strategies</h2>
+    <div class="block quote">
+      <ul>
+        <li>One strategy per app: React Query, SWR, or Next.js server-side</li>
+        <li>Loading/error states, deduplication, cache invalidation</li>
+        <li>SSR: fetch at route/layout so data before paint; avoid useEffect fetches everywhere → waterfalls</li>
+      </ul>
+    </div>
+
+    <h2 id="hooks-design">Hooks design and reusability</h2>
+    <div class="block quote">
+      <ul>
+        <li>Extract when reused or component gets hard to follow</li>
+        <li>Clear responsibility, simple API, return only what’s needed; side effects + cleanup inside hook</li>
+        <li>Don’t over-abstract; keep in component until second use case</li>
+      </ul>
+    </div>
+
+    <h2 id="performance-beyond-component">Performance beyond the component level</h2>
+    <div class="block quote">
+      <ul>
+        <li>Layers: bundle (code-split, tree-shake, lazy routes), network (cache, prefetch), render (virtualize lists, memo where profiling shows gain)</li>
+        <li>Measure before/after; don’t memoize by default</li>
+        <li>Server Components + streaming remove client work; React DevTools Profiler for bottlenecks</li>
+      </ul>
+    </div>
+
+    <div class="section-title">3. Scalability, Performance & Deployment</div>
+
+    <h2 id="cloud-ci-cd">Cloud deployment & CI/CD experience</h2>
+    <div class="block quote">
+      <ul>
+        <li>Docker for standardized environments; CI/CD to build, test, and deploy reliably</li>
+        <li>GitHub Actions pipeline: backend tests, Docker build, push to ECR, ECS rolling deploy; frontend static build, sync to S3, CloudFront invalidation</li>
+        <li>AWS: ECS (containers), ECR (images), S3 (static), CloudFront (CDN)</li>
+        <li>Explicit rollback: previous ECS task or image for backend; versioned S3 files for frontend</li>
+        <li>After stability, fix the issue and deploy forward through the pipeline</li>
+      </ul>
+    </div>
+
+    <h2 id="git">Git experience</h2>
+    <div class="block quote">
+      <ul>
+        <li>Feature branches; squash commits; rebase on main</li>
+        <li>PRs for review and knowledge sharing; clear names and descriptions</li>
+      </ul>
+    </div>
+
+    <h2 id="optimize-react-large-datasets">How do you optimize React for large datasets?</h2>
+    <div class="block quote">
+      <ul>
+        <li>Render only what’s visible; avoid huge lists in global state</li>
+        <li>Fetch/stream in chunks; memoize so only changed items re-render</li>
+      </ul>
+    </div>
+
+    <h2 id="api-performance-heavy-load">How do you handle API performance under heavy load?</h2>
+    <div class="block quote">
+      <ul>
+        <li>Pagination, caching, rate limiting</li>
+        <li>Optimize queries; batching/joins; async for heavy work</li>
+        <li>Logs and metrics to find bottlenecks; indexes/caching before users hit issues</li>
+      </ul>
+    </div>
+
+    <div class="section-title">4. Testing, Debugging & Reliability</div>
+
+    <h2 id="testing">Testing strategies</h2>
+    <div class="block quote">
+      <ul>
+        <li>Jest + React Testing Library: unit tests (components, hooks, UI logic)</li>
+        <li>Integration tests: frontend modules + APIs</li>
+        <li>Postman: real API requests, verify responses</li>
+        <li>Production bugs: fix root cause, add regression tests; focus on critical paths and edge cases</li>
+      </ul>
+    </div>
+
+    <h2 id="debugging-issues">Debugging production issues</h2>
+    <div class="block quote">
+      <ul>
+        <li>Logs and monitoring → patterns, error location</li>
+        <li>Trace to layer: frontend, backend, DB</li>
+        <li>Reproduce safely, fix root cause, add tests/validation</li>
+      </ul>
+    </div>
+
+    <h2 id="monitor-production-frontend">How do you monitor production frontend apps?</h2>
+    <div class="block quote">
+      <ul>
+        <li>Amazon CloudWatch: logs, errors, page load, API response times</li>
+        <li>Alerts for regressions</li>
+        <li>Focus on critical flows (login, forms)</li>
+      </ul>
+    </div>
+
+    <div class="section-title">5. Leadership, Collaboration & Staff Skills</div>
+
+    <h2 id="problem-solving-example">Complex Full Stack Project Leadership</h2>
+    <div class="block quote">
+      <ul>
+        <li>Civix: FEMA grant management; document submission + approval for NJ OEM</li>
+        <li>Challenge: FEMA compliance, validation, multi-stage workflow</li>
+        <li>Stack: React, NestJS, SQL schema for compliance</li>
+        <li>With QA/stakeholders: regulatory process → usable UX; owned architecture → production support</li>
+      </ul>
+    </div>
+
+    <h2 id="prioritize-work">How do you prioritize work when multiple tasks compete?</h2>
+    <div class="block quote">
+      <ul>
+        <li>Value to business + time-sensitivity</li>
+        <li>Blockers first; communicate when priorities shift (e.g. critical bug)</li>
+      </ul>
+    </div>
+
+    <h2 id="approach-ambiguous-problems">How do you approach unclear requirements or ambiguous problems?</h2>
+    <div class="block quote">
+      <ul>
+        <li>Clarify goals and constraints; break into smaller parts</li>
+        <li>Tackle riskiest first; document assumptions; align stakeholders</li>
+        <li>Minimal solution that delivers value and can extend</li>
+      </ul>
+    </div>
+
+    <h2 id="teamwork">How do you work in a team?</h2>
+    <div class="block quote">
+      <ul>
+        <li>Code reviews, architecture discussion, pair programming</li>
+        <li>Give and receive feedback; focus on solutions, not personalities</li>
+        <li>Productive, consensus, no compromise on quality</li>
+      </ul>
+    </div>
+
+    <h2 id="resolve-team-conflicts">How do you resolve conflicts in the team?</h2>
+    <div class="block quote">
+      <ul>
+        <li>Focus on problem; listen to all views; test options when feasible</li>
+      </ul>
+    </div>
+
+    <h2 id="communicate-non-technical">How do you communicate with non-technical teammates or stakeholders?</h2>
+    <div class="block quote">
+      <ul>
+        <li>Outcomes and trade-offs, not implementation</li>
+        <li>Simple language or sketches; decide together</li>
+        <li>Transparent on risks and priorities</li>
+      </ul>
+    </div>
+
+    <h2 id="customer-facing-experience">How do you work with customers or non-internal stakeholders?</h2>
+    <div class="block quote">
+      <ul>
+        <li>Understand goals and constraints → clear technical decisions</li>
+        <li>Clarify early; trade-offs in plain language; align expectations</li>
+        <li>Experience: requirements, delivery, deployments in regulated environments; trust and accountability</li>
+      </ul>
+    </div>
+
+    <div class="section-title">6. Consultancy & Client Work</div>
+
+    <h2 id="unfamiliar-codebase">Adapting to unfamiliar client codebases</h2>
+    <div class="block quote">
+      <ul>
+        <li>Understand domain, structure (routes, data flow, conventions); read tests and recent PRs</li>
+        <li>Small, low-risk changes first; ask for review; document as you go</li>
+        <li>Improve where you work; don’t rewrite for its own sake</li>
+      </ul>
+    </div>
+
+    <h2 id="quality-vs-timelines">Balancing technical quality with delivery timelines</h2>
+    <div class="block quote">
+      <ul>
+        <li>Spell out trade-offs: what we defer, what risk</li>
+        <li>Minimum bar: tests on critical paths, error handling, no known security holes</li>
+        <li>Cut scope or simplify before shipping tech debt with no fix path; say when timeline is unrealistic, propose achievable</li>
+      </ul>
+    </div>
+
+    <h2 id="communicate-tradeoffs">Communicating trade-offs to non-technical stakeholders</h2>
+    <div class="block quote">
+      <ul>
+        <li>Outcomes and consequences, not implementation</li>
+        <li>“If we skip this, risk X, need Y later”; “Option A faster to build, harder to change; B longer now, more flexible”</li>
+        <li>Simple analogies; they understand choice and cost → decide together</li>
+      </ul>
+    </div>
+
+    <h2 id="pushing-back">Pushing back when requirements are flawed</h2>
+    <div class="block quote">
+      <ul>
+        <li>Assume good intent; focus on goal behind requirement</li>
+        <li>Explain downside of ask; suggest alternative that still delivers; offer prototype/spike to validate</li>
+        <li>Align on better outcome; if still disagree, document decision and move on</li>
+      </ul>
+    </div>
+
+    <div class="section-title">7. Past Failures & Continuous Improvement</div>
+
+    <h2 id="dealing-with-failure">Dealing with failure</h2>
+    <div class="block quote">
+      <ul>
+        <li>Take ownership; fix; improve process so it doesn’t repeat</li>
+        <li>Learn; add safeguards</li>
+      </ul>
+    </div>
+
+    <h2 id="addressing-technical-weakness">Addressing technical weakness</h2>
+    <div class="block quote">
+      <ul>
+        <li>Earlier: over-engineered for future scenarios</li>
+        <li>Now: simple, maintainable, solve current problem, stay flexible</li>
+      </ul>
+    </div>
+
+    <div class="section-title">8. Productivity Tools & AI</div>
+
+    <h2 id="ai-workflow">How do you use AI in your workflow?</h2>
+    <div class="block quote">
+      <ul>
+        <li>Speed up workflow; judgment stays mine</li>
+        <li>Sequential: brief → plan → implement → code review (clean context) → fix issues</li>
+        <li>Consistent work; focus on architecture</li>
+      </ul>
+    </div>
+
+    <div class="section-title">9. Interview Process & Closing</div>
+
+    <h2 id="interviewer-questions">Questions to ask the Interviewer</h2>
+    <div class="block quote">
+      <ul>
+        <li>Typical day or week in this role?</li>
+        <li>Most important projects or priorities now?</li>
+        <li>Team structure; who would I work with most?</li>
+        <li>Next steps in the process?</li>
+      </ul>
+    </div>
+
+    <h2 id="closing">Closing line</h2>
+    <div class="block quote">
+      <ul>
+        <li>Thanks for your time. Happy to continue and talk more.</li>
+      </ul>
+    </div>
+
+    <button id="back-to-toc" onclick="document.getElementById('toc').scrollIntoView({ behavior: 'smooth' });">
+      Back to TOC
+    </button>
+  </div>
+</body>
+
+</html>

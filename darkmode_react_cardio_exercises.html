@@ -195,38 +195,7 @@
     </section>
 
     <section>
-      <h2>Task 4: ProfileCard Component (Primitive Props)</h2>
-      <p>
-        Build a component that accepts simple primitive props:
-        <code>username</code>, <code>age</code>, and <code>isVerified</code>.
-      </p>
-
-      <h3>Functional Requirements:</h3>
-      <ul>
-        <li>Display the username and age</li>
-        <li>Display a visual indication if the user is verified</li>
-      </ul>
-
-      <h3>Technical Requirements:</h3>
-      <ul>
-        <li>Use TypeScript interface for props</li>
-        <li>Use a boolean prop for verification status</li>
-      </ul>
-
-      <p class="note">
-        In this component, I’m rendering a ProfileCard that receives props for a
-        username, age, and whether the user is verified. I used an interface
-        ProfileCardProps to strongly type the props, ensuring type safety and
-        clear expectations for the parent component. Inside the component, I
-        render each prop and use a ternary condition to convert the boolean
-        isVerified to a user-friendly 'Y' or 'N'. This is a good example of how
-        I structure simple, stateless components with clean prop contracts,
-        which makes them reusable and easy to test.
-      </p>
-    </section>
-
-    <section>
-      <h2>Task 5: BlogPost Component (Object and Array Props)</h2>
+      <h2>Task 4: BlogPost Component (Object and Array Props)</h2>
       <p>
         Create a component accepting an <code>author</code> object and a list of
         <code>tags</code>.
@@ -253,6 +222,39 @@
         function parameters for clarity. The tags array is mapped into list
         items, each with a key based on the index. This helps React efficiently
         update the DOM when the list changes.
+      </p>
+    </section>
+
+    <h2>Bonus</h2>
+
+    <section>
+      <h2>Task 5: ProfileCard Component (Primitive Props)</h2>
+      <p>
+        Build a component that accepts simple primitive props:
+        <code>username</code>, <code>age</code>, and <code>isVerified</code>.
+      </p>
+
+      <h3>Functional Requirements:</h3>
+      <ul>
+        <li>Display the username and age</li>
+        <li>Display a visual indication if the user is verified</li>
+      </ul>
+
+      <h3>Technical Requirements:</h3>
+      <ul>
+        <li>Use TypeScript interface for props</li>
+        <li>Use a boolean prop for verification status</li>
+      </ul>
+
+      <p class="note">
+        In this component, I’m rendering a ProfileCard that receives props for a
+        username, age, and whether the user is verified. I used an interface
+        ProfileCardProps to strongly type the props, ensuring type safety and
+        clear expectations for the parent component. Inside the component, I
+        render each prop and use a ternary condition to convert the boolean
+        isVerified to a user-friendly 'Y' or 'N'. This is a good example of how
+        I structure simple, stateless components with clean prop contracts,
+        which makes them reusable and easy to test.
       </p>
     </section>
 
@@ -301,6 +303,48 @@
         strings using stringList.length and render the full list below. The form
         prevents default submission behavior, trims whitespace, and clears the
         input after each valid submission.
+      </p>
+    </section>
+
+    <section>
+      <h2>Task 7: Tic-Tac-Toe</h2>
+      <p>
+        Build a playable Tic-Tac-Toe game with a 3×3 board, two players (X and
+        O), and winner detection.
+      </p>
+
+      <h3>Functional Requirements:</h3>
+      <ul>
+        <li>Render a 3×3 grid of clickable squares</li>
+        <li>Alternate turns between X and O on each click</li>
+        <li>Display whose turn is next (e.g. "Next player: X")</li>
+        <li>Detect and display the winner when three in a row (any line) are the same</li>
+        <li>Prevent clicking an already filled square or making moves after the game is won</li>
+      </ul>
+
+      <h3>Technical Requirements:</h3>
+      <ul>
+        <li>Use <code>useState</code> to manage the board state (array of 9 values) and current player</li>
+        <li>Lift state up so the parent (e.g. <code>Board</code>) owns the squares and passes <code>value</code> and <code>onSquareClick</code> to each square</li>
+        <li>Use a <code>Square</code> component that accepts <code>value</code> and <code>onSquareClick</code> props</li>
+        <li>Implement winner calculation (all 8 winning lines) and derive status text from it</li>
+        <li>Use TypeScript for all state, props, and the winner logic</li>
+      </ul>
+
+      <p class="note">
+        <strong>Hint:</strong> You can initialize the board state with
+        <code>Array(9).fill(null)</code>.
+      </p>
+
+      <p class="note">
+        I built a Board component that holds the squares array and xIsNext in
+        state, and a Square component that receives value and onSquareClick via
+        props. The board updates a copy of the squares array on click and toggles
+        xIsNext, with guards to ignore clicks on filled squares or after a
+        winner. I used a calculateWinner helper that checks the eight winning
+        lines and returns the winning mark or null, then derived the status
+        message from that. Typed everything with TypeScript interfaces for the
+        Square props and the squares array.
       </p>
     </section>
   </body>

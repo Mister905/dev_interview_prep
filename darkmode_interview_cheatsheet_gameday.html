@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Interview Review</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg: #0b0f0d;
+      --surface: #121816;
+      --text: #e6f0ea;
+      --muted: #a7b8af;
+      --accent: #2ecc71;
+      --section-header: #4dd0e1;
+      --border: #1f2a25;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 32px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin-top: 50px;
+      margin-bottom: 20px;
+      color: var(--section-header);
+      font-weight: 700;
+    }
+
+    .section-title:first-of-type {
+      margin-top: 30px;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      margin-top: 40px;
+      margin-bottom: 12px;
+      color: var(--accent);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      margin-top: 24px;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    p,
+    li {
+      color: var(--text);
+    }
+
+    p {
+      margin: 8px 0;
+    }
+
+    ul {
+      margin: 8px 0 8px 20px;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .block {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-top: 12px;
+    }
+
+    .quote {
+      border-left: 3px solid var(--accent);
+      padding-left: 14px;
+      margin: 12px 0;
+      color: var(--text);
+    }
+
+    strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <h2 id="intro">Elevator pitch</h2>
+    <div class="block quote">
+      <ul>
+        <li>Full-stack developer, 6+ years; React, TypeScript, Node, SQL</li>
+        <li>Own features end to end: DB design, APIs, UI, deployment</li>
+        <li>Collaborate with product, QA, and external partners</li>
+      </ul>
+    </div>
+
+    <h2 id="why-this-role">Why this role?</h2>
+    <div class="block quote">
+      <ul>
+        <li>Build modern full-stack apps; apply experience in dev, testing, collaboration</li>
+        <li>Contribute effectively from day one</li>
+      </ul>
+    </div>
+
+    <h2 id="next-role">Next role?</h2>
+    <div class="block quote">
+      <ul>
+        <li>Ownership of meaningful work; technical growth</li>
+        <li>Team that values: clear communication, accountability, feedback</li>
+      </ul>
+    </div>
+
+    <h2 id="career-path">Why did you choose software development?</h2>
+    <div class="block quote">
+      <ul>
+        <li>Enjoy building tangible solutions to complex problems</li>
+        <li>Self-taught; moved into dev role; analytical/research background fits breaking down requirements and delivering practical software</li>
+      </ul>
+    </div>
+
+    <h2 id="last-role">Why did you leave your last role?</h2>
+    <div class="block quote">
+      <ul>
+        <li>Ready for a new challenge; role later impacted by budget-related changes</li>
+        <li>Since then: freelance consulting while searching for the right full-time opportunity</li>
+      </ul>
+    </div>
+
+    <h2 id="consulting-work">What consulting work have you done?</h2>
+    <div class="block quote">
+      <ul>
+        <li>Airbnb Tracker: full-stack prototype capturing daily listing snapshots with history and comparisons</li>
+        <li>Designed and built React + TypeScript frontend and NestJS + PostgreSQL backend</li>
+        <li>Focused on clean, responsive UI, reliable versioning, and normalized data from scraping</li>
+      </ul>
+    </div>
+
+    <h2 id="ai-workflow">How do you use AI in your workflow?</h2>
+    <div class="block quote">
+      <ul>
+        <li>AI to speed up work, not replace judgment</li>
+        <li>Sequential workflow: brief (context) → plan feature → implement → code review in clean context → fix issues</li>
+        <li>Keeps work consistent, reduces bias; frees me for complex architectural decisions</li>
+      </ul>
+    </div>
+
+    <h2 id="see-yourself">Where do you see yourself?</h2>
+    <div class="block quote">
+      <ul>
+        <li>Tackle increasingly complex projects; help team solve hard problems; contribute where impact is biggest</li>
+        <li>When engaged with work and team, provide value wherever it’s needed</li>
+      </ul>
+    </div>
+
+    <h2 id="problem-solving-example">Complex Full Stack Project Leadership</h2>
+    <div class="block quote">
+      <ul>
+        <li>Civix: software for managing FEMA grants; I built document submission and approval for NJ Office of Emergency Management</li>
+        <li>Biggest challenge: FEMA compliance—strict validation, multi-stage approval workflow</li>
+        <li>Stack: React, NestJS, SQL schema to enforce compliance</li>
+        <li>With QA and stakeholders: rigid regulatory process → intuitive UX; owned architecture through production support</li>
+      </ul>
+    </div>
+
+    <h2 id="interviewer-questions">Questions to ask the Interviewer</h2>
+    <div class="block quote">
+      <ul>
+        <li>What does a typical day or week look like in this role?</li>
+        <li>What are the team’s most important projects or priorities right now?</li>
+        <li>How is the team structured, and who would I work most closely with?</li>
+        <li>What are the next steps in the interview process?</li>
+      </ul>
+    </div>
+
+    <h2 id="closing">Closing line</h2>
+    <div class="block quote">
+      <ul>
+        <li>Thanks for your time today. I’d be happy to continue the process and talk more.</li>
+      </ul>
+    </div>
+
+    <h2 id="teamwork">Teamwork</h2>
+    <div class="block quote">
+      <ul>
+        <li>Code reviews, pair programming, architecture discussion</li>
+        <li>Give and receive feedback; focus on solutions</li>
+      </ul>
+    </div>
+
+    <h2 id="prioritization">Prioritization</h2>
+    <div class="block quote">
+      <ul>
+        <li>Value to business + time-sensitivity</li>
+        <li>Blockers first; communicate when priorities shift</li>
+      </ul>
+    </div>
+
+    <h2 id="ambiguity">Ambiguity</h2>
+    <div class="block quote">
+      <ul>
+        <li>Clarify goals and constraints; break into smaller parts</li>
+        <li>Riskiest first; document assumptions; align stakeholders</li>
+      </ul>
+    </div>
+
+    <h2 id="stakeholders">Communicating with stakeholders</h2>
+    <div class="block quote">
+      <ul>
+        <li>Outcomes and trade-offs, not implementation</li>
+        <li>Simple language or sketches; transparent on risks</li>
+      </ul>
+    </div>
+
+    <h2 id="client-consulting">Client consulting</h2>
+    <div class="block quote">
+      <ul>
+        <li>Understand goals and constraints → clear technical decisions</li>
+        <li>Unfamiliar codebase: read structure, tests, recent PRs; small changes first</li>
+        <li>Trade-offs in plain language; push back with alternatives when requirements flawed</li>
+      </ul>
+    </div>
+
+  </div>
+</body>
+
+</html>

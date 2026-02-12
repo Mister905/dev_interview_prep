@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Full-Stack Review</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #0b0f0d;
+      --surface: #121816;
+      --text: #e6f0ea;
+      --muted: #a7b8af;
+      --accent: #2ecc71;
+      --border: #1f2a25;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 32px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin: 40px 0 8px;
+      color: var(--accent);
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      margin: 40px 0 12px;
+      color: var(--accent);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      margin-top: 24px;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    p,
+    li {
+      margin: 8px 0;
+      color: var(--text);
+    }
+
+    ul {
+      margin: 8px 0 8px 20px;
+      padding: 0;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .block {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-top: 12px;
+    }
+
+    .quote {
+      border-left: 3px solid var(--accent);
+      padding-left: 14px;
+      margin: 12px 0;
+      color: var(--text);
+    }
+
+    strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    code {
+      background-color: var(--border);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+
+    pre {
+      white-space: pre-wrap;
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- SECTION 1: FRONTEND / REACT / JAVASCRIPT -->
+    <h1 id="frontend-react">Frontend / React / JavaScript</h1>
+
+    <section id="component-design">
+      <h2>React component design</h2>
+      <div class="block">
+        <ul>
+          <li>Small, focused, reusable, and accessible</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="state-management">
+      <h2>State management (useState, useEffect, Redux, global vs local)</h2>
+      <div class="block">
+        <ul>
+          <li><strong>useState</strong> for local component state</li>
+          <li><strong>useEffect:</strong> handle side effects (API calls, subscriptions); run only when needed and clean
+            up to avoid leaks or duplicate work</li>
+          <li><strong>Redux</strong> for global app-wide state when many components need the same data</li>
+          <li>Use local state for component-specific data; global when shared data like auth is required across pages
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="performance-prevention">
+      <h2>Performance issues & prevention</h2>
+      <div class="block">
+        <ul>
+          <li><strong>Memoization:</strong> useMemo to avoid unnecessary re-renders</li>
+          <li><strong>Lazy loading:</strong> load components or routes only when needed; e.g., main product info loads immediately, secondary content loads as the user scrolls</li>
+          <li><strong>Virtualization:</strong> render only visible items in long lists or tables; e.g., smooth scrolling through thousands of search results</li>
+          <li><strong>Pagination:</strong> load data in pages; e.g., show 20 search results at a time to keep the UI fast</li>
+          <li><strong>Server Components:</strong> render components on the server so the client gets ready-to-display HTML, reducing JavaScript bundle size and improving performance</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="controlled-uncontrolled">
+      <h2>Controlled vs uncontrolled components</h2>
+      <div class="block">
+        <p><strong>Controlled:</strong> value synced with React state; single source of truth, full control for
+          validation and dynamic feedback (e.g. text input).</p>
+        <p><strong>Uncontrolled:</strong> internal DOM state; access via refs when you only need the value on demand,
+          without live validation (e.g. file inputs).</p>
+      </div>
+    </section>
+
+    <section id="api-calls-react">
+      <h2>API calls in React</h2>
+      <div class="block">
+        <ul>
+          <li><strong>useEffect + fetch/axios:</strong> call APIs for data; handle loading and error states locally</li>
+          <li><strong>Redux thunks:</strong> centralize async API logic in one place (API calls, data processing,
+            caching); dispatch actions to reducers after fetching or processing data</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="keys-virtual-dom">
+      <h2>Keys in lists & Virtual DOM / reconciliation</h2>
+      <div class="block">
+        <p><strong>Keys:</strong> identify changed items for efficient updates; use stable unique IDs, not array index.
+          <strong>Virtual DOM:</strong> lightweight DOM copy; React diffs old vs new and updates only changed parts.
+        </p>
+      </div>
+    </section>
+
+    <section id="conditional-rendering">
+      <h2>Conditional rendering & React Router basics</h2>
+      <div class="block">
+        <p><strong>Conditional:</strong> ternary, <code>&amp;&amp;</code>, or helper components.</p>
+        <p><strong>React
+            Router:</strong> enables SPA navigation without full reloads; manages routes and navigation links.</p>
+      </div>
+    </section>
+
+    <section id="nextjs-ssr-ssg">
+      <h2>Next.js SSR vs SSG</h2>
+      <div class="block">
+        <p><strong>SSR (Server-Side Rendering)</strong> Render pages on each request for fresh data — ideal for
+          dashboards, feeds, or personalized content
+          content.</p>
+        <p>
+          <strong>SSG (Static Site Generation)</strong> Pre-render pages at build time for speed — ideal for
+          blogs, marketing sites, or mostly static pages.
+        </p>
+        <p>Both improve performance and SEO compared to purely client-side rendering.</p>
+
+      </div>
+    </section>
+
+    <section id="ux-considerations">
+      <h2>UX considerations (forms, validation, loading/errors, a11y)</h2>
+      <div class="block">
+        <ul>
+          <li><strong>Forms:</strong> controlled components, client + server validation; form libraries like Formik for
+            complex forms</li>
+          <li><strong>Feedback:</strong> inline errors, loading states, success/error messages; skeleton screens for
+            loading
+          </li>
+          <li><strong>Accessibility:</strong> semantic HTML, ARIA attributes, keyboard nav, test
+            with
+            screen readers</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECTION 2: JAVASCRIPT & TYPESCRIPT ESSENTIALS -->
+    <h1 id="js-ts-essentials">JavaScript & TypeScript Essentials</h1>
+
+    <section id="var-let-const">
+      <h2>var vs let vs const</h2>
+      <div class="block">
+        <ul>
+          <li><strong>var</strong> is function-scoped; <strong>let</strong> and <strong>const</strong> are block-scoped
+          </li>
+          <li>
+            Use <strong>const</strong> by default to prevent reassignment (e.g., API URL, array or object reference);
+            use <strong>let</strong> for variables that need to be reassigned (e.g., counter, loop index).
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="async-patterns">
+      <h2>Async code patterns (async/await, promises)</h2>
+      <div class="block">
+        <p>Promises represent async results; use <code>.then()</code>/<code>.catch()</code></p>
+        <p><strong>async/await</strong> with try/catch for readable flow and error handling.</p>
+      </div>
+    </section>
+
+    <section id="closures-hoisting">
+      <h2>Closures & hoisting</h2>
+      <div class="block">
+        <p><strong>Closures:</strong> functions that retain access to variables from their outer scope even after that
+          scope ends.</p>
+        <p><strong>Hoisting:</strong> Declarations are moved to the top of their scope. <code>var</code> can be accessed
+          before it’s declared (value is undefined). <code>let</code> and <code>const</code> cannot be used before their
+          declaration—trying to do so throws an error.</p>
+      </div>
+    </section>
+
+    <section id="arrow-this">
+      <h2>Arrow functions & this</h2>
+      <div class="block">
+        <p>Arrow functions use shorter syntax and inherit <code>this</code> from the enclosing scope
+          (lexical this).</p>
+      </div>
+    </section>
+
+    <section id="typescript-basics">
+      <h2>TypeScript basics</h2>
+      <div class="block">
+        <ul>
+          <li><strong>Why TS:</strong> static typing catches errors at compile time, reduces runtime bugs, improves IDE
+            support, and makes code more maintainable.</li>
+          <li><strong>type vs interface:</strong> interface for object shapes; type for unions, tuples,
+            primitives</li>
+          <li><strong>Generics:</strong> reusable code that works with different types while staying type-safe</li>
+          <li><strong>Type inference:</strong> TypeScript infers types from values or returns; explicitly declare types
+            for public interfaces and function parameters</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECTION 3: BACKEND / NODE.JS / API -->
+    <h1 id="backend-node">Backend / Node.js / API</h1>
+
+    <section id="design-node-api">
+      <h2>Designing Node.js APIs</h2>
+      <div class="block">
+        <ul>
+          <li>Keep controllers focused on handling requests; put business logic in separate services for clarity and
+            reuse.</li>
+          <li>
+            Structured data layer (DTOs or ORM) for consistent responses, centralized validation, and error handling.
+            <ul>
+              <li><strong>DTOs:</strong> define the shape of data sent/received; act as contracts between layers for
+                validation and decoupling from the database.</li>
+              <li><strong>ORMs:</strong> map tables to objects; simplify queries, enforce rules, handle relations, and
+                often provide validation and helpers.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="rest-vs-graphql">
+      <h2>REST vs GraphQL</h2>
+      <div class="block">
+        <li><strong>REST:</strong> simple CRUD around clear resources; predictable and cacheable responses.
+          Example: a dashboard needing user name, recent activity, and analytics would require 3 endpoints (/user,
+          /activity, /analytics), with the client combining the results.</li>
+
+        <li><strong>GraphQL:</strong> flexible queries letting clients request exactly what they need; avoids extra
+          requests and over-fetching.
+          Example: the same dashboard can get all needed fields in a single query, returning just the data each widget
+          requires.</li>
+      </div>
+    </section>
+
+    <section id="error-validation-sanitization">
+      <h2>Error handling, reliability, validation, sanitization</h2>
+      <div class="block">
+        <ul>
+          <li>Validate input early in the frontend to guide users, sanitize/parameterize input values to prevent
+            injection, provide clear and consistent error responses.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="scalability-performance">
+      <h2>Scalability & performance</h2>
+      <div class="block">
+        <ul>
+          <li>Optimize database queries and API interactions; avoid inefficient queries or blocking operations (e.g.,
+            synchronous tasks, CPU-heavy tasks) to keep apps responsive.</li>
+          <li>Use caching where appropriate and profile code to identify bottlenecks, ensuring fast and predictable
+            performance as features scale.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="structure-node">
+      <h2>Structuring Node projects</h2>
+      <div class="block">
+        <ul>
+          <li>Organize Node projects by feature: routes define endpoints, controllers handle requests/responses,
+            services contain business logic, and the data access layer (Model) manages database interactions.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="blocking-nonblocking">
+      <h2>Blocking vs non-blocking code</h2>
+      <div class="block">
+        <p>Node.js is a single-threaded, single-chef kitchen: blocking code makes the chef finish one task before
+          starting another, stopping other work. Non-blocking code uses async I/O (oven, blender, boiling water) so the
+          chef can switch tasks efficiently, keeping the server responsive.</p>
+      </div>
+    </section>
+
+    <section id="auth-middleware">
+      <h2>Authentication & middleware basics</h2>
+      <div class="block">
+        <ul>
+          <li><strong>Auth:</strong> token-based (JWT), validated in middleware; use refresh tokens, RBAC, and secure
+            secret storage.</li>
+          <li><strong>Middleware:</strong> functions between request and response for auth, logging, parsing, CORS, and
+            error handling.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="database-schema-optimization">
+      <h2>Database schema design & query optimization</h2>
+      <div class="block">
+        <ul>
+          <li><strong>Schema:</strong> define entities, relationships, and constraints; normalize data appropriately.
+          </li>
+          <li><strong>SQL vs NoSQL:</strong> SQL for relational data and transactions; NoSQL for flexible, scalable
+            data.</li>
+          <li><strong>Indexing:</strong> speed up queries and sorts; index frequently queried columns but avoid
+            over-indexing.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECTION 4: FULL-STACK / DEVOPS / DEPLOYMENT -->
+    <h1 id="fullstack-devops">Full-Stack / DevOps / Deployment</h1>
+
+    <section id="deploy-fullstack">
+      <h2>How to deploy a full-stack app</h2>
+      <div class="block">
+        <ul>
+          <li>Deploy frontend and backend separately for independent scaling, faster updates, and different
+            hosting/maintenance needs</li>
+          <li>Keep config in environment variables, test changes in staging, watch service health, and have a rollback
+            plan if something goes wrong</li>
+            <li>e.g.
+              <ul>
+                <li>Docker for standardized environments</li>
+                <li>GitHub Actions: build, test, deploy; ECR → ECS (backend); S3 + CloudFront (frontend)</li>
+                <li>Rollback: previous ECS task or image; versioned S3 for frontend</li>
+              </ul>
+            </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="cicd">
+      <h2>Continuous integration and deployment</h2>
+      <div class="block">
+        <ul>
+          <li>Automatically build, test, and deploy code whenever changes are made.</li>
+          <ul>
+            <li>
+              <strong>CI:</strong> happens first: every code change is tested and built to make sure it works with the
+              existing code
+            </li>
+            <li><strong>CD:</strong> happens after CI: once the code passes tests, it is automatically delivered to the
+              following environment for use</li>
+          </ul>
+        </ul>
+      </div>
+    </section>
+
+    <section id="cloud-docker">
+      <h2>Cloud & Docker basics</h2>
+      <div class="block">
+        <ul>
+          <li>Containers isolate app and dependencies, so it runs the same everywhere.</li>
+          <li>Use Docker Compose to run multiple services locally (e.g. frontend and backend separately), and cloud platforms like AWS, Google Cloud, or Azure for production.</li>
+        </ul>
+
+      </div>
+    </section>
+
+    <section id="env-config">
+      <h2>Environment variables & configuration</h2>
+      <div class="block">
+        <p>Store secrets and environment-specific settings outside code so the same app works in dev, staging, and production.</p>
+      </div>
+    </section>
+
+    <section id="monitoring-scaling">
+      <h2>Monitoring production & scaling</h2>
+      <div class="block">
+        <ul>
+          <li><strong>Monitoring:</strong> track logs and metrics, set alerts, find and fix issues, and document solutions.</li>
+          <li><strong>Scaling:</strong> keep services stateless, use caching and load balancing, and optimize data access; add extra complexity only when necessary.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECTION 5: TESTING & DEBUGGING -->
+    <h1 id="testing-debugging">Testing & Debugging</h1>
+
+    <section id="testing">
+      <h2>Testing</h2>
+      <div class="block">
+        <ul>
+          <li><strong>Unit:</strong> Jest and React Testing Library for components, hooks, and UI logic.</li>
+          <li><strong>Integration:</strong> frontend with APIs; Postman or similar for real requests and response checks.</li>
+          <li><strong>Regression:</strong> focus on critical paths; fix root cause and add or update tests so the issue does not return.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="debugging">
+      <h2>Debugging</h2>
+      <div class="block">
+        <ul>
+          <li>Use logs and monitoring to see patterns and locate errors.</li>
+          <li>Trace the issue to the right layer (frontend, backend, or database).</li>
+          <li>Reproduce in a safe environment, fix the root cause, and add validation or tests to prevent recurrence.</li>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+</body>
+
+</html>

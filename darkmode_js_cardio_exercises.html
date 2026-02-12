@@ -1,228 +1,347 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Technical Interview Practice - Full Stack JS</title>
-    <style>
-      :root {
-        --bg: #121212;
-        --surface: #1e1e1e;
-        --text: #e6e6e6;
-        --accent: #4caf50;
-        --block-bg: #1a1a1a;
-      }
 
-      body {
-        background-color: var(--bg);
-        color: var(--text);
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        line-height: 1.6;
-        margin: 0;
-        padding: 20px;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Technical Interview Practice - Full Stack JS</title>
+  <style>
+    :root {
+      --bg: #121212;
+      --surface: #1e1e1e;
+      --text: #e6e6e6;
+      --accent: #4caf50;
+      --block-bg: #1a1a1a;
+      --section-header: #81c784;
+      --border: #333;
+    }
 
-      h1,
-      h2 {
-        color: var(--accent);
-      }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+    }
 
-      h1 {
-        text-align: center;
-        margin-bottom: 20px;
-      }
+    h1,
+    h2 {
+      color: var(--accent);
+    }
 
-      .section-title {
-        margin-top: 30px;
-        font-size: 1.3em;
-        color: var(--accent);
-        border-bottom: 1px solid #333;
-        padding-bottom: 5px;
-      }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
 
-      .block {
-        background-color: var(--block-bg);
-        padding: 12px 15px;
-        margin: 10px 0 20px 0;
-        border-radius: 8px;
-        white-space: pre-wrap;
-      }
+    .section-title {
+      margin-top: 30px;
+      font-size: 1.3em;
+      color: var(--accent);
+      border-bottom: 1px solid #333;
+      padding-bottom: 5px;
+    }
 
-      pre {
-        background-color: #2a2a2a;
-        padding: 10px;
-        border-radius: 6px;
-        overflow-x: auto;
-      }
+    .block {
+      background-color: var(--block-bg);
+      padding: 12px 15px;
+      margin: 10px 0 20px 0;
+      border-radius: 8px;
+      white-space: pre-wrap;
+    }
 
-      details summary {
-        cursor: pointer;
-        font-weight: bold;
-        margin-bottom: 5px;
-      }
+    pre {
+      background-color: #2a2a2a;
+      padding: 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
 
-      details[open] summary::after {
-        content: " ▲";
-      }
+    details summary {
+      cursor: pointer;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
 
-      details summary::after {
-        content: " ▼";
-        font-weight: normal;
-      }
+    details[open] summary::after {
+      content: " ▲";
+    }
 
-      details {
-        margin-top: 10px;
-        margin-bottom: 10px;
-      }
-    </style>
-  </head>
-  <body>
+    details summary::after {
+      content: " ▼";
+      font-weight: normal;
+    }
+
+    details {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .toc {
+      background-color: var(--block-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 20px 0;
+    }
+
+    .toc ul {
+      margin: 8px 0 8px 20px;
+      padding: 0;
+    }
+
+    .toc li {
+      margin-bottom: 6px;
+    }
+
+    .toc li.section-header {
+      list-style: none;
+      margin-left: -20px;
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+
+    .toc li.section-header:first-child {
+      margin-top: 0;
+    }
+
+    .toc li.section-header strong {
+      color: var(--section-header);
+    }
+
+    .toc a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .toc a:hover {
+      text-decoration: underline;
+    }
+
+    #back-to-toc {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    #back-to-toc:hover {
+      background-color: var(--border);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
     <h1>Technical Interview Practice</h1>
 
-    <!-- ES6 Single-Method Fundamentals -->
-    <div class="section-title">ES6 Single-Method Fundamentals</div>
+    <div id="toc" class="toc">
+      <ul>
+        <li class="section-header"><strong>ES6 Single-Method Fundamentals</strong></li>
+        <li><a href="#square-each-number">Square Each Number</a></li>
+        <li><a href="#return-even-numbers">Return Even Numbers</a></li>
+        <li><a href="#sum-array">Sum Array</a></li>
+        <li><a href="#find-position">Find Position</a></li>
+        <li><a href="#extract-subarray">Extract Subarray</a></li>
+        <li><a href="#locate-first-matching-element">Locate First Matching Element</a></li>
+        <li><a href="#check-existence">Check Existence</a></li>
+        <li><a href="#extract-keys">Extract Keys</a></li>
+        <li><a href="#extract-values">Extract Values</a></li>
+        <li><a href="#merge-arrays">Merge Arrays</a></li>
+        <li class="section-header"><strong>ES6 Multi-Method Combo Problems</strong></li>
+        <li><a href="#squares-of-even-numbers">Squares of Even Numbers</a></li>
+        <li><a href="#filter-map-reduce-combo">Filter, Map, Reduce Combo</a></li>
+        <li><a href="#uppercase-concatenated-strings">Uppercase Concatenated Strings</a></li>
+        <li><a href="#sort-users-by-age-and-return-names">Sort Users by Age and Return Names</a></li>
+        <li><a href="#extract-keys-values-destructure">Extract Keys/Values &amp; Destructure</a></li>
+        <li class="section-header"><strong>Loop to ES6 Refactoring</strong></li>
+        <li><a href="#collect-even-numbers-loop-filter">Collect Even Numbers (Loop → Filter)</a></li>
+        <li><a href="#refactor-for-loop-es6">Refactor For-Loop → ES6</a></li>
+        <li class="section-header"><strong>Array Manipulation</strong></li>
+        <li><a href="#remove-insert-element">Remove &amp; Insert Element</a></li>
+        <li><a href="#unique-values">Unique Values</a></li>
+        <li><a href="#first-3-unique-numbers">First 3 Unique Numbers</a></li>
+        <li><a href="#return-common-values-between-arrays">Return Common Values Between Arrays</a></li>
+        <li><a href="#count-users-per-endpoint">Count Users Per Endpoint</a></li>
+        <li class="section-header"><strong>Control Flow</strong></li>
+        <li><a href="#fizzbuzz">FizzBuzz</a></li>
+        <li class="section-header"><strong>Strings &amp; Hash Maps</strong></li>
+        <li><a href="#reverse-string">Reverse String</a></li>
+        <li><a href="#palindrome-check">Palindrome Check</a></li>
+        <li><a href="#max-character">Max Character</a></li>
+        <li><a href="#anagrams">Anagrams</a></li>
+        <li><a href="#longest-substring-without-repeating-characters">Longest Substring Without Repeating Characters</a>
+        </li>
+        <li class="section-header"><strong>Algorithmic Variations</strong></li>
+        <li><a href="#two-sum">Two Sum</a></li>
+        <li><a href="#two-pointer-remove-duplicates-sorted">Two Pointer - Remove Duplicates Sorted</a></li>
+        <li><a href="#two-pointer-sum-pair">Two Pointer - Sum Pair</a></li>
+        <li><a href="#sliding-window-max-sum-subarray">Sliding Window - Max Sum of Subarray</a></li>
+        <li class="section-header"><strong>Canonical DSA Patterns</strong></li>
+        <li><a href="#group-anagrams">Group Anagrams</a></li>
+        <li><a href="#magic-square">Magic Square</a></li>
+      </ul>
+    </div>
 
-    <h2>Square Each Number</h2>
+    <!-- ES6 Single-Method Fundamentals -->
+    <div id="es6-single-method-fundamentals" class="section-title">ES6 Single-Method Fundamentals</div>
+
+    <h2 id="square-each-number">Square Each Number</h2>
     <div class="block">
-      <p>Given an array of numbers, return a new array where each value is squared.<br>Input: [1, 2, 3, 4]<br>Output: [1, 4, 9, 16]</p>
+      <p>Given an array of numbers, return a new array where each value is squared.<br>Input: [1, 2, 3, 4]<br>Output:
+        [1, 4, 9, 16]</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
 const square_each_number = (arr) =&gt; arr.map((number) =&gt; number * number);
-</pre
-        >
+</pre>
       </details>
     </div>
 
-    <h2>Return Even Numbers</h2>
+    <h2 id="return-even-numbers">Return Even Numbers</h2>
     <div class="block">
-      <p>Given an array of numbers, return a new array containing only the even values.<br>Input: [1, 2, 3, 4, 5]<br>Output: [2, 4]</p>
+      <p>Given an array of numbers, return a new array containing only the even values.<br>Input: [1, 2, 3, 4,
+        5]<br>Output: [2, 4]</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
 const return_even_numbers = (arr) =&gt; arr.filter((number) =&gt; number % 2 === 0);
-</pre
-        >
+</pre>
       </details>
     </div>
 
-    <h2>Sum Array</h2>
+    <h2 id="sum-array">Sum Array</h2>
     <div class="block">
       <p>Given an array of numbers, return the sum of all values.<br>Input: [1, 2, 3, 4]<br>Output: 10</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
 const sum_array = (arr) =&gt; arr.reduce((acc, val) =&gt; acc + val, 0);
-</pre
-        >
+</pre>
       </details>
     </div>
 
-    <h2>Find Position</h2>
+    <h2 id="find-position">Find Position</h2>
     <div class="block">
-      <p>Given an array and a target value, return the index where the target first appears. Return -1 if not found.<br>Input: [1, 2, 3, 4], target = 3<br>Output: 2</p>
+      <p>Given an array and a target value, return the index where the target first appears. Return -1 if not
+        found.<br>Input: [1, 2, 3, 4], target = 3<br>Output: 2</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
-const find_position = (arr, target) =&gt; arr.indexOf(target) || -1;
-</pre
-        >
+const find_position = (arr, target) =&gt; arr.indexOf(target);
+</pre>
       </details>
     </div>
 
-    <h2>Extract Subarray</h2>
+    <h2 id="extract-subarray">Extract Subarray</h2>
     <div class="block">
-      <p>Given an array, a start index, and an end index, return a new array containing elements from start (inclusive) to end (exclusive).<br>
+      <p>Given an array, a start index, and an end index, return a new array containing elements from start (inclusive)
+        to end (exclusive).<br>
         Input: [1, 2, 3, 4, 5], start = 1, end = 4<br>
         Output: [2, 3, 4]</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
 const extract_subarray = (arr, start, end) =&gt; arr.slice(start, end);
-</pre
-        >
+</pre>
       </details>
     </div>
 
-    <h2>Locate First Matching Element</h2>
+    <h2 id="locate-first-matching-element">Locate First Matching Element</h2>
     <div class="block">
-      <p>Given an array of numbers, return the first value that is greater than or equal to 3.<br>Input: [1, 2, 3, 4, 5]<br>Output: 3</p>
+      <p>Given an array of numbers and a target value, return the first value that is greater than or equal to the
+        target.<br>Input: [1, 2, 3, 4, 5], target = 3<br>Output: 3</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
 const locate_first_matching_element = (arr) =&gt; arr.find((item) =&gt; item >= 3);
-</pre
-        >
+</pre>
       </details>
     </div>
 
-    <h2>Check Existence</h2>
+    <h2 id="check-existence">Check Existence</h2>
     <div class="block">
-      <p>Given an array and a target value, return true if the value exists in the array, false otherwise.<br>Input: [1, 2, 3, 4], target = 3<br>Output: true</p>
+      <p>Given an array and a target value, return true if the value exists in the array, false otherwise.<br>Input: [1,
+        2, 3, 4], target = 3<br>Output: true</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
 const check_existence = (arr, target) =&gt; arr.includes(target);
-</pre
-        >
+</pre>
       </details>
     </div>
 
-    <h2>Extract Keys</h2>
+    <h2 id="extract-keys">Extract Keys</h2>
     <div class="block">
-      <p>Given an object, return an array containing all of its property names.<br>Input: {name: 'John', age: 30, city: 'NYC'}<br>Output: ['name', 'age', 'city']</p>
+      <p>Given an object, return an array containing all of its property names.<br>Input: {name: 'John', age: 30, city:
+        'NYC'}<br>Output: ['name', 'age', 'city']</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
 const extract_keys = (obj) =&gt; Object.keys(obj);
-</pre
-        >
+</pre>
       </details>
     </div>
 
-    <h2>Extract Values</h2>
+    <h2 id="extract-values">Extract Values</h2>
     <div class="block">
-      <p>Given an object, return an array containing all of its property values.<br>Input: {name: 'John', age: 30, city: 'NYC'}<br>Output: ['John', 30, 'NYC']</p>
+      <p>Given an object, return an array containing all of its property values.<br>Input: {name: 'John', age: 30, city:
+        'NYC'}<br>Output: ['John', 30, 'NYC']</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
 const extract_values = (obj) =&gt; Object.values(obj);
-</pre
-        >
+</pre>
       </details>
     </div>
 
-    <h2>Merge Arrays</h2>
+    <h2 id="merge-arrays">Merge Arrays</h2>
     <div class="block">
-      <p>Given two arrays, return a new array that contains all elements from both arrays combined.<br>Input: [1, 2], [3, 4]<br>Output: [1, 2, 3, 4]</p>
+      <p>Given two arrays, return a new array that contains all elements from both arrays combined.<br>Input: [1, 2],
+        [3, 4]<br>Output: [1, 2, 3, 4]</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
 const merge_arrays = (arr1, arr2) =&gt; [...arr1, ...arr2];
-</pre
-        >
+</pre>
       </details>
     </div>
 
     <!-- ES6 Two-Method Combinations -->
-    <div class="section-title">ES6 Two-Method Combinations</div>
+    <div id="es6-two-method-combinations" class="section-title">ES6 Two-Method Combinations</div>
 
-    <h2>Squares of Even Numbers</h2>
+    <h2 id="squares-of-even-numbers">Squares of Even Numbers</h2>
     <div class="block">
-      <p>Given an array of numbers, return a new array containing only the even values, each squared.<br>Input: [1, 2, 3, 4, 5]<br>Output: [4, 16]</p>
+      <p>Given an array of numbers, return a new array containing only the even values, each squared.<br>Input: [1, 2,
+        3, 4, 5]<br>Output: [4, 16]</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
 const square_even_numbers = (arr) =&gt; arr.filter((item) =&gt; item % 2 == 0).map((item) =&gt; item * item);
-</pre
-        >
+</pre>
       </details>
     </div>
 
     <!-- ES6 Multi-Method Combo Problems -->
-    <div class="section-title">ES6 Multi-Method Combo Problems</div>
+    <div id="es6-multi-method-combo-problems" class="section-title">ES6 Multi-Method Combo Problems</div>
 
-    <h2>Filter, Map, Reduce Combo</h2>
+    <h2 id="filter-map-reduce-combo">Filter, Map, Reduce Combo</h2>
     <div class="block">
       <p>Filter even numbers, square them, and sum total.<br>Input: [1, 2, 3, 4, 5]<br>Output: 20</p>
       <details>
@@ -230,56 +349,62 @@ const square_even_numbers = (arr) =&gt; arr.filter((item) =&gt; item % 2 == 0).m
         <pre>
 const sum_of_squares_of_evens = (arr) =&gt;
   arr.filter(x =&gt; x % 2 === 0).map(x =&gt; x*x).reduce((acc, val) =&gt; acc + val, 0);
-</pre
-        >
+</pre>
       </details>
     </div>
 
-    <h2>Uppercase Concatenated Strings</h2>
+    <h2 id="uppercase-concatenated-strings">Uppercase Concatenated Strings</h2>
     <div class="block">
-      <p>Given an array of strings, remove empty strings, convert remaining strings to uppercase, then concatenate them with a space between each.<br>Input: ['hello', '', 'world']<br>Output: 'HELLO WORLD'</p>
+      <p>Given an array of strings, remove empty strings, convert remaining strings to uppercase, then concatenate them
+        with a space between each.<br>Input: ['hello', '', 'world']<br>Output: 'HELLO WORLD'</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
-const uppercase_concat_strings = (arr) =&gt; arr.filter(item =&gt; item.length &gt; 0).map(item =&gt; item.toUpperCase()).reduce((acc, item) =&gt; acc + item, '');
-</pre
-        >
+          const uppercase_concatenated_strings = (str_arr) => {
+            return str_arr
+              .filter((str) => str !== '')
+              .map((str) => str.toUpperCase())
+              .join(' ');
+</pre>
       </details>
     </div>
 
-    <h2>Sort Users by Age and Return Names</h2>
+    <h2 id="sort-users-by-age-and-return-names">Sort Users by Age and Return Names</h2>
     <div class="block">
-      <p>Sort array of objects by age and return names only.<br>Input: [{name: 'Alice', age: 30}, {name: 'Bob', age: 25}]<br>Output: ['Bob', 'Alice']</p>
+      <p>Sort array of objects by age and return names only.<br>Input: [{name: 'Alice', age: 30}, {name: 'Bob', age:
+        25}]<br>Output: ['Bob', 'Alice']</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
 const sort_users_by_age = (users) =&gt;
   users.sort((a,b) =&gt; a.age - b.age).map(u =&gt; u.name);
-</pre
-        >
+</pre>
       </details>
     </div>
 
-    <h2>Extract Keys/Values & Destructure</h2>
+    <h2 id="extract-keys-values-destructure">Extract Keys/Values &amp; Destructure</h2>
     <div class="block">
-      <p>Compute the total cost of items by multiplying <code>price</code> and <code>quantity</code> for each object and summing the results.<br>Input: [{price: 10, quantity: 2}, {price: 5, quantity: 3}]<br>Output: 35
+      <p>Compute the total cost of items by multiplying <code>price</code> and <code>quantity</code> for each object and
+        summing the results.<br>Input: [{price: 10, quantity: 2}, {price: 5, quantity: 3}]<br>Output: 35
       </p>
       <details>
         <summary>Show Solution</summary>
         <pre>
-const total_cost = (items) =&gt;
-  items.map(({price, quantity}) =&gt; price*quantity).reduce((acc,val) =&gt; acc+val, 0);
-</pre
-        >
+          const compute_total_cost = (obj_arr) => {
+
+            return obj_arr.reduce((acc, { price, quantity }) => acc + (price * quantity), 0);
+          }
+</pre>
       </details>
     </div>
 
     <!-- Loop to ES6 Refactoring -->
-    <div class="section-title">Loop to ES6 Refactoring</div>
+    <div id="loop-to-es6-refactoring" class="section-title">Loop to ES6 Refactoring</div>
 
-    <h2>Collect Even Numbers (Loop → Filter)</h2>
+    <h2 id="collect-even-numbers-loop-filter">Collect Even Numbers (Loop → Filter)</h2>
     <div class="block">
-      <p>Refactor the following for-loop to collect even numbers from an array.<br>Input: [1, 2, 3, 4, 5]<br>Output: [2, 4]</p>
+      <p>Refactor the following for-loop to collect even numbers from an array.<br>Input: [1, 2, 3, 4, 5]<br>Output: [2,
+        4]</p>
       <pre>
 const arr = [1, 2, 3, 4, 5];
 const evens = [];
@@ -289,8 +414,7 @@ for (let i = 0; i &lt; arr.length; i++) {
   }
 }
 console.log(evens); // [2, 4]
-</pre
-      >
+</pre>
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -298,19 +422,18 @@ const collect_even_numbers = (arr) =&gt; arr.filter(item =&gt; item % 2 === 0);
 
 // Example:
 console.log(collect_even_numbers([1, 2, 3, 4, 5])); // [2,4]
-</pre
-        >
+</pre>
       </details>
     </div>
 
-    <h2>Refactor For-Loop → ES6</h2>
+    <h2 id="refactor-for-loop-es6">Refactor For-Loop → ES6</h2>
     <div class="block">
       <p>
         Refactor the following for-loop to a more concise implementation that produces the same result.<br>
         Input: [5, 12, 8, 20, 7, 15]<br>
         Output: [24, 40, 30]<br><br>
         Original for-loop:
-        <pre>
+      <pre>
         const numbers = [5, 12, 8, 20, 7, 15];
         const result = [];
         for (let i = 0; i &lt; numbers.length; i++) {
@@ -320,39 +443,41 @@ console.log(collect_even_numbers([1, 2, 3, 4, 5])); // [2,4]
         }
         console.log(result); // [24, 40, 30]
         </pre>
-        </p>
+      </p>
       <details>
         <summary>Show Solution</summary>
         <pre>
 const numbers = [5,12,8,20,7,15];
 const result = numbers.filter(item =&gt; item &gt; 10).map(item =&gt; item * 2);
-</pre
-        >
+</pre>
       </details>
     </div>
 
     <!-- Array Manipulation -->
-    <div class="section-title">Array Manipulation</div>
+    <div id="array-manipulation" class="section-title">Array Manipulation</div>
 
-    <h2>Remove & Insert Element</h2>
+    <h2 id="remove-insert-element">Remove &amp; Insert Element</h2>
     <div class="block">
       <p>Remove 1 element at index i and insert 'x'.<br>Input: [1, 2, 3], i = 1<br>Output: [1, 'x', 3]</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
-const remove_and_insert_element = (arr, i) =&gt; {
-  arr.splice(i, 1, 'x'); 
+const remove_and_insert_x = (arr, i) => {
+
+  // arr.splice() doesn’t return the updated array — it returns an array of the removed elements
+  arr.splice(i, 1, 'x');
+
+  // return the modified array
   return arr;
-};
+}
 
 // Example:
-console.log(remove_and_insert_element([1,2,3], 1)); // [1,'x',3]
-</pre
-        >
+console.log(remove_and_insert_x([1,2,3], 1)); // [1,'x',3]
+</pre>
       </details>
     </div>
 
-    <h2>Unique Values</h2>
+    <h2 id="unique-values">Unique Values</h2>
     <div class="block">
       <p>Return unique values from an array (manual or Set).<br>Input: [1, 2, 2, 3, 3, 4]<br>Output: [1, 2, 3, 4]</p>
       <details>
@@ -369,12 +494,11 @@ const unique_values_manual = (arr) =&gt; {
   }
   return uniqueArr;
 };
-</pre
-        >
+</pre>
       </details>
     </div>
 
-    <h2>First 3 Unique Numbers</h2>
+    <h2 id="first-3-unique-numbers">First 3 Unique Numbers</h2>
     <div class="block">
       <p>Return the first three unique numbers from an array.<br>Input: [1, 2, 2, 3, 4, 4, 5]<br>Output: [1, 2, 3]</p>
       <details>
@@ -384,14 +508,14 @@ const first_3_unique_numbers = (arr) =&gt; [...new Set(arr)].slice(0, 3);
 
 // Example:
 console.log(first_3_unique_numbers([1,2,2,3,4,4,5])); // [1,2,3]
-</pre
-        >
+</pre>
       </details>
     </div>
 
-    <h2>Return Common Values Between Arrays</h2>
+    <h2 id="return-common-values-between-arrays">Return Common Values Between Arrays</h2>
     <div class="block">
-      <p>Return values that appear in both arrays without nested loops.<br>Input: [1, 2, 3, 4], [3, 4, 5, 6]<br>Output: [3, 4]</p>
+      <p>Return values that appear in both arrays without nested loops.<br>Input: [1, 2, 3, 4], [3, 4, 5, 6]<br>Output:
+        [3, 4]</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -409,17 +533,52 @@ const return_common_values = (arr1, arr2) =&gt; {
 
 // Example:
 console.log(return_common_values([1,2,3,4], [3,4,5,6])); // [3,4]
-</pre
-        >
+</pre>
+      </details>
+    </div>
+
+    <h2 id="count-users-per-endpoint">Count Users Per Endpoint</h2>
+    <div class="block">
+      <p>Given an array of log entries (each with <code>userId</code>, <code>endpoint</code>, <code>timestamp</code>), return an object mapping each endpoint to the count of <strong>unique users</strong> who hit it.<br>Input: [{userId: 1, endpoint: "/login", timestamp: 1700000000}, {userId: 1, endpoint: "/products", timestamp: 1700000100}, {userId: 2, endpoint: "/login", timestamp: 1700000200}]<br>Output: {"/login": 2, "/products": 1}</p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+const count_users_per_endpoint = (logs) => {
+  const result = {};
+
+  logs.forEach(({ userId, endpoint }) => {
+    if (!result[endpoint]) {
+      result[endpoint] = new Set();
+    }
+    result[endpoint].add(userId);
+  });
+
+  for (let key in result) {
+    result[key] = result[key].size;
+  }
+
+  return result;
+};
+
+// Example:
+const logs = [
+  { userId: 1, endpoint: "/login", timestamp: 1700000000 },
+  { userId: 1, endpoint: "/products", timestamp: 1700000100 },
+  { userId: 2, endpoint: "/login", timestamp: 1700000200 }
+];
+console.log(count_users_per_endpoint(logs)); // { "/login": 2, "/products": 1 }
+</pre>
       </details>
     </div>
 
     <!-- Control Flow -->
-    <div class="section-title">Control Flow</div>
+    <div id="control-flow" class="section-title">Control Flow</div>
 
-    <h2>FizzBuzz</h2>
+    <h2 id="fizzbuzz">FizzBuzz</h2>
     <div class="block">
-      <p>Print numbers from 1 to n with "fizz" for multiples of 3, "buzz" for multiples of 5, and "fizzbuzz" for multiples of both.<br>Input: n = 15<br>Output: 1, 2, fizz, 4, buzz, fizz, 7, 8, fizz, buzz, 11, fizz, 13, 14, fizzbuzz</p>
+      <p>Print numbers from 1 to n with "fizz" for multiples of 3, "buzz" for multiples of 5, and "fizzbuzz" for
+        multiples of both.<br>Input: n = 15<br>Output: 1, 2, fizz, 4, buzz, fizz, 7, 8, fizz, buzz, 11, fizz, 13, 14,
+        fizzbuzz</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -432,15 +591,14 @@ const fizzbuzz = (n) =&gt; {
   }
 };
 fizzbuzz(100);
-</pre
-        >
+</pre>
       </details>
     </div>
 
     <!-- Strings & Hash Maps -->
-    <div class="section-title">Strings & Hash Maps</div>
+    <div id="strings-hash-maps" class="section-title">Strings &amp; Hash Maps</div>
 
-    <h2>Reverse String</h2>
+    <h2 id="reverse-string">Reverse String</h2>
     <div class="block">
       <p>Reverse a string.<br>Input: "hello"<br>Output: "olleh"</p>
       <details>
@@ -457,12 +615,11 @@ const reverse_string = (str) => {
 
   return reversed_str;
 }
-</pre
-        >
+</pre>
       </details>
     </div>
 
-    <h2>Palindrome Check</h2>
+    <h2 id="palindrome-check">Palindrome Check</h2>
     <div class="block">
       <p>Check if a string is a palindrome.<br>Input: "abba"<br>Output: true</p>
       <details>
@@ -475,14 +632,14 @@ const isPalindrome = (str) =&gt; {
   }
   return str === reversed_str;
 };
-</pre
-        >
+</pre>
       </details>
     </div>
 
-    <h2>Max Character</h2>
+    <h2 id="max-character">Max Character</h2>
     <div class="block">
-      <p>Find the character that appears most frequently and return it along with its count.<br>Input: "abccccccd"<br>Output: "c: 6"</p>
+      <p>Find the character that appears most frequently and return it along with its count.<br>Input:
+        "abccccccd"<br>Output: "c: 6"</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
@@ -502,221 +659,302 @@ const max_character = (str) =&gt; {
   }
   return `${max_char}: ${max_char_count}`;
 };
-</pre
-        >
+</pre>
       </details>
     </div>
 
-    <h2>Anagrams</h2>
+    <h2 id="anagrams">Anagrams</h2>
     <div class="block">
-      <p>Check if two strings are anagrams of each other (ignoring spaces and case).<br>Input: "rail safety", "fairy tales"<br>Output: true
+      <p>Check if two strings are anagrams of each other (ignoring spaces and case).<br>Input: "rail safety", "fairy
+        tales"<br>Output: true
       </p>
       <details>
         <summary>Show Solution</summary>
         <pre>
-const create_char_map = (str) =&gt; {
-  let str_array = str.split("");
-  let char_map = {};
-  for (let char of str_array) {
-    if (char_map[char]) char_map[char]++;
-    else char_map[char] = 1;
-  }
-  return char_map;
-};
+  const create_char_map = (str) => {
 
-const anagrams = (str1, str2) =&gt; {
-  let sanitized_str1 = str1.replace(/\W/g, "").toLowerCase();
-  let sanitized_str2 = str2.replace(/\W/g, "").toLowerCase();
-  let char_map_1 = create_char_map(sanitized_str1);
-  let char_map_2 = create_char_map(sanitized_str2);
-  if (Object.keys(char_map_1).length !== Object.keys(char_map_2).length) return false;
-  for (let char in char_map_1) {
-    if (char_map_1[char] !== char_map_2[char]) return false;
-  }
-  return true;
-};
-</pre
-        >
+    const map = {};
+  
+    for (const char of str) {
+  
+      if (char === ' ') continue; // ignore spaces
+  
+      if (map[char]) {
+        map[char]++;
+      } else {
+        map[char] = 1;
+      }
+    }
+  
+    return map;
+  };
+  
+  const anagrams = (str1, str2) => {
+    
+    let char_map_1 = create_char_map(str1.toLowerCase());
+    let char_map_2 = create_char_map(str2.toLowerCase());
+  
+    if (Object.keys(char_map_1).length !== Object.keys(char_map_2).length) {
+  
+      return false;
+    }
+      
+    for (const char in char_map_1) {
+      if (char_map_1[char] !== char_map_2[char]) return false;
+    }
+  
+    return true;
+  };
+</pre>
       </details>
     </div>
 
-    <h2>Longest Substring Without Repeating Characters</h2>
+    <h2 id="longest-substring-without-repeating-characters">Longest Substring Without Repeating Characters</h2>
     <div class="block">
-      <p>Given a string, find the length of the longest substring without repeating characters.<br>Input: "abcabcbb"<br>Output: 3</p>
+      <p>Given a string, find the length of the longest substring without repeating characters.<br>Input:
+        "abcabcbb"<br>Output: 3</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
-const longest_substring_without_repeating = (str) =&gt; {
-  const char_map = {};
-  let max_length = 0;
-  let start = 0;
-  for (let i = 0; i &lt; str.length; i++) {
-    const current_char = str[i];
-    if (current_char in char_map &amp;&amp; char_map[current_char] &gt;= start) {
-      start = char_map[current_char] + 1;
+// Return the length of the longest substring without repeating characters
+const longestSubstringWithoutRepeating = (str) => {
+  const lastSeen = {};      // Tracks last index of each character
+  let maxLength = 0;        // Max substring length found
+  let windowStart = 0;      // Start index of current window
+
+  for (let i = 0; i < str.length; i++) {
+    const char = str[i];
+
+    // If char seen inside current window, move start just after previous index
+    if (char in lastSeen && lastSeen[char] >= windowStart) {
+      windowStart = lastSeen[char] + 1;
     }
-    char_map[current_char] = i;
-    max_length = Math.max(max_length, i - start + 1);
+
+    lastSeen[char] = i;                       // Update last seen index
+    maxLength = Math.max(maxLength, i - windowStart + 1);
   }
-  return max_length;
+
+  return maxLength;
 };
-</pre
-        >
+
+// Example:
+console.log(longestSubstringWithoutRepeating("abcadbcbb")); // Output: 4 ("abcd")
+</pre>
       </details>
     </div>
 
     <!-- Algorithmic Variations -->
-    <div class="section-title">Algorithmic Variations</div>
+    <div id="algorithmic-variations" class="section-title">Algorithmic Variations</div>
 
-    <h2>Two Sum</h2>
+    <h2 id="two-sum">Two Sum</h2>
     <div class="block">
-      <p>Given an array of integers and a target number, return the indices of the two numbers that add up to the target.<br>Input: [1, 4, 6, 3], target = 7<br>Output: [0, 3]</p>
+      <p>Given an array of integers and a target number, return the indices of the two numbers that add up to the
+        target.<br>Input: [1, 4, 6, 3], target = 7<br>Output: [0, 3]</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
-const two_sum = (arr, target) => {
-  const int_map = new Map();
-  for (let i = 0; i &lt; arr.length; i++) {
-    const current = arr[i];
-    const required_value = target - current;
-    if (int_map.has(required_value)) {
-      return [int_map.get(required_value), i];
+// Find indices of two numbers that add up to the target
+const twoSum = (arr, target) => {
+  const seen = new Map(); // Map to store number -> index
+
+  for (let i = 0; i < arr.length; i++) {
+    const num = arr[i];
+    const complement = target - num; // What we need to reach target
+
+    // If complement was seen before, return its index and current index
+    if (seen.has(complement)) {
+      return [seen.get(complement), i];
     }
-    int_map.set(current, i);
+
+    // Store current number with its index
+    seen.set(num, i);
   }
-  return null;
+
+  return null; // No pair found
 };
-</pre
-        >
+</pre>
       </details>
     </div>
 
-    <h2>Two Pointer - Pair Sum</h2>
+    <h2 id="two-pointer-remove-duplicates-sorted">Two Pointer - Remove Duplicates Sorted</h2>
     <div class="block">
-      <p>Check if any two numbers sum to target in sorted array.<br>Input: [1, 2, 3, 4, 5], target = 7<br>Output: [2, 5]</p>
+      <p>Remove duplicates from sorted array in-place.<br>Input: [1, 1, 2, 2, 3, 3]<br>Output: 3 (length of unique
+        array)</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
-const pair_sum = (arr, target) =&gt; {
-  let left=0, right=arr.length-1;
-  while(left&lt;right){
-    const sum = arr[left]+arr[right];
-    if(sum===target) return [arr[left], arr[right]];
-    else if(sum &lt; target) left++;
+const removeDuplicatesSorted = (arr) => {
+  if (arr.length === 0) return 0; // empty array edge case
+
+  let lastUnique = 0; // index of last unique element found
+
+  for (let current = 1; current < arr.length; current++) {
+    // if current element is different from last unique, it's a new unique
+    if (arr[current] !== arr[lastUnique]) {
+      lastUnique++;          // move lastUnique pointer forward
+      arr[lastUnique] = arr[current]; // overwrite next position with new unique
+    }
+  }
+
+  return lastUnique + 1; // number of unique elements
+};
+</pre>
+      </details>
+    </div>
+
+    <h2 id="two-pointer-sum-pair">Two Pointer - Sum Pair</h2>
+    <div class="block">
+      <p>Given a <strong>sorted array</strong> and a target, return true if there exists a pair that sums to the target.<br>
+         Input: [1, 2, 3, 4, 6], target = 8<br>
+         Output: true (2 + 6)</p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+// Two-pointer approach: start and end
+const hasPairWithSum = (arr, target) => {
+  let left = 0;
+  let right = arr.length - 1;
+
+  while (left < right) {
+    const sum = arr[left] + arr[right];
+    if (sum === target) return true;
+    else if (sum < target) left++;
     else right--;
   }
-  return null;
+
+  return false;
 };
-</pre
-        >
+
+// Example:
+console.log(hasPairWithSum([1,2,3,4,6], 8)); // true
+        </pre>
       </details>
     </div>
 
-    <h2>Two Pointer - Remove Duplicates Sorted</h2>
+    <h2 id="sliding-window-max-sum-subarray">Sliding Window - Max Sum of Subarray</h2>
     <div class="block">
-      <p>Remove duplicates from sorted array in-place.<br>Input: [1, 1, 2, 2, 3, 3]<br>Output: 3 (length of unique array)</p>
+      <p>Find maximum sum of contiguous subarray of size k.<br>Input: [1, 4, 2, 10, 23, 3, 1, 0, 20], k = 4<br>Output:
+        39</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
-const remove_duplicates_sorted = (arr) =&gt; {
-  if(arr.length===0) return 0;
-  let i=0;
-  for(let j=1;j&lt;arr.length;j++){
-    if(arr[j]!==arr[i]){
-      i++;
-      arr[i]=arr[j];
+  const maxSubarraySum = (arr, k) => {
+    if (arr.length < k) return null; // edge case
+  
+    // Compute initial window sum of first k elements
+    let windowSum = 0;
+    for (let i = 0; i < k; i++) {
+      windowSum += arr[i];
     }
-  }
-  return i+1; // length of unique array
-};
-</pre
-        >
-      </details>
-    </div>
-
-    <h2>Sliding Window - Max Sum of Subarray</h2>
-    <div class="block">
-      <p>Find maximum sum of contiguous subarray of size k.<br>Input: [1, 4, 2, 10, 23, 3, 1, 0, 20], k = 4<br>Output: 39</p>
-      <details>
-        <summary>Show Solution</summary>
-        <pre>
-const max_subarray_sum = (arr, k) =&gt; {
-  let maxSum = 0, windowSum = 0;
-  for (let i=0; i&lt;k; i++) windowSum += arr[i];
-  maxSum = windowSum;
-  for (let i=k; i&lt;arr.length; i++) {
-    windowSum += arr[i] - arr[i-k];
-    maxSum = Math.max(maxSum, windowSum);
-  }
-  return maxSum;
-};
-</pre
-        >
-      </details>
-    </div>
-
-    <h2>Sliding Window - Longest Substring K Distinct</h2>
-    <div class="block">
-      <p>Longest substring with at most K distinct characters.<br>Input: "araaci", k = 2<br>Output: 4</p>
-      <details>
-        <summary>Show Solution</summary>
-        <pre>
-const longest_substring_k_distinct = (s, k) =&gt; {
-  let map = {}, start=0, maxLen=0;
-  for (let end=0; end&lt;s.length; end++){
-    map[s[end]] = (map[s[end]]||0)+1;
-    while(Object.keys(map).length &gt; k){
-      map[s[start]]--;
-      if(map[s[start]]===0) delete map[s[start]];
-      start++;
+  
+    let maxSum = windowSum;
+  
+    // Slide the window across the array
+    for (let i = k; i < arr.length; i++) {
+      // Add new element, remove element that left the window
+      windowSum += arr[i] - arr[i - k];
+      maxSum = Math.max(maxSum, windowSum);
     }
-    maxLen = Math.max(maxLen, end-start+1);
+  
+    return maxSum;
+  };
+</pre>
+      </details>
+    </div>
+
+    <!-- Canonical DSA Patterns -->
+    <div id="canonical-dsa-patterns" class="section-title">Canonical DSA Patterns</div>
+
+    <h2 id="group-anagrams">Group Anagrams</h2>
+    <div class="block">
+      <p>Given an array of strings, group all anagrams together.<br>
+         Input: ['eat','tea','tan','ate','nat','bat']<br>
+         Output: [['eat','tea','ate'], ['tan','nat'], ['bat']]</p>
+      <details>
+        <summary>Show Solution</summary>
+        <pre>
+// Use a hash map to group anagrams by a canonical key
+const groupAnagrams = (arr) => {
+  const map = {};
+
+  for (let word of arr) {
+    // Normalize word: sort letters alphabetically
+    const key = word.split('').sort().join('');
+
+    // Group words by key
+    if (!map[key]) map[key] = [];
+    map[key].push(word);
   }
-  return maxLen;
+
+  // Return grouped values
+  return Object.values(map);
 };
-</pre
-        >
+
+// Example:
+console.log(groupAnagrams(['eat','tea','tan','ate','nat','bat']));
+// Output: [['eat','tea','ate'], ['tan','nat'], ['bat']]
+        </pre>
       </details>
+      <p><em>Comment:</em> Normalize each word by sorting its characters. Anagrams share the same sorted string, so we can group them efficiently using a hash map.</p>
     </div>
 
-    <!-- Node.js / Backend Logic -->
-    <div class="section-title">Node.js / Backend Logic</div>
-
-    <h2>Simple REST API</h2>
+    <h2 id="magic-square">Magic Square</h2>
     <div class="block">
-      <p>Set up a basic Express.js endpoint returning JSON data.<br>Input: GET request to /api/users<br>Output: [{id:1, name:'Alice'}, {id:2, name:'Bob'}]</p>
+      <p>Check if a 2D array forms a magic square (all rows, columns, and diagonals sum to the same value).<br>
+         Input: [[2,7,6],[9,5,1],[4,3,8]]<br>
+         Output: true</p>
       <details>
         <summary>Show Solution</summary>
         <pre>
-const express = require('express');
-const app = express();
-const PORT = 3000;
+// Validate if a grid is a magic square
+const isMagicSquare = (grid) => {
+  const n = grid.length;
 
-app.get('/api/users', (req, res) =&gt; {
-  res.json([{id:1, name:'Alice'}, {id:2, name:'Bob'}]);
-});
+  // Must be square
+  if (n === 0) return false;
+  for (const row of grid) {
+    if (row.length !== n) return false;
+  }
 
-app.listen(PORT, () =&gt; console.log(`Server running on port ${PORT}`));
-    </pre
-        >
+  // Reference sum from first row
+  const target = grid[0].reduce((a,b) => a + b, 0);
+
+  // Check all rows
+  for (let i = 0; i < n; i++) {
+    const rowSum = grid[i].reduce((a,b) => a + b, 0);
+    if (rowSum !== target) return false;
+  }
+
+  // Check all columns
+  for (let col = 0; col < n; col++) {
+    let sum = 0;
+    for (let row = 0; row < n; row++) {
+      sum += grid[row][col];
+    }
+    if (sum !== target) return false;
+  }
+
+  // Check diagonals
+  let diag1 = 0, diag2 = 0;
+  for (let i = 0; i < n; i++) {
+    diag1 += grid[i][i];
+    diag2 += grid[i][n-1-i];
+  }
+
+  return diag1 === target && diag2 === target;
+};
+
+// Example:
+console.log(isMagicSquare([[2,7,6],[9,5,1],[4,3,8]])); // true
+        </pre>
       </details>
+      <p><em>Comment:</em> Use the first row as a reference sum. Then verify that all rows, columns, and diagonals match this sum. Ensures correctness for any n×n grid.</p>
     </div>
 
-    <h2>Filter Array on Server</h2>
-    <div class="block">
-      <p>Filter array based on query parameters.<br>Input: GET request to /api/filter?min=3<br>Output: [3, 4, 5]</p>
-      <details>
-        <summary>Show Solution</summary>
-        <pre>
-app.get('/api/filter', (req, res) =&gt; {
-  const items = [1,2,3,4,5];
-  const min = parseInt(req.query.min) || 0;
-  const filtered = items.filter(item =&gt; item &gt;= min);
-  res.json(filtered);
-});
-    </pre
-        >
-      </details>
-    </div>
-  </body>
+    <button id="back-to-toc" onclick="document.getElementById('toc').scrollIntoView({ behavior: 'smooth' });">
+      Back to TOC
+    </button>
+  </div>
+</body>
+
 </html>

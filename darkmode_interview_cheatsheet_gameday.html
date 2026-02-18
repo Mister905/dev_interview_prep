@@ -105,95 +105,183 @@
       color: var(--accent);
       font-weight: 600;
     }
+
+    .toc a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .toc a:hover {
+      text-decoration: underline;
+    }
+
+    #back-to-toc {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    #back-to-toc:hover {
+      background-color: var(--border);
+      transform: translateY(-2px);
+    }
   </style>
 </head>
 
 <body>
   <div class="container">
+    <div id="toc" class="block toc">
+      <ul>
+        <li><a href="#intro">Elevator pitch</a></li>
+        <li><a href="#why-this-role">Why this role?</a></li>
+        <li><a href="#next-role">Next role?</a></li>
+        <li><a href="#career-path">Why did you choose software development?</a></li>
+        <li><a href="#last-role">Why did you leave your last role?</a></li>
+        <li><a href="#consulting-work">What consulting work have you done?</a></li>
+        <li><a href="#ai-workflow">How do you use AI in your workflow?</a></li>
+        <li><a href="#see-yourself">Where do you see yourself?</a></li>
+        <li><a href="#problem-solving-example">Complex Full Stack Project Leadership</a></li>
+        <li><a href="#teamwork">Teamwork</a></li>
+        <li><a href="#prioritization">Prioritization</a></li>
+        <li><a href="#ambiguity">Ambiguity</a></li>
+        <li><a href="#stakeholders">Communicating with stakeholders/clients</a></li>
+        <li><a href="#interviewer-questions">Questions to ask the Interviewer</a></li>
+        <li><a href="#closing">Closing line</a></li>
+      </ul>
+    </div>
 
     <h2 id="intro">Elevator pitch</h2>
     <div class="block quote">
       <ul>
         <li>Full-stack developer, 6+ years; React, TypeScript, Node, SQL</li>
-        <li>Own features end to end: DB design, APIs, UI, deployment</li>
-        <li>Collaborate with product, QA, and external partners</li>
+        <li>Owned features end to end; designing databases, backend APIs, front end UIs, and managing deployments</li>
+        <li>Collaborated with product managers, QA analysts, and external partners and stakeholders</li>
       </ul>
     </div>
 
     <h2 id="why-this-role">Why this role?</h2>
     <div class="block quote">
       <ul>
-        <li>Build modern full-stack apps; apply experience in dev, testing, collaboration</li>
-        <li>Contribute effectively from day one</li>
+        <li>Develop modern full-stack applications while leveraging my experience to simplify onboarding and make
+          meaningful contributions from the start</li>
       </ul>
     </div>
 
     <h2 id="next-role">Next role?</h2>
     <div class="block quote">
       <ul>
-        <li>Ownership of meaningful work; technical growth</li>
-        <li>Team that values: clear communication, accountability, feedback</li>
+        <li>I want to take ownership of work that matters, keep growing my skills, and be part of a team that values
+          clear communication, accountability, and honest feedback</li>
       </ul>
     </div>
 
     <h2 id="career-path">Why did you choose software development?</h2>
     <div class="block quote">
       <ul>
-        <li>Enjoy building tangible solutions to complex problems</li>
-        <li>Self-taught; moved into dev role; analytical/research background fits breaking down requirements and delivering practical software</li>
+        <li>I enjoy turning complex problems into real, tangible solutions, and software gives me more chances to do
+          that than history or political science. That said, my analytical and research background really helps me break
+          down requirements and create clear, maintainable technical documentation</li>
       </ul>
     </div>
 
     <h2 id="last-role">Why did you leave your last role?</h2>
     <div class="block quote">
       <ul>
-        <li>Ready for a new challenge; role later impacted by budget-related changes</li>
-        <li>Since then: freelance consulting while searching for the right full-time opportunity</li>
+        <li>I was ready for a new challenge, but the role was affected by budget changes. Since then, I’ve been doing
+          freelance consulting while looking for the right full-time opportunity</li>
       </ul>
     </div>
 
     <h2 id="consulting-work">What consulting work have you done?</h2>
     <div class="block quote">
       <ul>
-        <li>Airbnb Tracker: full-stack prototype capturing daily listing snapshots with history and comparisons</li>
-        <li>Designed and built React + TypeScript frontend and NestJS + PostgreSQL backend</li>
-        <li>Focused on clean, responsive UI, reliable versioning, and normalized data from scraping</li>
+        <li>Built a dashboard for a short-term rental business to track competitors</li>
+        <li>Used React, TypeScript, NestJS, Supabase</li>
+        <li>Features: manage listings, on-demand scraping, side-by-side snapshot comparison</li>
+        <li>Purpose: help the client understand competitor trends and improve marketing decisions</li>
       </ul>
     </div>
 
     <h2 id="ai-workflow">How do you use AI in your workflow?</h2>
     <div class="block quote">
       <ul>
-        <li>AI to speed up work, not replace judgment</li>
-        <li>Sequential workflow: brief (context) → plan feature → implement → code review in clean context → fix issues</li>
-        <li>Keeps work consistent, reduces bias; frees me for complex architectural decisions</li>
+        <li>AI to speed up work without replacing my experience and judgment</li>
+        <li>Sequential workflow: codify business logic → break project into features → plan → implement → code review in
+          isolated agent context (focused feedback) → fix issues</li>
+        <li>Keeps code focused, bugs isolated, reviews clear, and progress easy to track</li>
       </ul>
     </div>
 
     <h2 id="see-yourself">Where do you see yourself?</h2>
     <div class="block quote">
       <ul>
-        <li>Tackle increasingly complex projects; help team solve hard problems; contribute where impact is biggest</li>
-        <li>When engaged with work and team, provide value wherever it’s needed</li>
+        <li>Take on increasingly complex projects</li>
+        <li>Contribute to key architectural decisions</li>
+        <li>Mentor junior developers</li>
+        <li>Value mentorship because it shaped my own growth</li>
       </ul>
     </div>
 
     <h2 id="problem-solving-example">Complex Full Stack Project Leadership</h2>
     <div class="block quote">
       <ul>
-        <li>Civix: software for managing FEMA grants; I built document submission and approval for NJ Office of Emergency Management</li>
-        <li>Biggest challenge: FEMA compliance—strict validation, multi-stage approval workflow</li>
-        <li>Stack: React, NestJS, SQL schema to enforce compliance</li>
-        <li>With QA and stakeholders: rigid regulatory process → intuitive UX; owned architecture through production support</li>
+        <li>Civix: Built claims document submission and approval for NJ Office of Emergency Management within FEMA grant
+          management software</li>
+        <li>Challenge: Enforced strict validation across multi-step approval workflows</li>
+        <li>Stack: React front end, NestJS API, SQL schema to ensure compliance</li>
+        <li>Collaboration: Partnered with QA and stakeholders to create an intuitive UX despite rigid regulatory
+          constraints</li>
+      </ul>
+    </div>
+
+    <h2 id="teamwork">Teamwork</h2>
+    <div class="block quote">
+      <ul>
+        <li>Enjoy collaborating on code reviews, pair programming, and architecture discussions</li>
+        <li>Give constructive feedback generously and receive it graciously; resolve disagreements by focusing on
+          solutions, not personalities</li>
+      </ul>
+    </div>
+
+    <h2 id="prioritization">Prioritization</h2>
+    <div class="block quote">
+      <ul>
+        <li>Evaluate competing priorities by their business value and time-sensitivity</li>
+        <li>Focus on blocking tasks first to keep teammates moving forward</li>
+      </ul>
+    </div>
+
+    <h2 id="ambiguity">Ambiguity</h2>
+    <div class="block quote">
+      <ul>
+        <li>Clarify goals and constraints, break work into smaller parts, document assumptions, and align proactively
+          with stakeholders</li>
+      </ul>
+    </div>
+
+    <h2 id="stakeholders">Communicating with stakeholders/clients</h2>
+    <div class="block quote">
+      <ul>
+        <li>Focus on outcomes and trade-offs, not implementation</li>
+        <li>Transparent about risks and willing to provide diplomatic pushback to flawed assumptions</li>
+        <li>Using simple language on video calls, screen recordings or sketches for visual references</li>
       </ul>
     </div>
 
     <h2 id="interviewer-questions">Questions to ask the Interviewer</h2>
     <div class="block quote">
       <ul>
-        <li>What does a typical day or week look like in this role?</li>
         <li>What are the team’s most important projects or priorities right now?</li>
-        <li>How is the team structured, and who would I work most closely with?</li>
         <li>What are the next steps in the interview process?</li>
       </ul>
     </div>
@@ -205,47 +293,9 @@
       </ul>
     </div>
 
-    <h2 id="teamwork">Teamwork</h2>
-    <div class="block quote">
-      <ul>
-        <li>Code reviews, pair programming, architecture discussion</li>
-        <li>Give and receive feedback; focus on solutions</li>
-      </ul>
-    </div>
-
-    <h2 id="prioritization">Prioritization</h2>
-    <div class="block quote">
-      <ul>
-        <li>Value to business + time-sensitivity</li>
-        <li>Blockers first; communicate when priorities shift</li>
-      </ul>
-    </div>
-
-    <h2 id="ambiguity">Ambiguity</h2>
-    <div class="block quote">
-      <ul>
-        <li>Clarify goals and constraints; break into smaller parts</li>
-        <li>Riskiest first; document assumptions; align stakeholders</li>
-      </ul>
-    </div>
-
-    <h2 id="stakeholders">Communicating with stakeholders</h2>
-    <div class="block quote">
-      <ul>
-        <li>Outcomes and trade-offs, not implementation</li>
-        <li>Simple language or sketches; transparent on risks</li>
-      </ul>
-    </div>
-
-    <h2 id="client-consulting">Client consulting</h2>
-    <div class="block quote">
-      <ul>
-        <li>Understand goals and constraints → clear technical decisions</li>
-        <li>Unfamiliar codebase: read structure, tests, recent PRs; small changes first</li>
-        <li>Trade-offs in plain language; push back with alternatives when requirements flawed</li>
-      </ul>
-    </div>
-
+    <button id="back-to-toc" onclick="document.getElementById('toc').scrollIntoView({ behavior: 'smooth' });">
+      Back to TOC
+    </button>
   </div>
 </body>
 

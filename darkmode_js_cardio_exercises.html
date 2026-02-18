@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Technical Interview Practice - Full Stack JS</title>
+  <title>Technical Interview Practice</title>
   <style>
     :root {
       --bg: #121212;
@@ -671,40 +671,40 @@ const max_character = (str) =&gt; {
       <details>
         <summary>Show Solution</summary>
         <pre>
-  const create_char_map = (str) => {
+const create_char_map = (str) => {
 
-    const map = {};
-  
-    for (const char of str) {
-  
-      if (char === ' ') continue; // ignore spaces
-  
-      if (map[char]) {
-        map[char]++;
-      } else {
-        map[char] = 1;
-      }
+  const map = {};
+
+  for (const char of str) {
+
+    if (char === ' ') continue; // ignore spaces
+
+    if (map[char]) {
+      map[char]++;
+    } else {
+      map[char] = 1;
     }
+  }
+
+  return map;
+};
+
+const anagrams = (str1, str2) => {
   
-    return map;
-  };
-  
-  const anagrams = (str1, str2) => {
+  let char_map_1 = create_char_map(str1.toLowerCase());
+  let char_map_2 = create_char_map(str2.toLowerCase());
+
+  if (Object.keys(char_map_1).length !== Object.keys(char_map_2).length) {
+
+    return false;
+  }
     
-    let char_map_1 = create_char_map(str1.toLowerCase());
-    let char_map_2 = create_char_map(str2.toLowerCase());
-  
-    if (Object.keys(char_map_1).length !== Object.keys(char_map_2).length) {
-  
-      return false;
-    }
-      
-    for (const char in char_map_1) {
-      if (char_map_1[char] !== char_map_2[char]) return false;
-    }
-  
-    return true;
-  };
+  for (const char in char_map_1) {
+    if (char_map_1[char] !== char_map_2[char]) return false;
+  }
+
+  return true;
+};
 </pre>
       </details>
     </div>
@@ -712,33 +712,32 @@ const max_character = (str) =&gt; {
     <h2 id="longest-substring-without-repeating-characters">Longest Substring Without Repeating Characters</h2>
     <div class="block">
       <p>Given a string, find the length of the longest substring without repeating characters.<br>Input:
-        "abcabcbb"<br>Output: 3</p>
+        "abca"<br>Output: 3</p>
       <details>
         <summary>Show Solution</summary>
-        <pre>
-// Return the length of the longest substring without repeating characters
+<pre>
 const longestSubstringWithoutRepeating = (str) => {
-  const lastSeen = {};      // Tracks last index of each character
-  let maxLength = 0;        // Max substring length found
-  let windowStart = 0;      // Start index of current window
+  const lastSeen = {}; // Tracks last index of each character
+  let maxLength = 0; // Max substring length found
+  let windowStart = 0; // Start index of current window
 
   for (let i = 0; i < str.length; i++) {
     const char = str[i];
 
     // If char seen inside current window, move start just after previous index
-    if (char in lastSeen && lastSeen[char] >= windowStart) {
+    if (lastSeen[char] && lastSeen[char] >= windowStart) {
       windowStart = lastSeen[char] + 1;
     }
 
-    lastSeen[char] = i;                       // Update last seen index
-    maxLength = Math.max(maxLength, i - windowStart + 1);
+    lastSeen[char] = i; // Update last seen index
+    const currentLength = i - windowStart + 1; // Current window length
+    maxLength = Math.max(maxLength, currentLength);
   }
 
   return maxLength;
 };
 
-// Example:
-console.log(longestSubstringWithoutRepeating("abcadbcbb")); // Output: 4 ("abcd")
+console.log(longestSubstringWithoutRepeating("abca"));
 </pre>
       </details>
     </div>

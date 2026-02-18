@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>React Cardio Gameday</title>
+  <style>
+    :root {
+      --bg: #121212;
+      --surface: #1e1e1e;
+      --text: #e6e6e6;
+      --accent: #4caf50;
+      --block-bg: #1a1a1a;
+      --border: #333;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    pre {
+      background-color: #2a2a2a;
+      padding: 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin: 0;
+    }
+
+    pre code {
+      background: none;
+      padding: 0;
+      font-family: "Fira Code", "Consolas", "Monaco", monospace;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    /* Syntax highlighting - darkmode colour scheme */
+    .token.comment,
+    .token.prolog,
+    .token.doctype,
+    .token.cdata {
+      color: #6a9955;
+    }
+    .token.punctuation {
+      color: #a7b8af;
+    }
+    .token.property,
+    .token.tag,
+    .token.boolean,
+    .token.number,
+    .token.constant {
+      color: #b5cea8;
+    }
+    .token.string,
+    .token.char,
+    .token.attr-value {
+      color: #ce9178;
+    }
+    .token.selector,
+    .token.attr-name,
+    .token.builtin {
+      color: #9cdcfe;
+    }
+    .token.operator,
+    .token.entity,
+    .token.url {
+      color: #d4d4d4;
+    }
+    .token.atrule,
+    .token.keyword {
+      color: #4caf50;
+    }
+    .token.function,
+    .token.class-name {
+      color: #dcdcaa;
+    }
+    .token.regex,
+    .token.important,
+    .token.variable {
+      color: #d16969;
+    }
+  </style>
+  <script src="prism.min.js"></script>
+  <script src="prism-typescript.min.js"></script>
+  <script src="prism-jsx.min.js"></script>
+  <script src="prism-tsx.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <h1>User Search</h1>
+    <pre><code class="language-tsx">import React, { useState, useEffect } from "react";
+import axios from "axios";
+
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
+const UserSearch: React.FC = () => {
+  const [users, setUsers] = useState&lt;User[]&gt;([]);
+  const [filteredUsers, setFilteredUsers] = useState&lt;User[]&gt;([]);
+  const [isLoading, setIsLoading] = useState&lt;boolean&gt;(true);
+
+  useEffect(() => {
+    try {
+      const fetchUsers = async () => {
+        const res = await axios.get(
+          "https://jsonplaceholder.typicode.com/users",
+        );
+
+        setUsers(res.data);
+        setFilteredUsers(res.data);
+        setIsLoading(false);
+      };
+
+      fetchUsers();
+
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  const handleFilterChange = (input: string) => {
+    const query = input.toLowerCase().trim();
+
+    if (!query) {
+        setFilteredUsers(users);
+    }
+
+    setFilteredUsers(users.filter(({name, email}) =&gt; {
+        return name.toLowerCase().trim().includes(query) || email.toLowerCase().trim().includes(query);
+    }));
+  }
+
+  return (
+    &lt;&gt;
+      &lt;h1&gt;User Search&lt;/h1&gt;
+
+        &lt;label htmlFor="filter"&gt;Filter by Name&lt;/label&gt;
+        &lt;input type="text" id="filter" name="filter" onChange={(e) =&gt; handleFilterChange(e.target.value)}/&gt;
+
+      {isLoading &amp;&amp; &lt;p&gt;Loading users...&lt;/p&gt;}
+
+      &lt;h2&gt;Users:&lt;/h2&gt;
+
+      {filteredUsers.length === 0 &amp;&amp; &lt;p&gt;No users available&lt;/p&gt;}
+
+      &lt;ul&gt;
+        {filteredUsers.map(({ id, name, email }) =&gt; {
+          return (
+            &lt;li key={id}&gt;
+              {name} - {email}
+            &lt;/li&gt;
+          );
+        })}
+      &lt;/ul&gt;
+    &lt;/&gt;
+  );
+};
+
+export default UserSearch;
+</code></pre>
+
+    <h1>String List Form</h1>
+    <pre><code class="language-tsx">import React, { useState } from "react";
+
+const StringListForm: React.FC = () => {
+  const [stringList, setStringList] = useState&lt;string[]&gt;([]);
+
+  const [value, setValue] = useState&lt;string&gt;("");
+
+  const handleFormSubmit = (e: any) => {
+    e.preventDefault();
+
+    setStringList((prev) =&gt; [...prev, value]);
+
+    setValue("");
+  };
+
+  return (
+    &lt;&gt;
+      &lt;h1&gt;String List with Form&lt;/h1&gt;
+
+      &lt;h2&gt;String Count: {stringList.length}&lt;/h2&gt;
+
+      &lt;form&gt;
+        &lt;label htmlFor="input"&gt;Input: &lt;/label&gt;
+        &lt;input
+          type="text"
+          id="input"
+          onChange={(e) =&gt; setValue(e.target.value)}
+        /&gt;
+        &lt;button type="submit" onClick={(e) =&gt; handleFormSubmit(e)}&gt;
+          Submit
+        &lt;/button&gt;
+      &lt;/form&gt;
+
+      &lt;h2&gt;String List:&lt;/h2&gt;
+      &lt;ul&gt;
+        {stringList.map((str) =&gt; (
+          &lt;li&gt;{str}&lt;/li&gt;
+        ))}
+      &lt;/ul&gt;
+    &lt;/&gt;
+  );
+};
+
+export default StringListForm;
+</code></pre>
+  </div>
+  <script>document.addEventListener("DOMContentLoaded", function() { Prism.highlightAll(); });</script>
+</body>
+
+</html>

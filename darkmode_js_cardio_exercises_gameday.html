@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <title>JS Cardio — Gameday Review</title>
+  <style>
+    :root {
+      --bg: #121212;
+      --surface: #1e1e1e;
+      --text: #e6e6e6;
+      --accent: #4caf50;
+      --block-bg: #1a1a1a;
+      --section-header: #81c784;
+      --border: #333;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 1rem;
+      padding-left: max(1rem, env(safe-area-inset-left));
+      padding-right: max(1rem, env(safe-area-inset-right));
+      padding-bottom: max(4rem, env(safe-area-inset-bottom));
+    }
+
+    h1, h2 {
+      color: var(--accent);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      margin-top: 1.5rem;
+      font-size: 1.15rem;
+      color: var(--accent);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.35rem;
+    }
+
+    .block {
+      background-color: var(--block-bg);
+      padding: 1rem;
+      margin: 0.5rem 0 1rem 0;
+      border-radius: 8px;
+      overflow-wrap: break-word;
+    }
+
+    .block p {
+      margin: 0 0 0.75rem 0;
+      white-space: pre-wrap;
+    }
+
+    .solution-label {
+      font-size: 0.85rem;
+      color: var(--section-header);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    pre {
+      background-color: #2a2a2a;
+      padding: 0.75rem;
+      border-radius: 6px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 0;
+      font-size: 0.85rem;
+      line-height: 1.45;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .block pre {
+      margin-top: 0.5rem;
+    }
+
+    .container {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    .toc {
+      background-color: var(--block-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+
+    .toc ul {
+      margin: 0.5rem 0 0.5rem 1rem;
+      padding: 0;
+    }
+
+    .toc li {
+      margin-bottom: 0.5rem;
+    }
+
+    .toc li.section-header {
+      list-style: none;
+      margin-left: -1rem;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .toc li.section-header:first-child {
+      margin-top: 0;
+    }
+
+    .toc li.section-header strong {
+      color: var(--section-header);
+      font-size: 0.95rem;
+    }
+
+    .toc a {
+      color: var(--accent);
+      text-decoration: none;
+      display: block;
+      padding: 0.35rem 0;
+      min-height: 44px;
+      line-height: 1.4;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .toc a:active {
+      background-color: rgba(76, 175, 80, 0.15);
+      border-radius: 4px;
+    }
+
+    #back-to-toc {
+      position: fixed;
+      bottom: max(1rem, env(safe-area-inset-bottom));
+      right: max(1rem, env(safe-area-inset-right));
+      left: max(1rem, env(safe-area-inset-left));
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      padding: 0.9rem 1rem;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      -webkit-tap-highlight-color: transparent;
+      min-height: 48px;
+    }
+
+    code {
+      background-color: #2a2a2a;
+      padding: 0.15em 0.4em;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>JS Cardio — Gameday Review</h1>
+
+    <div id="toc" class="toc">
+      <ul>
+        <li class="section-header"><strong>ES6 Single-Method Fundamentals</strong></li>
+        <li><a href="#square-each-number">Square Each Number</a></li>
+        <li><a href="#return-even-numbers">Return Even Numbers</a></li>
+        <li><a href="#sum-array">Sum Array</a></li>
+        <li><a href="#find-position">Find Position</a></li>
+        <li><a href="#extract-subarray">Extract Subarray</a></li>
+        <li><a href="#locate-first-matching-element">Locate First Matching Element</a></li>
+        <li><a href="#check-existence">Check Existence</a></li>
+        <li><a href="#extract-keys">Extract Keys</a></li>
+        <li><a href="#extract-values">Extract Values</a></li>
+        <li><a href="#merge-arrays">Merge Arrays</a></li>
+        <li class="section-header"><strong>ES6 Multi-Method Combo Problems</strong></li>
+        <li><a href="#squares-of-even-numbers">Squares of Even Numbers</a></li>
+        <li><a href="#filter-map-reduce-combo">Filter, Map, Reduce Combo</a></li>
+        <li><a href="#uppercase-concatenated-strings">Uppercase Concatenated Strings</a></li>
+        <li><a href="#sort-users-by-age-and-return-names">Sort Users by Age and Return Names</a></li>
+        <li><a href="#extract-keys-values-destructure">Extract Keys/Values &amp; Destructure</a></li>
+        <li class="section-header"><strong>Loop to ES6 Refactoring</strong></li>
+        <li><a href="#collect-even-numbers-loop-filter">Collect Even Numbers (Loop → Filter)</a></li>
+        <li><a href="#refactor-for-loop-es6">Refactor For-Loop → ES6</a></li>
+        <li class="section-header"><strong>Array Manipulation</strong></li>
+        <li><a href="#remove-insert-element">Remove &amp; Insert Element</a></li>
+        <li><a href="#unique-values">Unique Values</a></li>
+        <li><a href="#first-3-unique-numbers">First 3 Unique Numbers</a></li>
+        <li><a href="#return-common-values-between-arrays">Return Common Values Between Arrays</a></li>
+        <li><a href="#count-users-per-endpoint">Count Users Per Endpoint</a></li>
+        <li class="section-header"><strong>Control Flow</strong></li>
+        <li><a href="#fizzbuzz">FizzBuzz</a></li>
+        <li class="section-header"><strong>Strings &amp; Hash Maps</strong></li>
+        <li><a href="#reverse-string">Reverse String</a></li>
+        <li><a href="#palindrome-check">Palindrome Check</a></li>
+        <li><a href="#max-character">Max Character</a></li>
+        <li><a href="#anagrams">Anagrams</a></li>
+        <li><a href="#longest-substring-without-repeating-characters">Longest Substring Without Repeating Characters</a></li>
+        <li class="section-header"><strong>Algorithmic Variations</strong></li>
+        <li><a href="#two-sum">Two Sum</a></li>
+        <li><a href="#two-pointer-remove-duplicates-sorted">Two Pointer - Remove Duplicates Sorted</a></li>
+        <li><a href="#two-pointer-sum-pair">Two Pointer - Sum Pair</a></li>
+        <li><a href="#sliding-window-max-sum-subarray">Sliding Window - Max Sum of Subarray</a></li>
+        <li class="section-header"><strong>Canonical DSA Patterns</strong></li>
+        <li><a href="#group-anagrams">Group Anagrams</a></li>
+        <li><a href="#magic-square">Magic Square</a></li>
+      </ul>
+    </div>
+
+    <div id="es6-single-method-fundamentals" class="section-title">ES6 Single-Method Fundamentals</div>
+
+    <h2 id="square-each-number">Square Each Number</h2>
+    <div class="block">
+      <p>Given an array of numbers, return a new array where each value is squared.<br>Input: [1, 2, 3, 4]<br>Output: [1, 4, 9, 16]</p>
+      <div class="solution-label">Solution</div>
+      <pre>const square_each_number = (arr) => arr.map((number) => number * number);</pre>
+    </div>
+
+    <h2 id="return-even-numbers">Return Even Numbers</h2>
+    <div class="block">
+      <p>Given an array of numbers, return a new array containing only the even values.<br>Input: [1, 2, 3, 4, 5]<br>Output: [2, 4]</p>
+      <div class="solution-label">Solution</div>
+      <pre>const return_even_numbers = (arr) => arr.filter((number) => number % 2 === 0);</pre>
+    </div>
+
+    <h2 id="sum-array">Sum Array</h2>
+    <div class="block">
+      <p>Given an array of numbers, return the sum of all values.<br>Input: [1, 2, 3, 4]<br>Output: 10</p>
+      <div class="solution-label">Solution</div>
+      <pre>const sum_array = (arr) => arr.reduce((acc, val) => acc + val, 0);</pre>
+    </div>
+
+    <h2 id="find-position">Find Position</h2>
+    <div class="block">
+      <p>Given an array and a target value, return the index where the target first appears. Return -1 if not found.<br>Input: [1, 2, 3, 4], target = 3<br>Output: 2</p>
+      <div class="solution-label">Solution</div>
+      <pre>const find_position = (arr, target) => arr.indexOf(target);</pre>
+    </div>
+
+    <h2 id="extract-subarray">Extract Subarray</h2>
+    <div class="block">
+      <p>Given an array, a start index, and an end index, return a new array containing elements from start (inclusive) to end (exclusive).<br>Input: [1, 2, 3, 4, 5], start = 1, end = 4<br>Output: [2, 3, 4]</p>
+      <div class="solution-label">Solution</div>
+      <pre>const extract_subarray = (arr, start, end) => arr.slice(start, end);</pre>
+    </div>
+
+    <h2 id="locate-first-matching-element">Locate First Matching Element</h2>
+    <div class="block">
+      <p>Given an array of numbers and a target value, return the first value that is greater than or equal to the target.<br>Input: [1, 2, 3, 4, 5], target = 3<br>Output: 3</p>
+      <div class="solution-label">Solution</div>
+      <pre>const locate_first_matching_element = (arr) => arr.find((item) => item >= 3);</pre>
+    </div>
+
+    <h2 id="check-existence">Check Existence</h2>
+    <div class="block">
+      <p>Given an array and a target value, return true if the value exists in the array, false otherwise.<br>Input: [1, 2, 3, 4], target = 3<br>Output: true</p>
+      <div class="solution-label">Solution</div>
+      <pre>const check_existence = (arr, target) => arr.includes(target);</pre>
+    </div>
+
+    <h2 id="extract-keys">Extract Keys</h2>
+    <div class="block">
+      <p>Given an object, return an array containing all of its property names.<br>Input: {name: 'John', age: 30, city: 'NYC'}<br>Output: ['name', 'age', 'city']</p>
+      <div class="solution-label">Solution</div>
+      <pre>const extract_keys = (obj) => Object.keys(obj);</pre>
+    </div>
+
+    <h2 id="extract-values">Extract Values</h2>
+    <div class="block">
+      <p>Given an object, return an array containing all of its property values.<br>Input: {name: 'John', age: 30, city: 'NYC'}<br>Output: ['John', 30, 'NYC']</p>
+      <div class="solution-label">Solution</div>
+      <pre>const extract_values = (obj) => Object.values(obj);</pre>
+    </div>
+
+    <h2 id="merge-arrays">Merge Arrays</h2>
+    <div class="block">
+      <p>Given two arrays, return a new array that contains all elements from both arrays combined.<br>Input: [1, 2], [3, 4]<br>Output: [1, 2, 3, 4]</p>
+      <div class="solution-label">Solution</div>
+      <pre>const merge_arrays = (arr1, arr2) => [...arr1, ...arr2];</pre>
+    </div>
+
+    <div id="es6-two-method-combinations" class="section-title">ES6 Two-Method Combinations</div>
+
+    <h2 id="squares-of-even-numbers">Squares of Even Numbers</h2>
+    <div class="block">
+      <p>Given an array of numbers, return a new array containing only the even values, each squared.<br>Input: [1, 2, 3, 4, 5]<br>Output: [4, 16]</p>
+      <div class="solution-label">Solution</div>
+      <pre>const square_even_numbers = (arr) => arr.filter((item) => item % 2 == 0).map((item) => item * item);</pre>
+    </div>
+
+    <div id="es6-multi-method-combo-problems" class="section-title">ES6 Multi-Method Combo Problems</div>
+
+    <h2 id="filter-map-reduce-combo">Filter, Map, Reduce Combo</h2>
+    <div class="block">
+      <p>Filter even numbers, square them, and sum total.<br>Input: [1, 2, 3, 4, 5]<br>Output: 20</p>
+      <div class="solution-label">Solution</div>
+      <pre>const sum_of_squares_of_evens = (arr) =>
+  arr.filter(x => x % 2 === 0).map(x => x*x).reduce((acc, val) => acc + val, 0);</pre>
+    </div>
+
+    <h2 id="uppercase-concatenated-strings">Uppercase Concatenated Strings</h2>
+    <div class="block">
+      <p>Given an array of strings, remove empty strings, convert remaining strings to uppercase, then concatenate them with a space between each.<br>Input: ['hello', '', 'world']<br>Output: 'HELLO WORLD'</p>
+      <div class="solution-label">Solution</div>
+      <pre>const uppercase_concatenated_strings = (str_arr) => {
+  return str_arr
+    .filter((str) => str !== '')
+    .map((str) => str.toUpperCase())
+    .join(' ');
+};</pre>
+    </div>
+
+    <h2 id="sort-users-by-age-and-return-names">Sort Users by Age and Return Names</h2>
+    <div class="block">
+      <p>Sort array of objects by age and return names only.<br>Input: [{name: 'Alice', age: 30}, {name: 'Bob', age: 25}]<br>Output: ['Bob', 'Alice']</p>
+      <div class="solution-label">Solution</div>
+      <pre>const sort_users_by_age = (users) =>
+  users.sort((a,b) => a.age - b.age).map(u => u.name);</pre>
+    </div>
+
+    <h2 id="extract-keys-values-destructure">Extract Keys/Values &amp; Destructure</h2>
+    <div class="block">
+      <p>Compute the total cost of items by multiplying <code>price</code> and <code>quantity</code> for each object and summing the results.<br>Input: [{price: 10, quantity: 2}, {price: 5, quantity: 3}]<br>Output: 35</p>
+      <div class="solution-label">Solution</div>
+      <pre>const compute_total_cost = (obj_arr) => {
+  return obj_arr.reduce((acc, { price, quantity }) => acc + (price * quantity), 0);
+};</pre>
+    </div>
+
+    <div id="loop-to-es6-refactoring" class="section-title">Loop to ES6 Refactoring</div>
+
+    <h2 id="collect-even-numbers-loop-filter">Collect Even Numbers (Loop → Filter)</h2>
+    <div class="block">
+      <p>Refactor the following for-loop to collect even numbers from an array.<br>Input: [1, 2, 3, 4, 5]<br>Output: [2, 4]</p>
+      <pre>const arr = [1, 2, 3, 4, 5];
+const evens = [];
+for (let i = 0; i < arr.length; i++) {
+  if (arr[i] % 2 === 0) evens.push(arr[i]);
+}
+console.log(evens); // [2, 4]</pre>
+      <div class="solution-label">Solution</div>
+      <pre>const collect_even_numbers = (arr) => arr.filter(item => item % 2 === 0);
+console.log(collect_even_numbers([1, 2, 3, 4, 5])); // [2,4]</pre>
+    </div>
+
+    <h2 id="refactor-for-loop-es6">Refactor For-Loop → ES6</h2>
+    <div class="block">
+      <p>Refactor the following for-loop to a more concise implementation that produces the same result.<br>Input: [5, 12, 8, 20, 7, 15]<br>Output: [24, 40, 30]</p>
+      <pre>const numbers = [5, 12, 8, 20, 7, 15];
+const result = [];
+for (let i = 0; i < numbers.length; i++) {
+  if (numbers[i] > 10) result.push(numbers[i] * 2);
+}
+console.log(result); // [24, 40, 30]</pre>
+      <div class="solution-label">Solution</div>
+      <pre>const numbers = [5,12,8,20,7,15];
+const result = numbers.filter(item => item > 10).map(item => item * 2);</pre>
+    </div>
+
+    <div id="array-manipulation" class="section-title">Array Manipulation</div>
+
+    <h2 id="remove-insert-element">Remove &amp; Insert Element</h2>
+    <div class="block">
+      <p>Remove 1 element at index i and insert 'x'.<br>Input: [1, 2, 3], i = 1<br>Output: [1, 'x', 3]</p>
+      <div class="solution-label">Solution</div>
+      <pre>const remove_and_insert_x = (arr, i) => {
+  arr.splice(i, 1, 'x');
+  return arr;
+};
+console.log(remove_and_insert_x([1,2,3], 1)); // [1,'x',3]</pre>
+    </div>
+
+    <h2 id="unique-values">Unique Values</h2>
+    <div class="block">
+      <p>Return unique values from an array (manual or Set).<br>Input: [1, 2, 2, 3, 3, 4]<br>Output: [1, 2, 3, 4]</p>
+      <div class="solution-label">Solution</div>
+      <pre>// Using Set
+const unique_values = (arr) => [...new Set(arr)];
+
+// Manual
+const unique_values_manual = (arr) => {
+  const uniqueArr = [];
+  for (let i=0; i<arr.length; i++) {
+    if (uniqueArr.indexOf(arr[i]) === -1) uniqueArr.push(arr[i]);
+  }
+  return uniqueArr;
+};</pre>
+    </div>
+
+    <h2 id="first-3-unique-numbers">First 3 Unique Numbers</h2>
+    <div class="block">
+      <p>Return the first three unique numbers from an array.<br>Input: [1, 2, 2, 3, 4, 4, 5]<br>Output: [1, 2, 3]</p>
+      <div class="solution-label">Solution</div>
+      <pre>const first_3_unique_numbers = (arr) => [...new Set(arr)].slice(0, 3);
+console.log(first_3_unique_numbers([1,2,2,3,4,4,5])); // [1,2,3]</pre>
+    </div>
+
+    <h2 id="return-common-values-between-arrays">Return Common Values Between Arrays</h2>
+    <div class="block">
+      <p>Return values that appear in both arrays without nested loops.<br>Input: [1, 2, 3, 4], [3, 4, 5, 6]<br>Output: [3, 4]</p>
+      <div class="solution-label">Solution</div>
+      <pre>const return_common_values = (arr1, arr2) => {
+  const value_map = new Set(arr1);
+  const result = [];
+  for (let val of arr2) {
+    if (value_map.has(val)) {
+      result.push(val);
+      value_map.delete(val);
+    }
+  }
+  return result;
+};</pre>
+    </div>
+
+    <h2 id="count-users-per-endpoint">Count Users Per Endpoint</h2>
+    <div class="block">
+      <p>Given an array of log entries (each with <code>userId</code>, <code>endpoint</code>, <code>timestamp</code>), return an object mapping each endpoint to the count of <strong>unique users</strong> who hit it.<br>Input: [{userId: 1, endpoint: "/login", timestamp: 1700000000}, {userId: 1, endpoint: "/products", timestamp: 1700000100}, {userId: 2, endpoint: "/login", timestamp: 1700000200}]<br>Output: {"/login": 2, "/products": 1}</p>
+      <div class="solution-label">Solution</div>
+      <pre>const count_users_per_endpoint = (logs) => {
+  const result = {};
+  logs.forEach(({ userId, endpoint }) => {
+    if (!result[endpoint]) result[endpoint] = new Set();
+    result[endpoint].add(userId);
+  });
+  for (let key in result) result[key] = result[key].size;
+  return result;
+};</pre>
+    </div>
+
+    <div id="control-flow" class="section-title">Control Flow</div>
+
+    <h2 id="fizzbuzz">FizzBuzz</h2>
+    <div class="block">
+      <p>Print numbers from 1 to n with "fizz" for multiples of 3, "buzz" for multiples of 5, and "fizzbuzz" for multiples of both.<br>Input: n = 15<br>Output: 1, 2, fizz, 4, buzz, fizz, 7, 8, fizz, buzz, 11, fizz, 13, 14, fizzbuzz</p>
+      <div class="solution-label">Solution</div>
+      <pre>const fizzbuzz = (n) => {
+  for (let i = 1; i <= n; i++) {
+    if (i % 3 === 0 && i % 5 === 0) console.log('fizzbuzz');
+    else if (i % 3 === 0) console.log('fizz');
+    else if (i % 5 === 0) console.log('buzz');
+    else console.log(i);
+  }
+};</pre>
+    </div>
+
+    <div id="strings-hash-maps" class="section-title">Strings &amp; Hash Maps</div>
+
+    <h2 id="reverse-string">Reverse String</h2>
+    <div class="block">
+      <p>Reverse a string.<br>Input: "hello"<br>Output: "olleh"</p>
+      <div class="solution-label">Solution</div>
+      <pre>const reverse_string = (str) => {
+  let reversed_str = '';
+  for (let i = str.length - 1; i >= 0; i--) {
+    reversed_str += str[i];
+  }
+  return reversed_str;
+};</pre>
+    </div>
+
+    <h2 id="palindrome-check">Palindrome Check</h2>
+    <div class="block">
+      <p>Check if a string is a palindrome.<br>Input: "abba"<br>Output: true</p>
+      <div class="solution-label">Solution</div>
+      <pre>const isPalindrome = (str) => {
+  let reversed_str = "";
+  for (let i = str.length - 1; i >= 0; i--) {
+    reversed_str += str[i];
+  }
+  return str === reversed_str;
+};</pre>
+    </div>
+
+    <h2 id="max-character">Max Character</h2>
+    <div class="block">
+      <p>Find the character that appears most frequently and return it along with its count.<br>Input: "abccccccd"<br>Output: "c: 6"</p>
+      <div class="solution-label">Solution</div>
+      <pre>const max_character = (str) => {
+  let char_map = {};
+  for (let char of str.split("")) {
+    if (char_map[char]) char_map[char]++;
+    else char_map[char] = 1;
+  }
+  let max_char = "";
+  let max_char_count = 0;
+  for (let char in char_map) {
+    if (char_map[char] > max_char_count) {
+      max_char = char;
+      max_char_count = char_map[char];
+    }
+  }
+  return `${max_char}: ${max_char_count}`;
+};</pre>
+    </div>
+
+    <h2 id="anagrams">Anagrams</h2>
+    <div class="block">
+      <p>Check if two strings are anagrams of each other (ignoring spaces and case).<br>Input: "rail safety", "fairy tales"<br>Output: true</p>
+      <div class="solution-label">Solution</div>
+      <pre>const create_char_map = (str) => {
+  const map = {};
+  for (const char of str) {
+    if (char === ' ') continue;
+    if (map[char]) map[char]++;
+    else map[char] = 1;
+  }
+  return map;
+};
+const anagrams = (str1, str2) => {
+  let char_map_1 = create_char_map(str1.toLowerCase());
+  let char_map_2 = create_char_map(str2.toLowerCase());
+  if (Object.keys(char_map_1).length !== Object.keys(char_map_2).length) return false;
+  for (const char in char_map_1) {
+    if (char_map_1[char] !== char_map_2[char]) return false;
+  }
+  return true;
+};</pre>
+    </div>
+
+    <h2 id="longest-substring-without-repeating-characters">Longest Substring Without Repeating Characters</h2>
+    <div class="block">
+      <p>Given a string, find the length of the longest substring without repeating characters.<br>Input: "abca"<br>Output: 3</p>
+      <div class="solution-label">Solution</div>
+      <pre>const longestSubstringWithoutRepeating = (str) => {
+  const lastSeen = {};
+  let maxLength = 0;
+  let windowStart = 0;
+  for (let i = 0; i < str.length; i++) {
+    const char = str[i];
+    if (lastSeen[char] && lastSeen[char] >= windowStart) {
+      windowStart = lastSeen[char] + 1;
+    }
+    lastSeen[char] = i;
+    maxLength = Math.max(maxLength, i - windowStart + 1);
+  }
+  return maxLength;
+};</pre>
+    </div>
+
+    <div id="algorithmic-variations" class="section-title">Algorithmic Variations</div>
+
+    <h2 id="two-sum">Two Sum</h2>
+    <div class="block">
+      <p>Given an array of integers and a target number, return the indices of the two numbers that add up to the target.<br>Input: [1, 4, 6, 3], target = 7<br>Output: [0, 3]</p>
+      <div class="solution-label">Solution</div>
+      <pre>const twoSum = (arr, target) => {
+  const seen = new Map();
+  for (let i = 0; i < arr.length; i++) {
+    const num = arr[i];
+    const complement = target - num;
+    if (seen.has(complement)) return [seen.get(complement), i];
+    seen.set(num, i);
+  }
+  return null;
+};</pre>
+    </div>
+
+    <h2 id="two-pointer-remove-duplicates-sorted">Two Pointer - Remove Duplicates Sorted</h2>
+    <div class="block">
+      <p>Remove duplicates from sorted array in-place.<br>Input: [1, 1, 2, 2, 3, 3]<br>Output: 3 (length of unique array)</p>
+      <div class="solution-label">Solution</div>
+      <pre>const removeDuplicatesSorted = (arr) => {
+  if (arr.length === 0) return 0;
+  let lastUnique = 0;
+  for (let current = 1; current < arr.length; current++) {
+    if (arr[current] !== arr[lastUnique]) {
+      lastUnique++;
+      arr[lastUnique] = arr[current];
+    }
+  }
+  return lastUnique + 1;
+};</pre>
+    </div>
+
+    <h2 id="two-pointer-sum-pair">Two Pointer - Sum Pair</h2>
+    <div class="block">
+      <p>Given a <strong>sorted array</strong> and a target, return true if there exists a pair that sums to the target.<br>Input: [1, 2, 3, 4, 6], target = 8<br>Output: true (2 + 6)</p>
+      <div class="solution-label">Solution</div>
+      <pre>const hasPairWithSum = (arr, target) => {
+  let left = 0;
+  let right = arr.length - 1;
+  while (left < right) {
+    const sum = arr[left] + arr[right];
+    if (sum === target) return true;
+    else if (sum < target) left++;
+    else right--;
+  }
+  return false;
+};</pre>
+    </div>
+
+    <h2 id="sliding-window-max-sum-subarray">Sliding Window - Max Sum of Subarray</h2>
+    <div class="block">
+      <p>Find maximum sum of contiguous subarray of size k.<br>Input: [1, 4, 2, 10, 23, 3, 1, 0, 20], k = 4<br>Output: 39</p>
+      <div class="solution-label">Solution</div>
+      <pre>const maxSubarraySum = (arr, k) => {
+  if (arr.length < k) return null;
+  let windowSum = 0;
+  for (let i = 0; i < k; i++) windowSum += arr[i];
+  let maxSum = windowSum;
+  for (let i = k; i < arr.length; i++) {
+    windowSum += arr[i] - arr[i - k];
+    maxSum = Math.max(maxSum, windowSum);
+  }
+  return maxSum;
+};</pre>
+    </div>
+
+    <div id="canonical-dsa-patterns" class="section-title">Canonical DSA Patterns</div>
+
+    <h2 id="group-anagrams">Group Anagrams</h2>
+    <div class="block">
+      <p>Given an array of strings, group all anagrams together.<br>Input: ['eat','tea','tan','ate','nat','bat']<br>Output: [['eat','tea','ate'], ['tan','nat'], ['bat']]</p>
+      <div class="solution-label">Solution</div>
+      <pre>const groupAnagrams = (arr) => {
+  const map = {};
+  for (let word of arr) {
+    const key = word.split('').sort().join('');
+    if (!map[key]) map[key] = [];
+    map[key].push(word);
+  }
+  return Object.values(map);
+};</pre>
+      <p><em>Comment:</em> Normalize each word by sorting its characters. Anagrams share the same sorted string.</p>
+    </div>
+
+    <h2 id="magic-square">Magic Square</h2>
+    <div class="block">
+      <p>Check if a 2D array forms a magic square (all rows, columns, and diagonals sum to the same value).<br>Input: [[2,7,6],[9,5,1],[4,3,8]]<br>Output: true</p>
+      <div class="solution-label">Solution</div>
+      <pre>const isMagicSquare = (grid) => {
+  const n = grid.length;
+  if (n === 0) return false;
+  for (const row of grid) {
+    if (row.length !== n) return false;
+  }
+  const target = grid[0].reduce((a,b) => a + b, 0);
+  for (let i = 0; i < n; i++) {
+    if (grid[i].reduce((a,b) => a + b, 0) !== target) return false;
+  }
+  for (let col = 0; col < n; col++) {
+    let sum = 0;
+    for (let row = 0; row < n; row++) sum += grid[row][col];
+    if (sum !== target) return false;
+  }
+  let diag1 = 0, diag2 = 0;
+  for (let i = 0; i < n; i++) {
+    diag1 += grid[i][i];
+    diag2 += grid[i][n-1-i];
+  }
+  return diag1 === target && diag2 === target;
+};</pre>
+      <p><em>Comment:</em> Use the first row as a reference sum. Verify all rows, columns, and diagonals match.</p>
+    </div>
+
+    <button id="back-to-toc" onclick="document.getElementById('toc').scrollIntoView({ behavior: 'smooth' });">
+      ↑ Back to TOC
+    </button>
+  </div>
+</body>
+
+</html>

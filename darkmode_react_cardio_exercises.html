@@ -53,6 +53,12 @@
         margin-bottom: 8px;
         color: var(--accent);
       }
+      h4 {
+        font-size: 1rem;
+        margin-top: 16px;
+        margin-bottom: 6px;
+        color: var(--accent);
+      }
 
       p {
         margin: 8px 0;
@@ -259,50 +265,76 @@
     </section>
 
     <section>
-      <h2>Task 6: StringListForm Component (Form Handling and State Update)</h2>
+      <h2>Task 6: StringListForm Component (Form Handling, Debouncing, and Submission Guarding)</h2>
       <p>
-        Build a component that manages a list of strings added via a text input
-        and a submit button.
+        Build a React component that manages a list of strings added via a text input
+        and a submit button, with additional safeguards to reflect real-world form behavior.
       </p>
 
-      <h3>Functional Requirements:</h3>
+      <h3>Functional Requirements</h3>
       <ul>
         <li>Provide a controlled text input and a submit button</li>
-        <li>
-          On form submit, add the input value to an internal list of strings
-        </li>
+        <li>Allow users to add strings to an internal list via form submission</li>
         <li>Display the full list of submitted strings</li>
-        <li>
-          Show a running message that says how many strings have been added so
-          far
-        </li>
-        <li>
-          The count message should update immediately when a new string is
-          submitted
-        </li>
+        <li>Show a running message indicating how many strings have been added</li>
+        <li>The count message should update immediately after each successful submission</li>
+        <li>Prevent duplicate or invalid submissions</li>
+        <li>Avoid triggering validation or side effects on every keystroke</li>
       </ul>
 
-      <h3>Technical Requirements:</h3>
+      <h3>Enhanced Behavior Requirements</h3>
+
+      <h4>Debounced Input Handling</h4>
       <ul>
-        <li>Use <code>useState</code> to manage the list of strings</li>
-        <li>
-          Use the functional update form
-          <code>setState(prev =&gt; [...prev, value])</code>
+        <li>User input should update immediately in the UI</li>
+        <li>Validation or derived logic (e.g., trimming, duplicate detection, preview state) should be debounced</li>
+        <li>Debounced logic should only run after the user pauses typing (e.g., 300–500ms)</li>
+        <li>Any pending validation should be canceled if the input changes</li>
+      </ul>
+
+      <h4>Duplicate Submission Prevention</h4>
+      <ul>
+        <li>Only one submission may be processed at a time</li>
+        <li>While a submission is in progress:
+          <ul>
+            <li>The submit button should be disabled</li>
+            <li>Additional submit attempts should be ignored</li>
+          </ul>
         </li>
-        <li>
-          Handle form submission using <code>onSubmit</code> and prevent page
-          reload
+        <li>Once the submission completes, the form becomes interactive again</li>
+      </ul>
+
+      <h3>Technical Requirements</h3>
+      <ul>
+        <li>Use <code>useState</code> to manage:
+          <ul>
+            <li>The input value</li>
+            <li>The list of submitted strings</li>
+            <li>Submission/loading state</li>
+            <li>Any debounced or derived input state</li>
+          </ul>
         </li>
+        <li>Use the functional state update form:
+          <code>setStringList(prev =&gt; [...prev, value])</code>
+        </li>
+        <li>Handle form submission using <code>onSubmit</code> and prevent page reload</li>
+        <li>Use <code>useEffect</code> to implement debounced behavior</li>
         <li>Use TypeScript for all typing</li>
+        <li>Trim whitespace and ignore empty submissions</li>
+        <li>Clear the input after a successful submission</li>
       </ul>
 
       <p class="note">
-        This component allows users to input strings via a form. The list of
-        strings is stored in state, and every submission appends the new string
-        to the array using the spread operator. I also track the number of
-        strings using stringList.length and render the full list below. The form
-        prevents default submission behavior, trims whitespace, and clears the
-        input after each valid submission.
+        This component allows users to input strings via a form and submit them to a list
+        managed in component state. Input is controlled and validated in a debounced manner
+        to avoid unnecessary processing on every keystroke. Form submission is guarded to
+        prevent duplicate requests, ensuring that only one submission can occur at a time.
+        The component displays the full list of submitted strings along with a running count
+        that updates immediately after each valid submission.
+      </p>
+      <p class="note">
+        This design mirrors real-world form behavior by balancing responsiveness,
+        correctness, and user experience.
       </p>
     </section>
 

@@ -151,10 +151,14 @@
         <li><a href="#ai-workflow">How do you use AI in your workflow?</a></li>
         <li><a href="#see-yourself">Where do you see yourself?</a></li>
         <li><a href="#problem-solving-example">Complex Full Stack Project Leadership</a></li>
+        <li><a href="#debugging">Debugging</a></li>
+        <li><a href="#deployment-cicd">Deployment Strategy and CI/CD Approach</a></li>
         <li><a href="#teamwork">Teamwork</a></li>
         <li><a href="#prioritization">Prioritization</a></li>
         <li><a href="#ambiguity">Ambiguity</a></li>
         <li><a href="#stakeholders">Communicating with stakeholders/clients</a></li>
+        <li><a href="#chess">How would you design a Chess game app?</a></li>
+        <li><a href="#twitter">How would you design Twitter?</a></li>
         <li><a href="#interviewer-questions">Questions to ask the Interviewer</a></li>
         <li><a href="#closing">Closing line</a></li>
       </ul>
@@ -164,8 +168,9 @@
     <div class="block quote">
       <ul>
         <li>Full-stack developer, 6+ years; React, TypeScript, Node, SQL</li>
-        <li>Owned features end to end; designing databases, backend APIs, front end UIs, and managing deployments</li>
-        <li>Collaborated with product managers, QA analysts, and external partners and stakeholders</li>
+        <li>Owned features end to end, from database design and backend APIs to frontend UI development, production
+          deployments, and ongoing application support</li>
+        <li>Collaborated with QA, product managers, and external partners and stakeholders</li>
       </ul>
     </div>
 
@@ -197,7 +202,7 @@
     <h2 id="last-role">Why did you leave your last role?</h2>
     <div class="block quote">
       <ul>
-        <li>I was ready for a new challenge, but the role was affected by budget changes. Since then, I’ve been doing
+        <li>I was ready for a new challenge, but the role was affected by budget changes. Since then, I've been doing
           freelance consulting while looking for the right full-time opportunity</li>
       </ul>
     </div>
@@ -241,7 +246,38 @@
         <li>Stack: React front end, NestJS API, SQL schema to ensure compliance</li>
         <li>Collaboration: Partnered with QA and stakeholders to create an intuitive UX despite rigid regulatory
           constraints</li>
+        <li>Prioritization: Focused first on implementing critical regulatory validations that could block QA from
+          testing downstream steps, ensuring compliance and allowing the team to continue working efficiently. After the
+          essential checks were in place, I addressed remaining workflow steps and UI enhancements to maintain speed,
+          usability, and overall team productivity.</li>
       </ul>
+    </div>
+
+    <h2 id="debugging">Debugging</h2>
+    <div class="block quote">
+      <ul>
+        <li>Use logs and monitoring to see patterns and locate errors.</li>
+        <li>Trace the issue to the right layer (frontend, backend, or database).</li>
+        <li>Reproduce in a safe environment, fix the root cause, and add validation or tests to prevent recurrence.</li>
+      </ul>
+    </div>
+
+    <h2 id="deployment-cicd">Deployment Strategy and CI/CD Approach</h2>
+    <div class="block quote">
+      <p>I use Docker and Continuous Integration / Continuous Deployment (CI/CD) to standardize environments and deliver
+        safe, repeatable releases. The frontend and backend are deployed independently to enable faster updates, simpler
+        maintenance, and independent scaling.</p>
+      <p>On pushes to the main branch, GitHub Actions runs tests and builds deployment artifacts. The backend is
+        packaged
+        as a Docker image, pushed to Amazon Elastic Container Registry (ECR), and deployed to Amazon Elastic Container
+        Service (ECS) using rolling deployments. The frontend is built as a static site, uploaded to Amazon Simple
+        Storage Service (S3), and served through Amazon CloudFront, with cache invalidation to ensure users receive the
+        latest version.</p>
+      <p>
+        Configuration is managed via environment variables and validated in staging before production. Rollbacks are
+        explicit and predictable, using a previous ECS task definition or container image for the backend and versioned
+        S3 assets for the frontend. This approach keeps deployments reliable while minimizing operational risk.
+      </p>
     </div>
 
     <h2 id="teamwork">Teamwork</h2>
@@ -258,6 +294,10 @@
       <ul>
         <li>Evaluate competing priorities by their business value and time-sensitivity</li>
         <li>Focus on blocking tasks first to keep teammates moving forward</li>
+        <li>Example: At Civix, I balanced enforcing strict regulatory validations with keeping QA able to test
+          subsequent workflow steps. I implemented critical validations first to ensure compliance while allowing the
+          team to continue testing and working efficiently, then addressed UI enhancements and workflow improvements.
+        </li>
       </ul>
     </div>
 
@@ -278,10 +318,38 @@
       </ul>
     </div>
 
+    <h2 id="chess">How would you design a Chess game app?</h2>
+    <div class="block quote">
+      <ul>
+        <li>I'd design real-time chess using a server-authoritative model where the server is the single source of
+          truth. Clients never update game state directly, they only send move intents like from-square and to-square
+        </li>
+        <li>Each move is validated on the server against the current game state. If it's legal and it's the player's
+          turn, the server updates and persists the state, then immediately pushes the result to both players over a
+          persistent connection like WebSockets. That avoids polling and keeps both clients perfectly in sync</li>
+        <li>For security, authentication identifies the player, but all authorization and rule enforcement happens
+          server-side. Even if someone bypasses the frontend and sends malicious requests, the server still verifies
+          turn order, player ownership, and move legality before accepting anything.</li>
+        <li>The key idea is that the client is just a renderer, and the server validates, owns, and broadcasts the
+          truth.</li>
+      </ul>
+    </div>
+
+    <h2 id="twitter">How would you design Twitter?</h2>
+    <div class="block quote">
+      <ul>
+        <li>I'd start by identifying core features: user accounts, posting short messages, following users, and viewing a feed. Each feature maps to conceptual data models like User, Post, and Follow.</li>
+        <li>Posting and feed generation would be handled server-side. When a user posts, the server writes to the database and updates cached feeds. Reading a feed pulls precomputed or cached data to ensure fast responses.</li>
+        <li>Scaling challenges include handling high read-to-write ratios and generating feeds efficiently. I'd use caching for frequently accessed data, separate read-heavy and write-heavy workloads, and precompute feeds where possible.</li>
+        <li>Deployment would involve a load balancer distributing requests across multiple identical application servers. Horizontal scaling allows the system to handle increased traffic by adding more servers.</li>
+        <li>The key principle: the server is authoritative. It owns the data, enforces rules, and responds to clients. Clients render content and make requests but never directly modify state.</li>
+      </ul>
+    </div>
+
     <h2 id="interviewer-questions">Questions to ask the Interviewer</h2>
     <div class="block quote">
       <ul>
-        <li>What are the team’s most important projects or priorities right now?</li>
+        <li>What are the team's most important projects or priorities right now?</li>
         <li>What are the next steps in the interview process?</li>
       </ul>
     </div>
@@ -289,7 +357,7 @@
     <h2 id="closing">Closing line</h2>
     <div class="block quote">
       <ul>
-        <li>Thanks for your time today. I’d be happy to continue the process and talk more.</li>
+        <li>Thanks for your time today. I'd be happy to continue the process and talk more.</li>
       </ul>
     </div>
 

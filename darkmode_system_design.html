@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Design Glossary</title>
+    <style>
+        :root {
+            --bg: #0b0f0d;
+            --surface: #121816;
+            --text: #e6f0ea;
+            --muted: #a7b8af;
+            --accent: #2ecc71;
+            --section-header: #4dd0e1;
+            --border: #1f2a25;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 32px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            color: var(--section-header);
+            font-weight: 700;
+        }
+
+        .section-title:first-of-type {
+            margin-top: 30px;
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            margin-top: 40px;
+            margin-bottom: 12px;
+            color: var(--accent);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 6px;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            margin-top: 24px;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        p,
+        li {
+            color: var(--text);
+        }
+
+        p {
+            margin: 8px 0;
+        }
+
+        ul {
+            margin: 8px 0 8px 20px;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        .muted {
+            color: var(--muted);
+        }
+
+        .block {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-top: 12px;
+        }
+
+        .quote {
+            border-left: 3px solid var(--accent);
+            padding-left: 14px;
+            margin: 12px 0;
+            color: var(--text);
+        }
+
+        strong {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        code {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="section-title">System Design Glossary</h1>
+
+        <h2>Client-Server Architecture</h2>
+        <div class="block quote">
+            <ul>
+                <li><strong>Client:</strong> Frontend app (web, mobile) sending requests.</li>
+                <li><strong>Server:</strong> Backend machine handling requests and returning responses.</li>
+                <li><strong>IP Address:</strong> Unique server identifier.</li>
+                <li><strong>DNS:</strong> Maps domain names to IPs for human-friendly access.</li>
+                <li><strong>Latency:</strong> Delay due to distance between client and server; reduced via geographically
+                    distributed data centers.</li>
+            </ul>
+        </div>
+
+        <h2>HTTP & HTTPS</h2>
+        <div class="block quote">
+            <ul>
+                <li><strong>HTTP:</strong> Protocol for client-server communication; includes request headers, body, and
+                    response.</li>
+                <li><strong>HTTPS:</strong> Encrypted HTTP using SSL/TLS.</li>
+            </ul>
+        </div>
+
+        <h2>APIs</h2>
+        <div class="block quote">
+            <ul>
+                <li><strong>API:</strong> Middleware for structured communication between client and server.</li>
+                <li><strong>REST:</strong> Stateless, resource-based, uses standard HTTP methods.</li>
+                <li><strong>GraphQL:</strong> Allows clients to request exactly the data they need; reduces over-fetching.</li>
+            </ul>
+        </div>
+
+        <h2>Databases</h2>
+        <div class="block quote">
+            <ul>
+                <li><strong>SQL:</strong> Structured schema, ACID compliance; ideal for relational data.</li>
+                <li><strong>NoSQL:</strong> Flexible schema, high scalability; includes key-value, document, graph, and
+                    wide-column stores.</li>
+                <li><strong>Indexing:</strong> Improves read speed using lookup tables; trade-off: slower writes.</li>
+                <li><strong>Replication:</strong> Primary for writes, multiple read replicas for scaling and high availability.</li>
+                <li><strong>Sharding (Horizontal Partitioning):</strong> Split database by rows using a sharding key to
+                    distribute load.</li>
+                <li><strong>Vertical Partitioning:</strong> Split database by columns to optimize queries.</li>
+                <li><strong>Normalization:</strong> Reduces redundancy; may require joins.</li>
+                <li><strong>Denormalization:</strong> Combines related data to reduce joins; improves read-heavy performance.</li>
+            </ul>
+        </div>
+
+        <h2>Scaling</h2>
+        <div class="block quote">
+            <ul>
+                <li><strong>Vertical Scaling:</strong> Upgrade single server (CPU, RAM); limited capacity, expensive.</li>
+                <li><strong>Horizontal Scaling:</strong> Add more servers to share load; improves reliability and capacity.</li>
+                <li><strong>Load Balancer:</strong> Distributes traffic across servers; uses algorithms like round-robin, least
+                    connections, IP hashing.</li>
+            </ul>
+        </div>
+
+        <h2>Caching</h2>
+        <div class="block quote">
+            <ul>
+                <li><strong>Cache:</strong> Store frequently accessed data in memory for faster reads.</li>
+                <li><strong>Cache-Aside Pattern:</strong> Application checks cache first, then database; stores result in cache.</li>
+                <li><strong>TTL (Time-To-Live):</strong> Expiration to avoid stale data.</li>
+            </ul>
+        </div>
+
+        <h2>Content Delivery</h2>
+        <div class="block quote">
+            <ul>
+                <li><strong>Blob Storage:</strong> Store unstructured files (images, video) in cloud buckets; each file gets a
+                    unique URL.</li>
+                <li><strong>CDN:</strong> Distributed servers delivering content from closest location; reduces latency and
+                    buffering.</li>
+            </ul>
+        </div>
+
+        <h2>Real-Time Communication</h2>
+        <div class="block quote">
+            <ul>
+                <li><strong>WebSockets:</strong> Persistent, two-way client-server communication for real-time updates.</li>
+                <li><strong>Webhooks:</strong> Server-to-server notifications triggered by events; avoids polling.</li>
+            </ul>
+        </div>
+
+        <h2>Architecture Patterns</h2>
+        <div class="block quote">
+            <ul>
+                <li><strong>Monolithic:</strong> Single large codebase; simple for small apps but hard to scale.</li>
+                <li><strong>Microservices:</strong> Independent services handling specific responsibilities; communicate via
+                    APIs or message queues; scalable and deployable individually.</li>
+            </ul>
+        </div>
+
+        <h2>Message Queues</h2>
+        <div class="block quote">
+            <ul>
+                <li><strong>Producer:</strong> Sends message to queue.</li>
+                <li><strong>Queue:</strong> Temporarily holds messages.</li>
+                <li><strong>Consumer:</strong> Processes messages asynchronously.</li>
+                <li>Decouples services and improves scalability.</li>
+            </ul>
+        </div>
+
+        <h2>Rate Limiting & API Management</h2>
+        <div class="block quote">
+            <ul>
+                <li><strong>Rate Limiting:</strong> Restrict requests per user/IP to prevent overload.</li>
+                <li><strong>Algorithms:</strong> Fixed window, sliding window, token bucket.</li>
+                <li><strong>API Gateway:</strong> Central entry point; handles auth, rate limiting, routing, logging.</li>
+            </ul>
+        </div>
+
+        <h2>Idempotency</h2>
+        <div class="block quote">
+            <ul>
+                <li>Ensures repeated requests produce same result.</li>
+                <li>Use unique request IDs to detect duplicates.</li>
+            </ul>
+        </div>
+
+        <h2>Distributed Systems</h2>
+        <div class="block quote">
+            <ul>
+                <li><strong>CAP Theorem:</strong> A distributed system can have at most two of Consistency, Availability,
+                    Partition Tolerance.</li>
+                <li>Design choice depends on system requirements.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

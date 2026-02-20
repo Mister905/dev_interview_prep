@@ -182,7 +182,7 @@
       <h3>Functional Requirements:</h3>
       <ul>
         <li><code>Child</code> component contains a text input</li>
-        <li>When the input changes, it calls a function passed via props</li>
+        <li>When the input changes, it calls a callback function passed via props</li>
         <li><code>Parent</code> receives and displays the value</li>
       </ul>
 
@@ -318,7 +318,7 @@
           <code>setStringList(prev =&gt; [...prev, value])</code>
         </li>
         <li>Handle form submission using <code>onSubmit</code> and prevent page reload</li>
-        <li>Use <code>useEffect</code> to implement debounced behavior</li>
+        <li>Create a custom <code>useDebounce</code> hook that takes 2 arguments (text, delay) and returns debounced text value</li>
         <li>Use TypeScript for all typing</li>
         <li>Trim whitespace and ignore empty submissions</li>
         <li>Clear the input after a successful submission</li>

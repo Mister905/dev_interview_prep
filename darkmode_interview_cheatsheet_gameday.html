@@ -177,10 +177,12 @@
       <h2>Engineering & Architecture</h2>
       <ul>
         <li><a href="#react-redux-best-practices">React & Redux: Large-Scale App Structure</a></li>
+        <li><a href="#redux-async-flow">Redux Async Flow (Client → Server → Client)</a></li>
         <li><a href="#api-design-best-practices">API Design, Scalability & Performance</a></li>
         <li><a href="#react-vs-nextjs">React vs Next.js</a></li>
         <li><a href="#why-typescript">Why use TypeScript?</a></li>
         <li><a href="#var-let-const">var vs let vs const - Pass by value vs pass by reference</a></li>
+        <li><a href="#for-in-vs-for-of">for...in vs for...of</a></li>
         <li><a href="#microservices-definition">What are microservices and what concern led to their rise?</a></li>
         <li><a href="#message-brokers">Message Brokers</a></li>
         <li><a href="#sql-vs-nosql">SQL vs NoSQL</a></li>
@@ -209,7 +211,7 @@
 
     <h2 id="why-this-role">Why this role?</h2>
     <div class="block quote">
-      I’m specifically interested in this role because I want to build full-stack applications using modern tools that solve real user problems, and I can contribute quickly thanks to my experience.
+      I’m specifically interested in this role because I want to build full-stack applications using modern tools, and I’m confident I can contribute quickly given my experience across the stack.
     </div>
 
     <h2 id="end-preference">Do you prefer frontend or backend development?</h2>
@@ -425,6 +427,18 @@
       </ul>
     </div>
 
+    <h2 id="redux-async-flow">Redux Async Flow (Client → Server → Client)</h2>
+    <div class="block quote">
+      <ol>
+        <li>User acts → dispatch an action (e.g., move piece, post, bid)</li>
+        <li>Redux middleware (Thunk / RTK) handles async → calls API</li>
+        <li>Server responds → returns data or error</li>
+        <li>Redux reducer updates store with response</li>
+        <li>Components auto re-render via useSelector</li>
+        <li>Optional useEffect → side effects on state change (notifications, logging, etc.)</li>
+      </ol>
+    </div>
+
     <h2 id="api-design-best-practices">API Design, Scalability & Performance</h2>
     <div class="block quote">
       <ul>
@@ -517,6 +531,27 @@ function example() {
   console.log(a); // ✅ 1 — 'var' is visible here
   console.log(b); // ❌ Error — 'b' is not defined outside the block
   console.log(c); // ❌ Error — 'c' is not defined outside the block
+}</code></pre>
+    </div>
+
+    <h2 id="for-in-vs-for-of">for...in vs for...of</h2>
+    <div class="block quote">
+      <ul>
+        <li><strong>for...in</strong> iterates over the <em>keys</em> (property names) of an object — use for plain objects when you need keys</li>
+        <li><strong>for...of</strong> iterates over the <em>values</em> of iterables (arrays, strings, Map, Set) — use for arrays and other iterables when you need values</li>
+      </ul>
+      <pre>
+      <code>
+// for...in — iterates over object keys, use to access property values
+const user = { name: "Alice", age: 30 };
+for (const key in user) {
+  console.log(user[key]); // "Alice", 30
+}
+
+// for...of — iterates over array values directly
+const colors = ["red", "green", "blue"];
+for (const color of colors) {
+  console.log(color); // "red", "green", "blue"
 }</code></pre>
     </div>
 

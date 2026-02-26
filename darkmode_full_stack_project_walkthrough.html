@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project-Agnostic Workflow</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 2rem;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: #ffffff;
+        }
+
+        code,
+        pre {
+            background-color: #1e1e1e;
+            color: #c5c6c7;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: "Fira Code", monospace;
+        }
+
+        pre {
+            padding: 1rem;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th,
+        td {
+            border: 1px solid #333;
+            padding: 0.5rem;
+        }
+
+        th {
+            background-color: #1e1e1e;
+        }
+
+        ul {
+            margin: 0.5rem 0 1rem 2rem;
+        }
+
+        .manual-test {
+            background-color: #292929;
+            padding: 0.5rem 1rem;
+            border-left: 4px solid #00bcd4;
+            margin: 1rem 0;
+        }
+
+        .directory {
+            color: #4fc3f7;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Project-Agnostic Step-by-Step Workflow</h1>
+
+    <h2>Step 0 — Project Initialization</h2>
+    <ul>
+        <li><strong>Plan the architecture:</strong> Define routes, modules, API endpoints, database schema, and domain
+            entities (e.g., <code>User</code>, <code>Item</code>, <code>Record</code>).</li>
+        <li><strong>Create repository structure:</strong>
+            <pre>
+/frontend        <span class="directory"># Next.js App Router, pages, components, Redux</span>
+/backend         <span class="directory"># NestJS modules, Prisma schema, controllers/services</span>
+/infra           <span class="directory"># Cloud config, deployment scripts</span>
+.gitignore
+docker-compose.yml
+README.md
+    </pre>
+        </li>
+        <li><strong>Set up version control:</strong> Git repo with branching strategy (main/dev/feature)</li>
+    </ul>
+    <div class="manual-test">
+        <strong>Manual test:</strong> <code>git status</code> works and initial commit is pushed.
+    </div>
+
+    <h2>Step 1 — Backend Setup (NestJS + Prisma + Postgres/Supabase)</h2>
+    <ul>
+        <li>Initialize NestJS: <code>nest new backend</code></li>
+        <li>Install dependencies: <code>@nestjs/config</code>, <code>@nestjs/jwt</code>, <code>@prisma/client</code>,
+            <code>class-validator</code>, <code>supabase-js</code></li>
+        <li>Backend structure:
+            <pre>
+/backend
+├─ src/
+│   ├─ main.ts           <span class="directory"># bootstrap app</span>
+│   ├─ app.module.ts     <span class="directory"># global modules</span>
+│   ├─ auth/
+│   │   ├─ auth.module.ts
+│   │   ├─ auth.guard.ts
+│   │   └─ supabase.service.ts
+│   ├─ user/
+│   │   ├─ user.module.ts
+│   │   ├─ user.controller.ts
+│   │   └─ user.service.ts
+│   └─ core/
+│       ├─ core.module.ts
+│       ├─ entity.controller.ts
+│       └─ entity.service.ts
+├─ prisma/
+│   ├─ schema.prisma
+│   └─ migrations/
+├─ Dockerfile.prod
+└─ package.json
+    </pre>
+        </li>
+        <li>Configure Prisma: <code>prisma init</code>, define models</li>
+        <li>Create database and run migrations</li>
+        <li>Implement AuthGuard for JWT verification</li>
+        <li>Create DTOs and validation pipes</li>
+        <li>Implement core services and controllers (CRUD endpoints)</li>
+    </ul>
+    <div class="manual-test">
+        <strong>Manual test:</strong>
+        <ul>
+            <li>Run backend → <code>GET /api/health</code> returns 200</li>
+            <li>Create record via API → DB row exists</li>
+            <li>JWT verification works for protected endpoints</li>
+        </ul>
+    </div>
+
+    <h2>Step 2 — Frontend Setup (Next.js App Router)</h2>
+    <ul>
+        <li>Initialize Next.js: <code>npx create-next-app frontend</code></li>
+        <li>Install dependencies: Redux, Supabase client, Axios or fetch wrapper</li>
+        <li>Frontend structure:
+            <pre>
+/frontend
+├─ app/
+│   ├─ layout.tsx
+│   ├─ page.tsx
+│   ├─ [id]/
+│   │   ├─ page.tsx
+│   │   └─ EntityDetailClient.tsx
+│   └─ auth/
+│       ├─ login/page.tsx
+│       └─ callback/page.tsx
+├─ components/
+├─ lib/
+│   ├─ api/client.ts
+│   └─ auth/supabase.ts
+├─ store/
+│   └─ entitySlice.ts
+├─ styles/
+│   └─ globals.css
+├─ public/
+│   └─ images/
+└─ next.config.js
+    </pre>
+        </li>
+        <li>Configure Redux store and slices</li>
+        <li>Add auth client wrapper for login/session handling</li>
+        <li>Implement login page connecting to backend via JWT</li>
+    </ul>
+    <div class="manual-test">
+        <strong>Manual test:</strong>
+        <ul>
+            <li>Run <code>yarn dev</code> → login page loads</li>
+            <li>Submit login → token stored, user redirected</li>
+            <li>API calls with <code>Authorization</code> header work</li>
+        </ul>
+    </div>
+
+    <h2>Step 3 — Implement Core Domain Logic</h2>
+    <ul>
+        <li><strong>Backend:</strong>
+            <ul>
+                <li><code>createEntity()</code> → lightweight record creation</li>
+                <li><code>startProcess()</code> → heavier setup/related records, update status</li>
+                <li><code>updateEntity()</code> → handle mutations/updates</li>
+                <li>Optional finalization logic → mark record as completed or archived</li>
+            </ul>
+        </li>
+        <li><strong>Frontend:</strong> List and detail views, client-only selection, API calls for
+            create/update/finalize</li>
+    </ul>
+    <div class="manual-test">
+        <strong>Manual test:</strong> Create → start → update → finalize workflows all reflect in DB and UI.
+    </div>
+
+    <h2>Step 4 — Infrastructure & Deployment</h2>
+    <ul>
+        <li>S3 + CloudFront: configure static frontend export and SPA routing</li>
+        <li>ECS Fargate: deploy backend container, secrets from SSM or environment</li>
+        <li>CI/CD: GitHub Actions for frontend and backend</li>
+    </ul>
+    <div class="manual-test">
+        <strong>Manual test:</strong>
+        <ul>
+            <li>Frontend loads via CloudFront</li>
+            <li>Backend endpoints reachable via <code>/api</code></li>
+            <li>SPA routes handled correctly</li>
+        </ul>
+    </div>
+
+    <h2>Step 5 — Testing & Validation</h2>
+    <ul>
+        <li>Manual tests: auth flow, entity lifecycle, state transitions, unauthorized access, CORS</li>
+        <li>Optional automated tests: Jest/Supertest (backend), Cypress/Playwright (frontend)</li>
+    </ul>
+
+    <h2>Step 6 — Optimizations / Extras</h2>
+    <ul>
+        <li>Logging and monitoring</li>
+        <li>Error handling and validation</li>
+        <li>Check CI/CD environment variables</li>
+        <li>Optimize Prisma queries</li>
+        <li>Document architectural decisions (Next.js vs Vite, static export vs SSR, state management)</li>
+    </ul>
+
+    <h2>Suggested Project Order Summary</h2>
+    <ol>
+        <li>Plan architecture & DB schema</li>
+        <li>Initialize backend → modules → Prisma → Auth → DTOs</li>
+        <li>Initialize frontend → Redux → Auth client → pages/components</li>
+        <li>Implement core domain logic (entity lifecycle) on backend + frontend</li>
+        <li>Deploy backend (ECS) and frontend (S3 + CloudFront)</li>
+        <li>Manual + automated testing of auth, entity lifecycle, state machine, API</li>
+        <li>CI/CD setup and environment validation</li>
+        <li>Optimization, logging, monitoring, and documentation</li>
+    </ol>
+
+</body>
+
+</html>

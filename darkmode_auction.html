@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real-Time Auction Platform – Interview Mental Model</title>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #e2e8f0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            padding: 40px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #f8fafc;
+        }
+
+        h2 {
+            margin-top: 40px;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 8px;
+        }
+
+        code {
+            background-color: #1e293b;
+            padding: 4px 6px;
+            border-radius: 6px;
+            font-size: 0.9em;
+        }
+
+        pre {
+            background-color: #1e293b;
+            padding: 16px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+
+        .block {
+            background-color: #1e293b;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #334155;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #1e293b;
+        }
+
+        .cheat-sheet p {
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+
+        .cheat-sheet p:first-child {
+            margin-top: 0;
+        }
+
+        .cheat-sheet ul {
+            margin-bottom: 4px;
+        }
+
+        h3 {
+            margin-top: 28px;
+        }
+
+        pre {
+            margin-top: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Designing a Real-Time Auction Platform</h1>
+
+    <h2>30-Second Interview Explanation</h2>
+
+    <div class="block">
+        <p>
+            For a real-time auction platform, I would use a clear event-driven flow. REST APIs handle setup, like
+            creating auctions, logging in, and retrieving history. Socket.IO handles live bids. The server is
+            authoritative, so clients only submit intent. The backend validates bid amounts, auction timing, and
+            eligibility and never trusts the client. Clients send bids to the Node server they are connected to. In a
+            horizontally scaled setup with multiple servers, each server checks the current auction state in Redis,
+            which provides fast in-memory reads and keeps all servers consistent without overloading the database. When
+            a bid is being saved, Postgres row-level locks ensure only one bid updates at a time. If the bid is valid,
+            the server updates Postgres, updates Redis with the new highest bid, and broadcasts that update to all
+            clients. Other Node servers read from Redis so all connected clients see the same bid. Transactions
+            re-validate to prevent race conditions and keep state consistent. Broadcasting is per-auction. Sockets join
+            auction-specific rooms, and io.to(room).emit() sends updates only to clients in that room. Testing covers
+            unit checks for processBid logic and integration tests for REST endpoints and Socket.IO flows, including
+            authentication.
+        </p>
+    </div>
+
+    <h2>High-Level Architecture</h2>
+
+    <div class="block">
+        <ul>
+            <li><strong>Frontend:</strong> Next.js (React)</li>
+            <li><strong>Backend:</strong> Node.js (Express or NestJS)</li>
+            <li><strong>Realtime:</strong> Socket.IO</li>
+            <li><strong>Database:</strong> PostgreSQL (durable storage, row-level locks for single-instance concurrency)
+            </li>
+            <li><strong>Cache:</strong> Redis (fast in-memory cache for bid reads)
+            </li>
+        </ul>
+    </div>
+
+    <h3>Communication Split</h3>
+
+    <table>
+        <tr>
+            <th>Purpose</th>
+            <th>Technology</th>
+        </tr>
+        <tr>
+            <td>Create auctions, login, history</td>
+            <td>REST API</td>
+        </tr>
+        <tr>
+            <td>Live bid updates</td>
+            <td>WebSockets (Socket.IO)</td>
+        </tr>
+    </table>
+
+    <h2>Core Models (Normalized)</h2>
+
+    <div class="block">
+        <ul>
+            <li><strong>User</strong> – stores bidder or admin information (id, name, credentials, role)</li>
+            <li><strong>Auction</strong> – represents a single auction (id, startTime, endTime, status, itemId,
+                highestBidId)</li>
+            <li><strong>Item</strong> – the thing being auctioned (id, name, description, metadata)</li>
+            <li><strong>Bid</strong> – individual bid (id, auctionId, userId, amount, timestamp)</li>
+            <li><strong>AuctionStatus</strong> – enum or reference table (OPEN, CLOSED, PENDING, CANCELLED)</li>
+        </ul>
+    </div>
+
+    <h2>Real-Time Flow</h2>
+
+    <h3>1. Client Joins Auction, Submits Bid, and Receives Real-Time Updates</h3>
+
+    <pre>
+    <code>
+    import { useEffect, useState } from "react";
+    import { io } from "socket.io-client";
+    
+    export default function AuctionPage({ auctionId }) {
+      const [socket, setSocket] = useState(null);
+      const [highestBid, setHighestBid] = useState(null);
+      const [bidAmount, setBidAmount] = useState("");
+    
+      useEffect(() => {
+        // Create socket connection
+        const newSocket = io("https://api.example.com", {
+          auth: {
+            token: localStorage.getItem("jwt")
+          }
+        });
+    
+        setSocket(newSocket);
+    
+        // CLIENT-SERVER: emit joinAuction → server adds socket to room
+        newSocket.emit("joinAuction", auctionId);
+    
+        // CLIENT-SERVER: highestBidUpdated event maps to setHighestBid (server is authoritative)
+        newSocket.on("highestBidUpdated", (data) => {
+          setHighestBid(data.highestBid);
+        });
+    
+        // Cleanup on unmount
+        return () =&gt; newSocket.disconnect();
+      }, [auctionId]);
+    
+      const handlePlaceBid = () =&gt; {
+        if (!socket) return;
+    
+        // CLIENT-SERVER: placeBid is intent only; server validates and broadcasts result
+        socket.emit("placeBid", {
+          auctionId,
+          amount: Number(bidAmount)
+        });
+      };
+    
+      return (
+        &lt;div&gt;
+          &lt;h2&gt;Highest Bid: ${highestBid}&lt;/h2&gt;
+    
+          &lt;input
+            type="number"
+            value={bidAmount}
+            onChange={(e) =&gt; setBidAmount(e.target.value)}
+          /&gt;
+    
+          &lt;button onClick={handlePlaceBid}&gt;
+            Place Bid
+          &lt;/button&gt;
+        &lt;/div&gt;
+      );
+    }
+    </code>
+    </pre>
+
+    <h3>2. Server Validates Bid and Updates Auction State</h3>
+
+    <pre><code>
+const io = new Server(httpServer, {
+  cors: {
+    origin: "https://your-frontend.com",
+    credentials: true
+  }
+});
+
+// AUTH: io.use() runs before connection; only verified users reach io.on("connection")
+io.use((socket, next) =&gt; {
+  try {
+    const token = socket.handshake.auth.token;
+    if (!token) return next(new Error("Unauthorized"));
+
+    const user = verifyJWT(token);
+    socket.user = user;
+    next();
+  } catch (err) {
+    next(new Error("Unauthorized"));
+  }
+});
+
+io.on("connection", (socket) =&gt; {
+
+    // BROADCAST: socket.join(room) → io.to(room).emit() sends only to clients in that auction
+    socket.on("joinAuction", (auctionId) =&gt; {
+        socket.join(`auction:${auctionId}`);
+    });
+    
+    socket.on("placeBid", async ({ auctionId, amount }) =&gt; {
+    
+        // 1. Authenticate user (JWT validated earlier in connection middleware)
+        const user = socket.user;
+    
+        // 2. REDIS: Load current auction state from cache for high-throughput bid reads
+        //    Redis = fast in-memory; avoids hitting Postgres on every bid. Optional: Redis WATCH/MULTI
+        //    for atomic ops when running multiple Node instances (multi-process concurrency).
+        //    const auction = await redis.get(`auction:${auctionId}`);
+    
+        // 3. Validate auction status and bid amount
+        //    - Auction is still ACTIVE
+        //    - Bid is higher than current highest
+        //    - User is eligible to bid
+    
+        // CONCURRENCY: processBid uses Postgres row-level lock (SELECT FOR UPDATE) for single-instance.
+        // Multi-instance: use Redis WATCH/MULTI or queue for sequential bid processing.
+    
+        // 5. POSTGRES: Durable persistence; Postgres = source of truth. Redis cache updated after.
+        //    - Insert into BidHistory
+        //    - Update Auction.highestBid
+    
+        const updatedAuction = await processBid(auctionId, user.id, amount);
+    
+        if (!updatedAuction.success) {
+        socket.emit("bidRejected", { reason: updatedAuction.reason });
+        return;
+        }
+    
+        // BROADCAST: io.to(room) sends only to clients in this auction. Multi-server: Socket.IO
+        // Redis Pub/Sub adapter relays emit across Node instances so all rooms get updates.
+        io.to(`auction:${auctionId}`).emit("highestBidUpdated", {
+        highestBid: updatedAuction.highestBid,
+        highestBidder: user.id
+        });
+    
+    });
+});
+</code></pre>
+
+    <h3>3. Validation and Concurrency Handling</h3>
+
+    <pre><code>
+async function processBid(auctionId: string, userId: string, amount: number) {
+    // 1. POSTGRES: Source of truth. For high throughput, read from Redis cache first;
+    //    fall back to DB or use Redis for hot path, Postgres for durability.
+    const auction = await db.auctions.findOne({ id: auctionId });
+    
+    // 2. Validate auction status and bid amount
+    if (!auction || auction.status !== "open") {
+        return { success: false, reason: "Auction not open" };
+    }
+    if (amount <= auction.highestBid) {
+        return { success: false, reason: "Bid too low" };
+    }
+    
+    // CONCURRENCY: POSTGRES row-level lock (single-instance). Multi-instance: use Redis
+    // WATCH/MULTI or a queue for sequential processing across processes.
+    const updatedAuction = await db.transaction(async (tx) => {
+        // CRITICAL: SELECT FOR UPDATE locks row until transaction commits
+        const current = await tx.auctions.findOne({ id: auctionId }, { lock: "FOR UPDATE" });
+    
+        // Re-validate inside transaction to catch race conditions
+        if (amount <= current.highestBid) {
+            throw new Error("Bid too low");
+        }
+    
+        // POSTGRES: Durable write; Redis cache would be invalidated/updated after commit
+        const result = await tx.auctions.update({ id: auctionId }, {
+            highestBid: amount,
+            highestBidder: userId
+        });
+    
+        // Optionally write bid history / audit logs here
+        await tx.bidHistory.insert({
+            auctionId,
+            bidderId: userId,
+            amount,
+            timestamp: new Date()
+        });
+    
+        return result;
+    });
+    
+    // BROADCAST: io.to(room) targets only clients in this auction. With multiple Node
+    // instances, Socket.IO Redis Pub/Sub adapter ensures emit reaches all instances' rooms.
+    io.to(`auction:${auctionId}`).emit("highestBidUpdated", {
+        highestBid: updatedAuction.highestBid,
+        highestBidder: userId
+    });
+    
+    // 5. Return success and updated state
+    return { success: true, highestBid: updatedAuction.highestBid };
+    }
+</code></pre>
+
+    <h2>Auction End Handling</h2>
+
+    <div class="block">
+        <ul>
+            <li>Mark auction as CLOSED</li>
+            <li>Persist final bid</li>
+            <li>Emit <code>auctionEnded</code> event</li>
+            <li>Disable client bidding</li>
+        </ul>
+    </div>
+
+    <h2>Security Considerations</h2>
+
+    <div class="block">
+        <ul>
+            <li><strong>Never trust</strong> client bid amount</li>
+            <li><strong>Server controls</strong> auction timing</li>
+            <li><strong>Authenticate</strong> all socket connections</li>
+        </ul>
+    </div>
+</body>
+
+</html>
